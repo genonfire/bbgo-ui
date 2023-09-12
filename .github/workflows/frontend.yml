@@ -12,10 +12,7 @@ jobs:
   tests:
 
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: frontend/bbgo
-
+    
     steps:
     - uses: actions/checkout@v3
     - name: Set up Node
@@ -23,7 +20,7 @@ jobs:
       with:
         node-version: 18
         cache: yarn
-        cache-dependency-path: frontend/bbgo/yarn.lock
+        cache-dependency-path: yarn.lock
 
     - name: install packages
       run: yarn
