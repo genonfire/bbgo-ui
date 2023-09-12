@@ -1,0 +1,37 @@
+name: frontend
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'frontend/bbgo/**'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'frontend/bbgo/**'
+
+jobs:
+  tests:
+
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: frontend/bbgo
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: yarn
+        cache-dependency-path: frontend/bbgo/yarn.lock
+
+    - name: install packages
+      run: yarn
+    - name: lint
+      run: yarn lint
+    - name: build
+      run: yarn build
