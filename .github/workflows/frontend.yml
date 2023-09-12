@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - '**'
-    paths:
-      - 'frontend/bbgo/**'
   pull_request:
     branches:
       - '**'
-    paths:
-      - 'frontend/bbgo/**'
 
 jobs:
   tests:
