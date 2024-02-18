@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <default-bar />
 
     <default-view />
@@ -10,3 +10,6 @@
   import DefaultBar from './AppBar.vue'
   import DefaultView from './View.vue'
 </script>
+
+<style>
+</style>
