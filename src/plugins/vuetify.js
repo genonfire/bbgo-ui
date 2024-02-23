@@ -17,10 +17,17 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
-          primary: '#1867C0',
-          secondary: '#5CBBF6',
+          secondary: '#EB6769FF',
+          tertiary: "#403235",
+        },
+      },
+      dark: {
+        colors: {
+          secondary: '#EB6769FF',
+          tertiary: "#403235",
         },
       },
     },
+    defaultTheme: import.meta.env.VITE_THEME_DEFAULT
   },
 })

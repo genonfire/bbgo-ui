@@ -1,5 +1,11 @@
 {
     "common": {
+        "SEARCH": "Search",
+        "LANGUAGE": "Language",
+        "THEME": "Theme"
+    },
+    "action": {
+        "LOGIN": "Log in"
     },
     "info": {
         "SITENAME": "bbgo"

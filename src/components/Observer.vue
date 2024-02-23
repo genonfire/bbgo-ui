@@ -7,36 +7,34 @@
 
 <script>
 export default {
-  data() {
-    return {
-      observer: null,
-      observerOptions: {
-        rootMargin: '0px',
-        threshold: 1.0
-      }
-    };
-  },
+  data: () => ({
+    observer: null,
+    observerOptions: {
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+  }),
   mounted() {
-    this.createObserver();
+    this.createObserver()
   },
   beforeDestroy() {
     if (this.observer) {
-      this.observer.disconnect();
+      this.observer.disconnect()
     }
   },
   methods: {
     createObserver() {
       this.observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          this.$emit('show');
+          this.$emit('show')
         }
         else {
-          this.$emit('hidden');
+          this.$emit('hidden')
         }
-      }, this.observerOptions);
+      }, this.observerOptions)
 
-      this.observer.observe(this.$refs.observer);
+      this.observer.observe(this.$refs.observer)
     }
   }
-};
+}
 </script>
