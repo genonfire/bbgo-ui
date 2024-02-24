@@ -4,6 +4,9 @@
         "LANGUAGE": "언어",
         "THEME": "테마"
     },
+    "menu": {
+        "HOME": "홈"
+    },
     "action": {
         "LOGIN": "로그인"
     },

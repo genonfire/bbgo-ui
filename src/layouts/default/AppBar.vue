@@ -76,7 +76,7 @@ export default {
 <style>
   img.appbar-logo {
     height: 42px;
-    margin-left: 6px;
+    margin-left: 8px;
     cursor: pointer;
   }
 

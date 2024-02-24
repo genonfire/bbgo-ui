@@ -4,6 +4,9 @@
         "LANGUAGE": "Language",
         "THEME": "Theme"
     },
+    "menu": {
+        "HOME": "Home"
+    },
     "action": {
         "LOGIN": "Log in"
     },

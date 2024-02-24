@@ -1,5 +1,20 @@
 <template>
-  <v-list>
+  <v-list
+  >
+    <v-list-item
+      v-for="(item, i) in menu"
+      :key="i"
+      :value="item"
+      :to="item.to"
+    >
+      <template v-slot:prepend>
+        <v-icon :icon="item.icon"></v-icon>
+      </template>
+      <v-list-item-title v-text="item.text"></v-list-item-title>
+    </v-list-item>
+
+    <v-divider></v-divider>
+
     <v-list-subheader>{{ $t('common.LANGUAGE') }}</v-list-subheader>
     <v-list-item
       v-for="(item, i) in $store.const('LANGUAGES')"
@@ -15,9 +30,12 @@
     <Theme />
 
     <v-list-item-subtitle
-      class="mt-4 mx-8 text-caption"
+      class="mt-4 mx-6 text-caption footer"
     >
       &copy; {{ new Date().getFullYear() }} {{ appName }}
+      <a href="https://github.com/genonfire/bbgo-core" target="_blank">
+        Made by bbgo
+      </a>
     </v-list-item-subtitle>
   </v-list>
 </template>
@@ -34,6 +52,18 @@ export default {
       appName: import.meta.env.VITE_APP_NAME,
     }
   },
+  computed: {
+    menu: function () {
+      let items = [
+        {
+          text: this.$t('menu.HOME'),
+          icon: 'mdi-home-outline',
+          to: { name: 'Home' }
+        }
+      ]
+      return items
+    },
+  },
   methods: {
     languageSelected: function (value) {
       return this.$i18n.locale == value
@@ -47,3 +77,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .footer a {
+    color:#333;
+  }
+  .footer a:hover {
+    color:#000;
+  }
+</style>
