@@ -7,13 +7,15 @@
 
 <script>
 export default {
-  data: () => ({
-    observer: null,
-    observerOptions: {
-      rootMargin: '0px',
-      threshold: 1.0
+  data () {
+    return {
+      observer: null,
+      observerOptions: {
+        rootMargin: '0px',
+        threshold: 1.0
+      }
     }
-  }),
+  },
   mounted() {
     this.createObserver()
   },

@@ -17,17 +17,24 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
-          secondary: '#EB6769FF',
+          secondary: '#EB6669',
           tertiary: "#403235",
         },
       },
       dark: {
         colors: {
-          secondary: '#EB6769FF',
+          secondary: '#EB6669',
           tertiary: "#403235",
         },
       },
     },
     defaultTheme: import.meta.env.VITE_THEME_DEFAULT
+  },
+  defaults: {
+    VCardActions: {
+      VBtn: {
+        variant: 'flat',
+      }
+    }
   },
 })

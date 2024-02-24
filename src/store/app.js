@@ -11,7 +11,8 @@ const Const = {
       value: 'en'
     },
   ],
-  DEFAULT_LANGUAGE: 'ko',
+  DEFAULT_LANGUAGE: import.meta.env.VITE_API_LOCALE,
+  THEMES: ['light', 'dark'],
 }
 
 function localStore (key, value, save=true) {
@@ -23,14 +24,13 @@ function localStore (key, value, save=true) {
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    key: null,
+    token: null,
     user: null,
-    login_device: null,
     locale: import.meta.env.VITE_API_LOCALE,
     theme: import.meta.env.VITE_THEME_DEFAULT,
   }),
   getters: {
-    isLoggedIn: (state) => state.key,
+    isLoggedIn: (state) => state.token,
   },
   actions: {
     setLocale (value, save=true) {
@@ -41,8 +41,13 @@ export const useAppStore = defineStore('app', {
       this.theme = value
       localStore('theme', value, save)
     },
-    login (key) {
-      this.key = key
+    setToken (value, save=true) {
+      this.token = value
+      localStore('token', value, save)
+    },
+    setUser (value, save=true) {
+      this.user = value
+      localStore('user', value, save)
     },
     const (key) {
       return Const[key]

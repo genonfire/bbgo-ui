@@ -30,15 +30,16 @@
       </v-text-field>
     </v-responsive>
 
-     <template v-slot:append>
-      <v-btn
-        variant="flat"
-        color="secondary"
-        width="80"
-      >
-        {{ $t('action.LOGIN') }}
-      </v-btn>
-     </template>
+   <template v-slot:append>
+    <v-btn
+      variant="flat"
+      color="secondary"
+      width="80"
+    >
+      {{ $t('action.LOGIN') }}
+      <Login />
+    </v-btn>
+   </template>
   </v-app-bar>
 
   <v-navigation-drawer
@@ -49,16 +50,20 @@
 </template>
 
 <script>
+import Login from '@/components/Login'
 import Menu from '@/components/Menu'
 
 export default {
   components: {
+    Login,
     Menu
   },
-  data: () => ({
-    drawer: false,
-    search: null,
-  }),
+  data () {
+    return {
+      drawer: false,
+      search: null,
+    }
+  },
   methods: {
     onEsc () {
       this.$refs.search.blur()

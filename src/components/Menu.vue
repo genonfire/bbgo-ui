@@ -53,7 +53,7 @@ export default {
     }
   },
   computed: {
-    menu: function () {
+    menu () {
       let items = [
         {
           text: this.$t('menu.HOME'),
@@ -65,11 +65,19 @@ export default {
     },
   },
   methods: {
-    languageSelected: function (value) {
+    languageSelected (value) {
       return this.$i18n.locale == value
     },
-    changeLocale: function (locale) {
+    changeLocale (locale) {
       if (this.$i18n.locale != locale) {
+        const api = import.meta.env.VITE_API_PREFIX
+        let prefix = import.meta.env.VITE_API_URL
+
+        if (this.$store.const('DEFAULT_LANGUAGE') != locale) {
+          prefix += locale + '/'
+        }
+        this.$axios.defaults.baseURL = (prefix + api)
+
         this.$i18n.locale = locale
         this.$store.setLocale(locale)
       }
@@ -80,9 +88,9 @@ export default {
 
 <style scoped>
   .footer a {
-    color:#333;
+    color: #333;
   }
   .footer a:hover {
-    color:#000;
+    color: #000;
   }
 </style>

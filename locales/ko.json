@@ -2,13 +2,32 @@
     "common": {
         "SEARCH": "검색",
         "LANGUAGE": "언어",
-        "THEME": "테마"
+        "THEME": "테마",
+        "USER_EMAIL": "이메일",
+        "USER_PASSWORD": "비밀번호",
+        "YES": "예",
+        "NO": "아니오"
     },
     "menu": {
         "HOME": "홈"
     },
     "action": {
-        "LOGIN": "로그인"
+        "LOGIN": "로그인",
+        "SIGNUP": "회원가입",
+        "REGISTER": "등록"
+    },
+    "hint": {
+        "ENTER_YOUR_EMAIL": "이메일을 입력하세요",
+        "ENTER_YOUR_PASSWORD": "비밀번호를 입력하세요",
+        "REMEMBER_ME": "자동 로그인",
+        "FORGOT_PASSWORD": "비밀번호 찾기",
+        "NO_ACCOUNT": "아직 회원이 아니신가요?",
+        "REGISTER_DEVICE": "새로운 기기에서 로그인 했습니다. 자동로그인 기기로 등록하시겠습니까?"
+    },
+    "error": {
+        "INVALID_EMAIL": "* 올바른 이메일 주소가 아닙니다.",
+        "REQUIRED_FIELD": "* 필수입력",
+        "ERROR_REQUIRED_FIELDS": "필수입력 항목을 확인해 주세요."
     },
     "info": {
         "SITENAME": "bbgo"

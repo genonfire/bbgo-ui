@@ -5,6 +5,7 @@ import ko from '/locales/ko.json'
 
 export default createI18n(
   {
+    legacy: false,
     locale: import.meta.env.VITE_API_LOCALE,
     fallbackLocale: 'en',
     messages: {
