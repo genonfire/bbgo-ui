@@ -18,17 +18,19 @@ export default createVuetify({
       light: {
         colors: {
           secondary: '#EB6669',
-          tertiary: "#403235",
+          tertiary: "#F9CECE",
+          quaternary: "#403235",
         },
       },
       dark: {
         colors: {
           secondary: '#EB6669',
-          tertiary: "#403235",
+          tertiary: "#F9CECE",
+          quaternary: "#403235",
         },
       },
     },
-    defaultTheme: import.meta.env.VITE_THEME_DEFAULT
+    defaultTheme: 'light'
   },
   defaults: {
     VCardActions: {

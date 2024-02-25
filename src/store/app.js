@@ -26,11 +26,12 @@ export const useAppStore = defineStore('app', {
   state: () => ({
     token: null,
     user: null,
-    locale: import.meta.env.VITE_API_LOCALE,
-    theme: import.meta.env.VITE_THEME_DEFAULT,
+    locale: null,
+    theme: null,
   }),
   getters: {
     isLoggedIn: (state) => state.token,
+    getUser: (state) => state.user,
   },
   actions: {
     setLocale (value, save=true) {
@@ -48,6 +49,12 @@ export const useAppStore = defineStore('app', {
     setUser (value, save=true) {
       this.user = value
       localStore('user', value, save)
+    },
+    logout () {
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      this.token = null
+      this.user = null
     },
     const (key) {
       return Const[key]

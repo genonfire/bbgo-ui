@@ -9,12 +9,16 @@
         "NO": "No"
     },
     "menu": {
-        "HOME": "Home"
+        "HOME": "Home",
+        "SETTINGS": "Settings",
+        "PROFILE": "Profile",
+        "CHANGE_PASSWORD": "Change password"
     },
     "action": {
         "LOGIN": "Log in",
         "SIGNUP": "Sign up",
-        "REGISTER": "Register"
+        "REGISTER": "Register",
+        "LOGOUT": "Log out"
     },
     "hint": {
         "ENTER_YOUR_EMAIL": "Enter your email",
@@ -22,7 +26,8 @@
         "REMEMBER_ME": "Remember me",
         "FORGOT_PASSWORD": "Forgot password?",
         "NO_ACCOUNT": "Don't have an account?",
-        "REGISTER_DEVICE": "You've logged in with a new device. Do you want to register this device as trusted?"
+        "REGISTER_DEVICE": "You've logged in with a new device. Do you want to register this device as trusted?",
+        "LOGOUT_COMPLETED": "You are Successfully logged out."
     },
     "error": {
         "INVALID_EMAIL": "* Invalid Email address.",

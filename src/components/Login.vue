@@ -150,10 +150,11 @@ export default {
         vm.$store.setToken(key, vm.remember)
         vm.$store.setUser(user, vm.remember)
         vm.$axios.defaults.headers.common['Authorization'] = 'Token ' + key
+        vm.dialog = false
       })
       .catch(function (error) {
         if (error.response && error.response.data['error']) {
-          alert(error.response.data['error']['message'])
+          vm.$toast.error(error.response.data['error']['message'])
         }
       })
     },
@@ -166,6 +167,6 @@ export default {
     color: #EB6669;
   }
   a:hover {
-    color: #F7AEAF;
+    color: #F9CECE;
   }
 </style>

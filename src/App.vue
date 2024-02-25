@@ -62,7 +62,7 @@ onMounted(() => {
     store.setLocale(locale.value)
   }
 
-  if (store.const('DEFAULT_LANGUAGE') != localLocale) {
+  if (localLocale && store.const('DEFAULT_LANGUAGE') != localLocale) {
     prefix = localLocale + '/'
   }
 

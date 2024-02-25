@@ -5,10 +5,13 @@
       v-for="(item, i) in menu"
       :key="i"
       :value="item"
-      :to="item.to"
+      @click="$router.push(item.to)"
     >
       <template v-slot:prepend>
-        <v-icon :icon="item.icon"></v-icon>
+        <v-icon
+          :icon="item.icon"
+          v-if="item.icon"
+        ></v-icon>
       </template>
       <v-list-item-title v-text="item.text"></v-list-item-title>
     </v-list-item>
