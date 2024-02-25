@@ -3,6 +3,11 @@
     v-if="initialized.firstInit"
   >
     <router-view />
+    <Toaster
+      position="bottom-right"
+      richColors
+      closeButton
+    />
   </v-app>
 
   <div
@@ -22,6 +27,7 @@
 import { getCurrentInstance, ref, reactive, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
 import { useI18n } from 'vue-i18n'
+import { Toaster } from 'vue-sonner'
 import { useAppStore } from '@/store/app'
 import axios from 'axios'
 

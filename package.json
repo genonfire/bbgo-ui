@@ -18,6 +18,7 @@
     "vue-gtag": "^2.0.1",
     "vue-i18n": "9",
     "vue-router": "^4.0.0",
+    "vue-sonner": "^1.0.3",
     "vuetify": "^3.0.0"
   },
   "devDependencies": {

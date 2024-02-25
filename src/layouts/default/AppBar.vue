@@ -56,7 +56,7 @@ import Menu from '@/components/Menu'
 export default {
   components: {
     Login,
-    Menu
+    Menu,
   },
   data () {
     return {

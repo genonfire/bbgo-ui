@@ -16,16 +16,16 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.createObserver()
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (this.observer) {
       this.observer.disconnect()
     }
   },
   methods: {
-    createObserver() {
+    createObserver () {
       this.observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
           this.$emit('show')
