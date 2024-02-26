@@ -1,5 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import AccountsRoutes from '@/router/accounts'
 
 const routes = [
   {
@@ -8,10 +9,17 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Home',
+        name: 'home',
         component: () => import('@/views/Home.vue'),
       },
-    ],
+    ]
+  },
+  {
+    path: '/accounts/',
+    component: () => import('@/layouts/default/Default.vue'),
+    children: [
+      ...AccountsRoutes,
+    ]
   },
 ]
 

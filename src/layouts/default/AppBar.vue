@@ -7,7 +7,7 @@
         <img
           src="/logo.png"
           class="appbar-logo"
-          @click="$router.push({ name: 'Home' })"
+          @click="$router.push({ name: 'home' })"
         >
     </template>
 
@@ -113,7 +113,7 @@ export default {
     searchAnything (search) {
       this.onEsc()
     },
-  },
+  }
 }
 </script>
 

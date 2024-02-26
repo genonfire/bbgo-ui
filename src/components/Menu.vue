@@ -61,7 +61,7 @@ export default {
         {
           text: this.$t('menu.HOME'),
           icon: 'mdi-home-outline',
-          to: { name: 'Home' }
+          to: { name: 'home' }
         }
       ]
       return items

@@ -35,15 +35,15 @@ export default {
       return [
         {
           text: this.$t('menu.SETTINGS'),
-          to: { name: 'Home' },
+          to: { name: 'accounts.settings' },
         },
         {
           text: this.$t('menu.PROFILE'),
-          to: { name: 'Home' },
+          to: { name: 'accounts.profile' },
         },
         {
           text: this.$t('menu.CHANGE_PASSWORD'),
-          to: { name: 'Home' },
+          to: { name: 'accounts.password.change' },
         },
       ]
     }
@@ -58,8 +58,9 @@ export default {
       })
       .then(function (response) {
         vm.$toast.info(vm.$t('hint.LOGOUT_COMPLETED'))
-        vm.$store.logout()
         vm.$axios.defaults.headers.common['Authorization'] = ''
+        vm.$store.logout()
+        vm.$router.push({ name: 'home' })
       })
       .catch(function (error) {
         if (error.response && error.response.data['error']) {

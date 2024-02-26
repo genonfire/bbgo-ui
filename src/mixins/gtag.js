@@ -5,5 +5,5 @@ export default {
     gtag_signup() {
       event('signup')
     },
-  },
+  }
 }

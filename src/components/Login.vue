@@ -74,12 +74,12 @@
         <v-col
           class="pt-2"
         >
-          <a
-            class="text-decoration-none font-weight-medium"
-            href="#"
+          <router-link
+            :to="{ name: 'accounts.password.find' }"
+            @click="dialog=false"
           >
             {{ $t('hint.FORGOT_PASSWORD') }}
-          </a>
+          </router-link>
         </v-col>
       </v-row>
 
@@ -100,12 +100,12 @@
         class="mt-1 text-subtitle-2 text-center"
       >
         {{ $t('hint.NO_ACCOUNT') }}
-        <a
-          class="text-decoration-none font-weight-medium"
-          href="#"
+        <router-link
+          :to="{ name: 'accounts.signup' }"
+          @click="dialog=false"
         >
           {{ $t('action.SIGNUP') }}
-        </a>
+        </router-link>
       </div>
     </v-card>
   </v-dialog>
@@ -165,6 +165,7 @@ export default {
 <style scoped>
   a {
     color: #EB6669;
+    text-decoration: none;
   }
   a:hover {
     color: #F9CECE;
