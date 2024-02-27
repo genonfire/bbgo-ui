@@ -28,4 +28,23 @@ const router = createRouter({
   routes,
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.isApproved) {
+      next(false)
+    }
+    else if (to.matched.some(record => record.meta.StaffOnly)) {
+      if (!store.isStaff) {
+        next(false)
+      }
+    }
+    else {
+      next()
+    }
+  }
+  else {
+    next()
+  }
+})
+
 export default router

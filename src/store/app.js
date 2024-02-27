@@ -15,7 +15,7 @@ const Const = {
   THEMES: ['light', 'dark'],
 }
 
-function localStore (key, value, save=true) {
+function localStore(key, value, save) {
   if (!save)
     return
 
@@ -31,32 +31,34 @@ export const useAppStore = defineStore('app', {
   }),
   getters: {
     isLoggedIn: (state) => state.token,
+    isApproved: (state) => state.token && state.user && state.user.is_approved,
+    isStaff: (state) => state.token && state.user && state.user.is_staff,
     getUser: (state) => state.user,
   },
   actions: {
-    setLocale (value, save=true) {
+    setLocale(value, save=true) {
       this.locale = value
       localStore('locale', value, save)
     },
-    setTheme (value, save=true) {
+    setTheme(value, save=true) {
       this.theme = value
       localStore('theme', value, save)
     },
-    setToken (value, save=true) {
+    setToken(value, save=true) {
       this.token = value
       localStore('token', value, save)
     },
-    setUser (value, save=true) {
+    setUser(value, save=true) {
       this.user = value
       localStore('user', value, save)
     },
-    logout () {
+    logout() {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
       this.token = null
       this.user = null
     },
-    const (key) {
+    const(key) {
       return Const[key]
     }
   }

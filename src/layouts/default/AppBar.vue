@@ -91,7 +91,7 @@ export default {
     Menu,
     AvatarMenu,
   },
-  data () {
+  data() {
     return {
       drawer: false,
       search: null,
@@ -99,18 +99,18 @@ export default {
     }
   },
   computed : {
-    user () {
+    user() {
       return this.$store.getUser
     },
   },
   methods: {
-    onEsc () {
+    onEsc() {
       this.$refs.search.blur()
     },
-    onEnter () {
+    onEnter() {
       this.searchAnything(this.search)
     },
-    searchAnything (search) {
+    searchAnything(search) {
       this.onEsc()
     },
   }

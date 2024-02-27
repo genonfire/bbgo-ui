@@ -31,7 +31,7 @@
 <script>
 export default {
   computed: {
-    menu () {
+    menu() {
       return [
         {
           text: this.$t('menu.SETTINGS'),
@@ -49,7 +49,7 @@ export default {
     }
   },
   methods: {
-    logout () {
+    logout() {
       const vm = this
 
       this.$axios({

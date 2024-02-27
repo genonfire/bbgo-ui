@@ -113,7 +113,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       dialog: false,
       validation: false,
@@ -127,12 +127,12 @@ export default {
       },
     }
   },
-  beforeUpdate () {
-    this.username = null
-    this.password = null
+  beforeUpdate() {
+    this.username = '1@a.com'
+    this.password = 'd'
   },
   methods: {
-    login () {
+    login() {
       const vm = this
 
       this.$axios({
