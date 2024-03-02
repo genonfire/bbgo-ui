@@ -155,13 +155,13 @@ export default {
   data() {
     return {
       validation: false,
-      firstname: 'bb',
-      lastname: 'go',
-      username: '4@a.com',
-      password: 'd',
-      passwordConfirm: 'd',
+      firstname: null,
+      lastname: null,
+      username: null,
+      password: null,
+      passwordConfirm: null,
       showPassword: false,
-      consent: true,
+      consent: false,
       rules: {
         required: v => !!v || this.$t('error.REQUIRED_FIELD'),
         emailRules: v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('error.INVALID_EMAIL'),
@@ -189,8 +189,11 @@ export default {
       })
       .catch(function (error) {
         if (error.response && error.response.data['error']) {
-          if (error.response.data['error']['code'] == 'DRF_FIELD_ERROR') {
-            vm.$toast.error(error.response.data['error']['code'])
+          const e = error.response.data['error']
+
+          if (e['code'] == 'DRF_FIELD_ERROR') {
+            const msg = e['keys'][0] + ': ' + e['field'][e['keys'][0]][0]
+            vm.$toast.error(msg)
           }
           else {
             vm.$toast.error(error.response.data['error']['message'])
