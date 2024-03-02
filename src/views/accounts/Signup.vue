@@ -47,7 +47,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_EMAIL') }}
+              {{ $t('common.USER_USERNAME') }}
             </div>
             <v-text-field
               v-model="username"
@@ -192,8 +192,7 @@ export default {
           const e = error.response.data['error']
 
           if (e['code'] == 'DRF_FIELD_ERROR') {
-            const msg = e['keys'][0] + ': ' + e['field'][e['keys'][0]][0]
-            vm.$toast.error(msg)
+            vm.$toast.error(e['field'][e['keys'][0]][0])
           }
           else {
             vm.$toast.error(error.response.data['error']['message'])

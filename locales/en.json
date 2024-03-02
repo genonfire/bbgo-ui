@@ -3,7 +3,7 @@
         "SEARCH": "Search",
         "LANGUAGE": "Language",
         "THEME": "Theme",
-        "USER_EMAIL": "Email",
+        "USER_USERNAME": "Username(Email)",
         "USER_PASSWORD": "Password",
         "USER_PASSWORD_CONFIRM": "Password confirm",
         "USER_FIRSTNAME": "First name",

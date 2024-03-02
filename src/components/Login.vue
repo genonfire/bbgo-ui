@@ -20,7 +20,7 @@
           class="mb-1"
         >
           <div class="text-body-2 font-weight-medium">
-            {{ $t('common.USER_EMAIL') }}
+            {{ $t('common.USER_USERNAME') }}
           </div>
           <v-text-field
             v-model="username"
@@ -128,8 +128,8 @@ export default {
     }
   },
   beforeUpdate() {
-    this.username = '1@a.com'
-    this.password = 'd'
+    this.username = null
+    this.password = null
   },
   methods: {
     login() {

@@ -3,6 +3,7 @@
         "SEARCH": "검색",
         "LANGUAGE": "언어",
         "THEME": "테마",
+        "USER_USERNAME": "아이디(이메일)",
         "USER_EMAIL": "이메일",
         "USER_PASSWORD": "비밀번호",
         "USER_PASSWORD_CONFIRM": "비밀번호 확인",
