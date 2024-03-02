@@ -15,13 +15,16 @@
         "HOME": "Home",
         "SETTINGS": "Settings",
         "PROFILE": "Profile",
-        "CHANGE_PASSWORD": "Change password"
+        "CHANGE_PASSWORD": "Change password",
+        "FIND_PASSWORD": "Find password",
+        "RESET_PASSWORD": "Reset password"
     },
     "action": {
         "LOGIN": "Log in",
         "SIGNUP": "Sign up",
         "REGISTER": "Register",
         "LOGOUT": "Log out",
+        "SEND": "Send",
         "TERMS": "Terms of Use",
         "PRIVACY": "Privacy Policy"
     },
@@ -31,8 +34,11 @@
         "REMEMBER_ME": "Remember me",
         "FORGOT_PASSWORD": "Forgot password?",
         "NO_ACCOUNT": "Don't have an account?",
-        "REGISTER_DEVICE": "You've logged in with a new device. Do you want to register this device as trusted?",
-        "LOGOUT_COMPLETED": "You are Successfully logged out.",
+        "LOGOUT_COMPLETE": "You are Successfully logged out.",
+        "PASSWORD_FIND_DESCRIPTION": "Forgot your password? Enter the email address(username) you used to sign up and we'll send you a password reset link.",
+        "PASSWORD_EMAIL_DESCRIPTION": "We've emailed you instructions for setting your password, if an account exists with the email you entered, you should receive them shortly. If you don't receive an email, please make sure you've entered the address you registered with or check your spam folder.",
+        "PASSWORD_RESET_DESCRIPTION": "Enter new password.",
+        "PASSWORD_RESET_COMPLETE": "You've set a password.",
         "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}"
     },
     "message": {
