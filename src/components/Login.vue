@@ -64,7 +64,7 @@
           >
           <template v-slot:label>
             <span
-              class="text-subtitle-2"
+              class="ml-1 text-subtitle-2"
             >
               {{ $t('hint.REMEMBER_ME') }}
             </span>

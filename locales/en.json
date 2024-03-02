@@ -5,6 +5,9 @@
         "THEME": "Theme",
         "USER_EMAIL": "Email",
         "USER_PASSWORD": "Password",
+        "USER_PASSWORD_CONFIRM": "Password confirm",
+        "USER_FIRSTNAME": "First name",
+        "USER_LASTNAME": "Last name",
         "YES": "Yes",
         "NO": "No"
     },
@@ -18,7 +21,9 @@
         "LOGIN": "Log in",
         "SIGNUP": "Sign up",
         "REGISTER": "Register",
-        "LOGOUT": "Log out"
+        "LOGOUT": "Log out",
+        "TERMS": "Terms of Use",
+        "PRIVACY": "Privacy Policy"
     },
     "hint": {
         "ENTER_YOUR_EMAIL": "Enter your email",
@@ -27,11 +32,16 @@
         "FORGOT_PASSWORD": "Forgot password?",
         "NO_ACCOUNT": "Don't have an account?",
         "REGISTER_DEVICE": "You've logged in with a new device. Do you want to register this device as trusted?",
-        "LOGOUT_COMPLETED": "You are Successfully logged out."
+        "LOGOUT_COMPLETED": "You are Successfully logged out.",
+        "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}"
+    },
+    "message": {
+        "SIGNUP_COMPLETE": "Signup completed."
     },
     "error": {
-        "INVALID_EMAIL": "* Invalid Email address.",
         "REQUIRED_FIELD": "* Required.",
+        "INVALID_EMAIL": "* Invalid Email address.",
+        "PASSWORD_NOT_MATCH": "* The password don't match.",
         "ERROR_REQUIRED_FIELDS": "Please check required fields."
     },
     "info": {

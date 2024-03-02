@@ -1,5 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAppStore } from '@/store/app'
 import AccountsRoutes from '@/router/accounts'
 
 const routes = [
@@ -29,6 +30,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const store = useAppStore()
+
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.isApproved) {
       next(false)
