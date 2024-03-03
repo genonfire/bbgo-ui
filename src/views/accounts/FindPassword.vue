@@ -64,18 +64,19 @@
 </template>
 
 <script>
+import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 
 export default {
+  setup() {
+    const { rules } = useRules()
+    return { rules }
+  },
   data() {
     return {
       done: false,
       validation: false,
       email: null,
-      rules: {
-        required: v => !!v || this.$t('error.REQUIRED_FIELD'),
-        emailRules: v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('error.INVALID_EMAIL'),
-      },
     }
   },
   methods: {

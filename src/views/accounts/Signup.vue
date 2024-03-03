@@ -151,24 +151,23 @@
 </template>
 
 <script>
+import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 
 export default {
+  setup() {
+    const { password, rules } = useRules()
+    return { password, rules }
+  },
   data() {
     return {
       validation: false,
       firstname: null,
       lastname: null,
       username: null,
-      password: null,
       passwordConfirm: null,
       showPassword: false,
       consent: false,
-      rules: {
-        required: v => !!v || this.$t('error.REQUIRED_FIELD'),
-        emailRules: v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('error.INVALID_EMAIL'),
-        samePassword: v => v == this.password || this.$t('error.PASSWORD_NOT_MATCH'),
-      },
     }
   },
   methods: {

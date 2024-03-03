@@ -90,22 +90,22 @@
 </template>
 
 <script>
+import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 
 export default {
+  setup() {
+    const { password, rules } = useRules()
+    return { password, rules }
+  },
   data() {
     return {
       done: false,
       validation: false,
-      password: null,
       passwordConfirm: null,
       showPassword: false,
       uid: null,
       token: null,
-      rules: {
-        required: v => !!v || this.$t('error.REQUIRED_FIELD'),
-        samePassword: v => v == this.password || this.$t('error.PASSWORD_NOT_MATCH'),
-      },
     }
   },
   methods: {
