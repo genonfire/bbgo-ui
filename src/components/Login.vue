@@ -112,6 +112,8 @@
 </template>
 
 <script>
+import { useError } from '@/composables/error'
+
 export default {
   data() {
     return {
@@ -153,9 +155,7 @@ export default {
         vm.dialog = false
       })
       .catch(function (error) {
-        if (error.response && error.response.data['error']) {
-          vm.$toast.error(error.response.data['error']['message'])
-        }
+        vm.$toast.error(useError(error, 'ACCOUNTS_LOGIN'))
       })
     },
   }

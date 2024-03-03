@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { useError } from '@/composables/error'
+
 export default {
   computed: {
     menu() {
@@ -63,9 +65,7 @@ export default {
         vm.$router.push({ name: 'home' })
       })
       .catch(function (error) {
-        if (error.response && error.response.data['error']) {
-          vm.$toast.error(error.response.data['error']['message'])
-        }
+        vm.$toast.error(useError(error, 'ACCOUNTS_LOGOUT'))
       })
     }
   }

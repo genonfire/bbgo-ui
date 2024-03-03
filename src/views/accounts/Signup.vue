@@ -151,6 +151,8 @@
 </template>
 
 <script>
+import { useError } from '@/composables/error'
+
 export default {
   data() {
     return {
@@ -188,16 +190,7 @@ export default {
         vm.$toast.success(vm.$t('message.SIGNUP_COMPLETE'))
       })
       .catch(function (error) {
-        if (error.response && error.response.data['error']) {
-          const e = error.response.data['error']
-
-          if (e['code'] == 'DRF_FIELD_ERROR') {
-            vm.$toast.error(e['field'][e['keys'][0]][0])
-          }
-          else {
-            vm.$toast.error(error.response.data['error']['message'])
-          }
-        }
+        vm.$toast.error(useError(error, 'ACCOUNTS_SIGNUP'))
       })
     },
   }
