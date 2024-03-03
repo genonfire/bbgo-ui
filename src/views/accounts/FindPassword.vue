@@ -10,7 +10,7 @@
     </v-card-title>
 
     <div
-      v-if="sent"
+      v-if="done"
     >
       <v-sheet
       >
@@ -69,9 +69,9 @@ import { useError } from '@/composables/error'
 export default {
   data() {
     return {
-      sent: false,
+      done: false,
       validation: false,
-      email: '4@a.com',
+      email: null,
       rules: {
         required: v => !!v || this.$t('error.REQUIRED_FIELD'),
         emailRules: v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('error.INVALID_EMAIL'),
@@ -90,10 +90,10 @@ export default {
         },
       })
       .then(function (response) {
-        vm.sent = true
+        vm.done = true
       })
       .catch(function (error) {
-        vm.$toast.error(vm.useError(error))
+        vm.$toast.error(useError(error, 'ACCOUNTS_PASSWORD_FIND'))
       })
     }
   }

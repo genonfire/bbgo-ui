@@ -25,6 +25,7 @@
         "REGISTER": "Register",
         "LOGOUT": "Log out",
         "SEND": "Send",
+        "OK": "OK",
         "TERMS": "Terms of Use",
         "PRIVACY": "Privacy Policy"
     },

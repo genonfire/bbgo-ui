@@ -27,4 +27,9 @@ export default [
     name: 'accounts.password.find',
     component: () => import('@/views/accounts/FindPassword.vue')
   },
+  {
+    path: 'password/reset/:uid/:token/',
+    name: 'accounts.password.reset',
+    component: () => import('@/views/accounts/ResetPassword.vue')
+  },
 ]
