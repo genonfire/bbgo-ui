@@ -59,10 +59,11 @@ export default {
         url: this.$api('ACCOUNTS_LOGOUT').url,
       })
       .then(function (response) {
-        vm.$toast.info(vm.$t('hint.LOGOUT_COMPLETE'))
         vm.$axios.defaults.headers.common['Authorization'] = ''
         vm.$store.logout()
+
         vm.$router.push({ name: 'home' })
+        vm.$toast.info(vm.$t('message.LOGOUT_COMPLETE'))
       })
       .catch(function (error) {
         vm.$toast.error(useError(error, 'ACCOUNTS_LOGOUT'))

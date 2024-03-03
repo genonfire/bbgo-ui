@@ -21,7 +21,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_FIRSTNAME' )}}
+              {{ $t('accounts.FIRST_NAME' )}}
             </div>
             <v-text-field
               v-model="firstname"
@@ -33,7 +33,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_LASTNAME' )}}
+              {{ $t('accounts.LAST_NAME' )}}
             </div>
             <v-text-field
               v-model="lastname"
@@ -47,12 +47,12 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_USERNAME') }}
+              {{ $t('accounts.USERNAME') }}
             </div>
             <v-text-field
               v-model="username"
               density="compact"
-              :placeholder="$t('hint.ENTER_YOUR_EMAIL')"
+              prepend-inner-icon="mdi-email-outline"
               :rules="[rules.required, rules.emailRules]"
             ></v-text-field>
           </v-col>
@@ -62,7 +62,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_PASSWORD') }}
+              {{ $t('accounts.PASSWORD') }}
             </div>
             <v-text-field
               v-model="password"
@@ -70,7 +70,6 @@
               :type="showPassword ? 'text' : 'password'"
               prepend-inner-icon="mdi-lock-outline"
               :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :placeholder="$t('hint.ENTER_YOUR_PASSWORD')"
               :rules="[rules.required]"
               @click:append-inner="showPassword = !showPassword"
               autocomplete
@@ -82,7 +81,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_PASSWORD_CONFIRM') }}
+              {{ $t('accounts.PASSWORD_CONFIRM') }}
             </div>
             <v-text-field
               v-model="passwordConfirm"
@@ -90,7 +89,6 @@
               :type="showPassword ? 'text' : 'password'"
               prepend-inner-icon="mdi-lock-outline"
               :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :placeholder="$t('hint.ENTER_YOUR_PASSWORD')"
               :rules="[rules.required, rules.samePassword]"
               @click:append-inner="showPassword = !showPassword"
               autocomplete
@@ -179,7 +177,7 @@ export default {
         url: this.$api('ACCOUNTS_SIGNUP').url,
         data: {
           username: this.username,
-          password: this.password,
+          password: this.passwordConfirm,
           first_name: this.firstname,
           last_name: this.lastname,
         },

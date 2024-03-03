@@ -3,11 +3,6 @@
         "SEARCH": "Search",
         "LANGUAGE": "Language",
         "THEME": "Theme",
-        "USER_USERNAME": "Username(Email)",
-        "USER_PASSWORD": "Password",
-        "USER_PASSWORD_CONFIRM": "Password confirm",
-        "USER_FIRSTNAME": "First name",
-        "USER_LASTNAME": "Last name",
         "YES": "Yes",
         "NO": "No"
     },
@@ -15,9 +10,9 @@
         "HOME": "Home",
         "SETTINGS": "Settings",
         "PROFILE": "Profile",
-        "CHANGE_PASSWORD": "Change password",
         "FIND_PASSWORD": "Find password",
-        "RESET_PASSWORD": "Reset password"
+        "RESET_PASSWORD": "Reset password",
+        "CHANGE_PASSWORD": "Change password"
     },
     "action": {
         "LOGIN": "Log in",
@@ -25,25 +20,38 @@
         "REGISTER": "Register",
         "LOGOUT": "Log out",
         "SEND": "Send",
+        "SAVE": "Save",
         "OK": "OK",
+        "CHANGE": "Change",
         "TERMS": "Terms of Use",
         "PRIVACY": "Privacy Policy"
     },
+    "accounts": {
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
+        "USERNAME": "Username(Email)",
+        "PASSWORD": "Password",
+        "PASSWORD_CONFIRM": "Password confirm",
+        "OLD_PASSWORD": "Old password",
+        "NEW_PASSWORD": "New password",
+        "NEW_PASSWORD_CONFIRM": "New password confirm"
+    },
     "hint": {
-        "ENTER_YOUR_EMAIL": "Enter your email",
-        "ENTER_YOUR_PASSWORD": "Enter your password",
         "REMEMBER_ME": "Remember me",
         "FORGOT_PASSWORD": "Forgot password?",
         "NO_ACCOUNT": "Don't have an account?",
-        "LOGOUT_COMPLETE": "You are Successfully logged out.",
         "PASSWORD_FIND_DESCRIPTION": "Forgot your password? Enter the email address(username) you used to sign up and we'll send you a password reset link.",
         "PASSWORD_EMAIL_DESCRIPTION": "We've emailed you instructions for setting your password, if an account exists with the email you entered, you should receive them shortly. If you don't receive an email, please make sure you've entered the address you registered with or check your spam folder.",
         "PASSWORD_RESET_DESCRIPTION": "Enter new password.",
         "PASSWORD_RESET_COMPLETE": "You've set a password.",
+        "PASSWORD_CHANGE_DESCRIPTION": "Changing your password will reset any login information stored in your browser and on the server and require a new login on all devices.",
+        "PASSWORD_CHANGE_COMPLETE": "Password changed. please log in again.",
         "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}"
     },
     "message": {
-        "SIGNUP_COMPLETE": "Signup completed."
+        "SIGNUP_COMPLETE": "Signup completed.",
+        "HELLO_USER": "Hello {call_name}!",
+        "LOGOUT_COMPLETE": "You are Successfully logged out."
     },
     "error": {
         "REQUIRED_FIELD": "* Required.",

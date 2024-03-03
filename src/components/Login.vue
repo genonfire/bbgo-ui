@@ -20,13 +20,12 @@
           class="mb-1"
         >
           <div class="text-body-2 font-weight-medium">
-            {{ $t('common.USER_USERNAME') }}
+            {{ $t('accounts.USERNAME') }}
           </div>
           <v-text-field
             v-model="username"
             density="compact"
             prepend-inner-icon="mdi-email-outline"
-            :placeholder="$t('hint.ENTER_YOUR_EMAIL')"
             :rules="[rules.required, rules.emailRules]"
           ></v-text-field>
         </div>
@@ -35,7 +34,7 @@
           class="mb-1"
         >
           <div class="text-body-2 font-weight-medium">
-            {{ $t('common.USER_PASSWORD') }}
+            {{ $t('accounts.PASSWORD') }}
           </div>
           <v-text-field
             v-model="password"
@@ -43,7 +42,6 @@
             :type="showPassword ? 'text' : 'password'"
             prepend-inner-icon="mdi-lock-outline"
             :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-            :placeholder="$t('hint.ENTER_YOUR_PASSWORD')"
             :rules="[rules.required]"
             @click:append-inner="showPassword = !showPassword"
             autocomplete
@@ -153,7 +151,11 @@ export default {
         vm.$store.setToken(key, vm.remember)
         vm.$store.setUser(user, vm.remember)
         vm.$axios.defaults.headers.common['Authorization'] = 'Token ' + key
+
         vm.dialog = false
+        vm.$toast.success(
+          vm.$t('message.HELLO_USER', { call_name: user.call_name })
+        )
       })
       .catch(function (error) {
         vm.$toast.error(useError(error, 'ACCOUNTS_LOGIN'))

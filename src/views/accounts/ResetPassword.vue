@@ -35,7 +35,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_PASSWORD') }}
+              {{ $t('accounts.PASSWORD') }}
             </div>
             <v-text-field
               v-model="password"
@@ -43,7 +43,6 @@
               :type="showPassword ? 'text' : 'password'"
               prepend-inner-icon="mdi-lock-outline"
               :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :placeholder="$t('hint.ENTER_YOUR_PASSWORD')"
               :rules="[rules.required]"
               @click:append-inner="showPassword = !showPassword"
               autocomplete
@@ -55,7 +54,7 @@
             class="mb-0 pb-0"
           >
             <div class="text-body-2 font-weight-medium">
-              {{ $t('common.USER_PASSWORD_CONFIRM') }}
+              {{ $t('accounts.PASSWORD_CONFIRM') }}
             </div>
             <v-text-field
               v-model="passwordConfirm"
@@ -63,7 +62,6 @@
               :type="showPassword ? 'text' : 'password'"
               prepend-inner-icon="mdi-lock-outline"
               :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :placeholder="$t('hint.ENTER_YOUR_PASSWORD')"
               :rules="[rules.required, rules.samePassword]"
               @click:append-inner="showPassword = !showPassword"
               autocomplete
@@ -81,7 +79,7 @@
           :disabled="!validation"
           @click="reset"
         >
-          {{ $t('action.OK') }}
+          {{ $t('action.SAVE') }}
         </v-btn>
       </v-card-actions>
     </div>
@@ -116,7 +114,7 @@ export default {
         method: this.$api('ACCOUNTS_PASSWORD_RESET').method,
         url: this.$api('ACCOUNTS_PASSWORD_RESET').url,
         data: {
-          new_password: this.password,
+          new_password: this.passwordConfirm,
           uid: this.$route.params.uid,
           token: this.$route.params.token,
         },

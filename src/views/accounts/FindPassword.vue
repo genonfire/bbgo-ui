@@ -34,13 +34,12 @@
           class="mt-5"
         >
           <div class="text-body-2 font-weight-medium">
-            {{ $t('common.USER_USERNAME') }}
+            {{ $t('accounts.USERNAME') }}
           </div>
           <v-text-field
             v-model="email"
             density="compact"
             prepend-inner-icon="mdi-email-outline"
-            :placeholder="$t('hint.ENTER_YOUR_EMAIL')"
             :rules="[rules.required, rules.emailRules]"
           ></v-text-field>
         </div>
