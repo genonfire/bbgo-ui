@@ -34,7 +34,12 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.isApproved) {
-      next(false)
+      next({
+        name: 'accounts.check.login',
+        query: {
+          nextURL: to.path
+        }
+      })
     }
     else if (to.matched.some(record => record.meta.StaffOnly)) {
       if (!store.isStaff) {

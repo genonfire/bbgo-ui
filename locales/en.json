@@ -23,18 +23,24 @@
         "SAVE": "Save",
         "OK": "OK",
         "CHANGE": "Change",
+        "DELETE": "Delete",
+        "REMOVE": "Remove",
         "TERMS": "Terms of Use",
         "PRIVACY": "Privacy Policy"
     },
     "accounts": {
         "FIRST_NAME": "First name",
         "LAST_NAME": "Last name",
+        "CALL_NAME": "Call name",
         "USERNAME": "Username(Email)",
         "PASSWORD": "Password",
         "PASSWORD_CONFIRM": "Password confirm",
         "OLD_PASSWORD": "Old password",
         "NEW_PASSWORD": "New password",
-        "NEW_PASSWORD_CONFIRM": "New password confirm"
+        "NEW_PASSWORD_CONFIRM": "New password confirm",
+        "UPLOAD_PHOTO": "Upload photo",
+        "TEL": "Tel",
+        "ADDRESS": "Address"
     },
     "hint": {
         "REMEMBER_ME": "Remember me",

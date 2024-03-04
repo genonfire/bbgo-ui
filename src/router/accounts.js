@@ -5,6 +5,11 @@ export default [
     component: () => import('@/views/accounts/Signup.vue')
   },
   {
+    path: 'check/login',
+    name: 'accounts.check.login',
+    component: () => import('@/views/accounts/CheckLogin.vue')
+  },
+  {
     path: 'profile',
     name: 'accounts.profile',
     meta: { requiresAuth: true },

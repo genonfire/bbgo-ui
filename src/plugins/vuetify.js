@@ -18,15 +18,15 @@ export default createVuetify({
       light: {
         colors: {
           secondary: '#EB6669',
-          tertiary: "#F9CECE",
-          quaternary: "#403235",
+          base: "#F9CECE",
+          pale: "#9095A0",
         },
       },
       dark: {
         colors: {
           secondary: '#EB6669',
-          tertiary: "#F9CECE",
-          quaternary: "#403235",
+          base: "#F9CECE",
+          pale: "#9095A0",
         },
       },
     },

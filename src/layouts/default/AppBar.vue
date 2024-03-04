@@ -68,7 +68,7 @@
       v-if="!user"
     >
       {{ $t('action.LOGIN') }}
-      <Login />
+      <LoginDialog />
     </v-btn>
    </template>
   </v-app-bar>
@@ -81,13 +81,13 @@
 </template>
 
 <script>
-import Login from '@/components/Login'
+import LoginDialog from '@/components/LoginDialog'
 import Menu from '@/components/Menu'
 import AvatarMenu from '@/components/AvatarMenu'
 
 export default {
   components: {
-    Login,
+    LoginDialog,
     Menu,
     AvatarMenu,
   },

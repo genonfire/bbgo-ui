@@ -15,8 +15,7 @@
       <v-form
         v-model="validation"
       >
-        <v-row
-        >
+        <v-row>
           <v-col
             class="mb-0 pb-0"
           >
