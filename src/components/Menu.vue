@@ -112,3 +112,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .footer a {
+    color: #9095A0;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    color: #F9CECE;
+  }
+</style>
