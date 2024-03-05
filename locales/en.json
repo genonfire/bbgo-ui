@@ -12,7 +12,8 @@
         "PROFILE": "Profile",
         "FIND_PASSWORD": "Find password",
         "RESET_PASSWORD": "Reset password",
-        "CHANGE_PASSWORD": "Change password"
+        "CHANGE_PASSWORD": "Change password",
+        "DELETE_ACCOUNT": "Delete account"
     },
     "action": {
         "LOGIN": "Log in",
@@ -26,7 +27,8 @@
         "DELETE": "Delete",
         "REMOVE": "Remove",
         "TERMS": "Terms of Use",
-        "PRIVACY": "Privacy Policy"
+        "PRIVACY": "Privacy Policy",
+        "DELETE_ACCOUNT": "Delete account"
     },
     "accounts": {
         "FIRST_NAME": "First name",
@@ -52,7 +54,10 @@
         "PASSWORD_RESET_COMPLETE": "You've set a password.",
         "PASSWORD_CHANGE_DESCRIPTION": "Changing your password will reset any login information stored in your browser and on the server and require a new login on all devices.",
         "PASSWORD_CHANGE_COMPLETE": "Password changed. please log in again.",
-        "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}"
+        "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}.",
+        "DELETE_ACCOUNT_DESCRIPTION": "After deleting your membership, your account will be closed and all data will be irretrievable.",
+        "DELETE_ACCOUNT_CONSENT": "I have read and agree to the terms and conditions.",
+        "DELETE_ACCOUNT_COMPLETE": "Thank you for your time with our service."
     },
     "message": {
         "SIGNUP_COMPLETE": "Signup completed.",

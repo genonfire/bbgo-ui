@@ -10,6 +10,16 @@ export default [
     component: () => import('@/views/accounts/CheckLogin.vue')
   },
   {
+    path: 'password/find',
+    name: 'accounts.password.find',
+    component: () => import('@/views/accounts/FindPassword.vue')
+  },
+  {
+    path: 'password/reset/:uid/:token/',
+    name: 'accounts.password.reset',
+    component: () => import('@/views/accounts/ResetPassword.vue')
+  },
+  {
     path: 'profile',
     name: 'accounts.profile',
     meta: { requiresAuth: true },
@@ -28,13 +38,9 @@ export default [
     component: () => import('@/views/accounts/ChangePassword.vue')
   },
   {
-    path: 'password/find',
-    name: 'accounts.password.find',
-    component: () => import('@/views/accounts/FindPassword.vue')
-  },
-  {
-    path: 'password/reset/:uid/:token/',
-    name: 'accounts.password.reset',
-    component: () => import('@/views/accounts/ResetPassword.vue')
+    path: 'delete',
+    name: 'accounts.delete',
+    meta: { requiresAuth: true },
+    component: () => import('@/views/accounts/DeleteAccount.vue')
   },
 ]

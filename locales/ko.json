@@ -10,9 +10,10 @@
         "HOME": "홈",
         "SETTINGS": "설정",
         "PROFILE": "개인정보",
-        "CHANGE_PASSWORD": "비밀번호 변경",
         "FIND_PASSWORD": "비밀번호 찾기",
-        "RESET_PASSWORD": "비밀번호 초기화"
+        "RESET_PASSWORD": "비밀번호 초기화",
+        "CHANGE_PASSWORD": "비밀번호 변경",
+        "DELETE_ACCOUNT": "회원 탈퇴"
     },
     "action": {
         "LOGIN": "로그인",
@@ -26,7 +27,8 @@
         "DELETE": "삭제",
         "REMOVE": "제거",
         "TERMS": "이용약관",
-        "PRIVACY": "개인정보처리방침"
+        "PRIVACY": "개인정보처리방침",
+        "DELETE_ACCOUNT": "탈퇴하기"
     },
     "accounts": {
         "FIRST_NAME": "이름",
@@ -52,7 +54,10 @@
         "PASSWORD_RESET_COMPLETE": "비밀번호를 설정했습니다.",
         "PASSWORD_CHANGE_DESCRIPTION": "비밀번호 변경 시 브라우저 및 서버에 저장된 로그인 정보가 모두 초기화 되며 모든 기기에서 새로 로그인 해야 합니다.",
         "PASSWORD_CHANGE_COMPLETE": "비밀번호를 변경했습니다. 다시 로그인 해주세요.",
-        "SIGNUP_CONSENT": "{terms} 및 {privacy}에 동의합니다."
+        "SIGNUP_CONSENT": "{terms} 및 {privacy}에 동의합니다.",
+        "DELETE_ACCOUNT_DESCRIPTION": "회원 탈퇴 후에는 이용중인 계정이 폐쇄되며 모든 데이터는 복구가 불가능합니다.",
+        "DELETE_ACCOUNT_CONSENT": "안내사항을 모두 확인하였으며 이에 동의합니다.",
+        "DELETE_ACCOUNT_COMPLETE": "그동안 이용해 주셔서 감사합니다."
     },
     "message": {
         "SIGNUP_COMPLETE": "가입이 완료되었습니다.",

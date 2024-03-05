@@ -54,7 +54,7 @@
     <v-list-item-subtitle
       class="mt-4 mx-6 text-caption footer"
     >
-      &copy; {{ new Date().getFullYear() }} {{ appName }}
+      &copy; {{ new Date().getFullYear() }} {{ $t('info.SITENAME') }}
       <a href="https://github.com/genonfire/bbgo-core" target="_blank">
         Made by bbgo
       </a>
@@ -69,11 +69,6 @@ export default {
   setup() {
     const theme = useTheme()
     return { theme }
-  },
-  data() {
-    return {
-      appName: import.meta.env.VITE_APP_NAME,
-    }
   },
   computed: {
     menu() {
