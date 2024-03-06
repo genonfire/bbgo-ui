@@ -18,39 +18,6 @@
 
     <v-divider></v-divider>
 
-    <v-list-subheader>{{ $t('common.LANGUAGE') }}</v-list-subheader>
-    <v-list-item
-      v-for="(item, i) in $store.const('LANGUAGES')"
-      :key="i"
-      :value="item"
-      :active="languageSelected(item.value)"
-      @click="changeLocale(item.value)"
-    >
-      <v-list-item-title v-text="item.text"></v-list-item-title>
-    </v-list-item>
-
-    <v-list-subheader>{{ $t('common.THEME') }}</v-list-subheader>
-    <div
-      class="mx-4"
-    >
-      <span>
-        <v-btn
-          icon="mdi-weather-sunny"
-          variant="flat"
-          @click="setTheme('light')"
-        >
-        </v-btn>
-      </span>
-      <span>
-        <v-btn
-          icon="mdi-weather-night"
-          variant="flat"
-          @click="setTheme('dark')"
-        >
-        </v-btn>
-      </span>
-    </div>
-
     <v-list-item-subtitle
       class="mt-4 mx-6 text-caption footer"
     >
@@ -63,13 +30,7 @@
 </template>
 
 <script>
-import { useTheme } from 'vuetify'
-
 export default {
-  setup() {
-    const theme = useTheme()
-    return { theme }
-  },
   computed: {
     menu() {
       let items = [
@@ -82,29 +43,6 @@ export default {
       return items
     },
   },
-  methods: {
-    languageSelected(value) {
-      return this.$i18n.locale == value
-    },
-    changeLocale(locale) {
-      if (this.$i18n.locale != locale) {
-        const api = import.meta.env.VITE_API_PREFIX
-        let prefix = import.meta.env.VITE_API_URL
-
-        if (this.$store.const('DEFAULT_LANGUAGE') != locale) {
-          prefix += locale + '/'
-        }
-        this.$axios.defaults.baseURL = (prefix + api)
-
-        this.$i18n.locale = locale
-        this.$store.setLocale(locale)
-      }
-    },
-    setTheme(theme) {
-      this.theme.global.name.value = theme
-      this.$store.setTheme(theme)
-    },
-  }
 }
 </script>
 

@@ -14,7 +14,7 @@
     >
       <v-sheet
       >
-        {{ $t('hint.DELETE_ACCOUNT_COMPLETE')}}
+        {{ $t('hint.DELETE_ACCOUNT_COMPLETE') }}
       </v-sheet>
     </div>
 
@@ -24,7 +24,7 @@
       <v-sheet
         class="mx-2"
       >
-        {{ $t('hint.DELETE_ACCOUNT_DESCRIPTION')}}
+        {{ $t('hint.DELETE_ACCOUNT_DESCRIPTION') }}
       </v-sheet>
 
       <v-form

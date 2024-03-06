@@ -14,7 +14,7 @@
     >
       <v-sheet
       >
-        {{ $t('hint.PASSWORD_CHANGE_COMPLETE')}}
+        {{ $t('hint.PASSWORD_CHANGE_COMPLETE') }}
       </v-sheet>
     </div>
 
@@ -24,7 +24,7 @@
       <v-sheet
         class="mx-2 mb-5"
       >
-        {{ $t('hint.PASSWORD_CHANGE_DESCRIPTION')}}
+        {{ $t('hint.PASSWORD_CHANGE_DESCRIPTION') }}
       </v-sheet>
 
       <v-form

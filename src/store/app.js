@@ -34,6 +34,8 @@ export const useAppStore = defineStore('app', {
     isApproved: (state) => state.token && state.user && state.user.is_approved,
     isStaff: (state) => state.token && state.user && state.user.is_staff,
     getUser: (state) => state.user,
+    getLocale: (state) => state.locale,
+    isDarkMode: (state) => state.theme == 'dark'
   },
   actions: {
     setLocale(value, save=true) {

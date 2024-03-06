@@ -9,8 +9,52 @@
       {{ $t('menu.SETTINGS') }}
     </v-card-title>
 
+    <v-row>
+      <v-locale-provider rtl>
+        <v-switch
+          v-model="dark"
+          color="secondary"
+        >
+          <template v-slot:label>
+            <span
+              class="mr-8"
+            >
+              {{ $t('common.THEME_DARK') }}
+            </span>
+            <span
+              class="ml-4 mr-2"
+            >
+              <v-icon>mdi-weather-night</v-icon>
+            </span>
+          </template>
+        </v-switch>
+      </v-locale-provider>
+    </v-row>
     <v-row
-      class="mt-10"
+      class="mt-0 px-4"
+    >
+      <v-select
+        v-model="locale"
+        :label="$t('common.LANGUAGE')"
+        :item-props="localeProps"
+        :items="$store.const('LANGUAGES')"
+      ></v-select>
+    </v-row>
+
+    <v-card-actions
+      class="mt-5 pa-0"
+    >
+      <v-btn
+        color="secondary"
+        block
+        @click="save"
+      >
+        {{ $t('action.SAVE') }}
+      </v-btn>
+    </v-card-actions>
+
+    <v-row
+      class="mt-3"
     >
       <v-spacer></v-spacer>
       <v-btn
@@ -22,6 +66,56 @@
         {{ $t('menu.DELETE_ACCOUNT') }}
       </v-btn>
     </v-row>
-
   </v-card>
 </template>
+
+<script>
+import { useTheme } from 'vuetify'
+
+export default {
+  setup() {
+    const theme = useTheme()
+    return { theme }
+  },
+  data() {
+    return {
+      dark: this.$store.isDarkMode,
+      locale: this.$store.getLocale,
+    }
+  },
+  mounted() {
+    console.log(this.dark)
+  },
+  methods: {
+    localeProps(item) {
+      return {
+        title: item.text,
+        value: item.value,
+      }
+    },
+    changeLocale(locale) {
+      if (this.$i18n.locale != locale) {
+        const api = import.meta.env.VITE_API_PREFIX
+        let prefix = import.meta.env.VITE_API_URL
+
+        if (this.$store.const('DEFAULT_LANGUAGE') != locale) {
+          prefix += locale + '/'
+        }
+        this.$axios.defaults.baseURL = (prefix + api)
+
+        this.$i18n.locale = locale
+        this.$store.setLocale(locale)
+      }
+    },
+    setTheme(theme) {
+      this.theme.global.name.value = theme
+      this.$store.setTheme(theme)
+    },
+    save() {
+      const theme = (this.dark) ? 'dark': 'light'
+      this.setTheme(theme)
+      this.changeLocale(this.locale)
+    }
+  }
+}
+</script>
