@@ -10,25 +10,22 @@
     </v-card-title>
 
     <v-row>
-      <v-locale-provider rtl>
-        <v-switch
-          v-model="dark"
-          color="secondary"
-        >
-          <template v-slot:label>
-            <span
-              class="mr-8"
-            >
-              {{ $t('common.THEME_DARK') }}
-            </span>
-            <span
-              class="ml-4 mr-2"
-            >
-              <v-icon>mdi-weather-night</v-icon>
-            </span>
-          </template>
-        </v-switch>
-      </v-locale-provider>
+      <v-switch
+        v-model="dark"
+        color="secondary"
+      >
+        <template v-slot:prepend>
+          <v-icon
+            icon="mdi-weather-night"
+            class="ml-6 mr-3"
+          ></v-icon>
+          <span
+            class="mr-8"
+          >
+            {{ $t('common.THEME_DARK') }}
+          </span>
+        </template>
+      </v-switch>
     </v-row>
     <v-row
       class="mt-0 px-4"
@@ -54,7 +51,7 @@
     </v-card-actions>
 
     <v-row
-      class="mt-3"
+      class="mt-6"
     >
       <v-spacer></v-spacer>
       <v-btn
@@ -82,9 +79,6 @@ export default {
       dark: this.$store.isDarkMode,
       locale: this.$store.getLocale,
     }
-  },
-  mounted() {
-    console.log(this.dark)
   },
   methods: {
     localeProps(item) {

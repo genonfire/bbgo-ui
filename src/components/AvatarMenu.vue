@@ -36,12 +36,12 @@ export default {
     menu() {
       return [
         {
-          text: this.$t('menu.SETTINGS'),
-          to: { name: 'accounts.settings' },
-        },
-        {
           text: this.$t('menu.PROFILE'),
           to: { name: 'accounts.profile' },
+        },
+        {
+          text: this.$t('menu.SETTINGS'),
+          to: { name: 'accounts.settings' },
         },
         {
           text: this.$t('menu.CHANGE_PASSWORD'),

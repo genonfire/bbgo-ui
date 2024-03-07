@@ -12,7 +12,7 @@
           v-if="item.icon"
         ></v-icon>
       </template>
-      <v-list-item-title v-text="item.text"></v-list-item-title>
+      <v-list-item-title v-text="item.text" ></v-list-item-title>
     </v-list-item>
     <v-divider class="my-1"></v-divider>
   </v-list>
@@ -22,7 +22,7 @@
     v-if="$store.isStaff"
   >
     <v-list-item-title
-      class="ml-2 text-subtitle-2 font-weight-bold"
+      class="ml-3 font-weight-bold"
     >
       {{ $t('common.ADMIN') }}
     </v-list-item-title>
@@ -94,6 +94,12 @@ export default {
 </script>
 
 <style scoped>
+  .v-list-item {
+    margin-left: 2px;
+  }
+  .v-list-item-title {
+    font-size: 0.875rem !important;
+  }
   .footer a {
     color: #9095A0;
     text-decoration: none;
