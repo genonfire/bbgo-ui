@@ -1,6 +1,5 @@
 <template>
-  <v-list
-  >
+  <v-list>
     <v-list-item
       v-for="(item, i) in menu"
       :key="i"
@@ -15,34 +14,82 @@
       </template>
       <v-list-item-title v-text="item.text"></v-list-item-title>
     </v-list-item>
-
-    <v-divider></v-divider>
-
-    <v-list-item-subtitle
-      class="mt-4 mx-6 text-caption footer"
-    >
-      &copy; {{ new Date().getFullYear() }} {{ $t('info.SITENAME') }}
-      <a href="https://github.com/genonfire/bbgo-core" target="_blank">
-        Made by bbgo
-      </a>
-    </v-list-item-subtitle>
+    <v-divider class="my-1"></v-divider>
   </v-list>
+
+  <v-list
+    class="pt-0"
+    v-if="$store.isStaff"
+  >
+    <v-list-item-title
+      class="ml-2 text-subtitle-2 font-weight-bold"
+    >
+      {{ $t('common.ADMIN') }}
+    </v-list-item-title>
+    <v-list-item
+      v-for="(item, i) in staffMenu"
+      :key="i"
+      :value="item"
+      @click="openMenu(item)"
+    >
+      <template v-slot:prepend>
+        <v-icon
+          :icon="item.icon"
+          v-if="item.icon"
+        ></v-icon>
+      </template>
+      <v-list-item-title v-text="item.text"></v-list-item-title>
+    </v-list-item>
+    <v-divider class="my-1"></v-divider>
+  </v-list>
+
+  <div
+    class="mt-2 mx-6 text-caption footer"
+  >
+    &copy; {{ new Date().getFullYear() }} {{ $t('info.SITENAME') }}
+    <a href="https://github.com/genonfire/bbgo-core" target="_blank">
+      Made by bbgo
+    </a>
+  </div>
 </template>
 
 <script>
 export default {
   computed: {
     menu() {
-      let items = [
+      const items = [
         {
           text: this.$t('menu.HOME'),
           icon: 'mdi-home-outline',
           to: { name: 'home' }
-        }
+        },
       ]
       return items
     },
+    staffMenu() {
+      let items = [
+        {
+          text: this.$t('menu.SITE_ADMIN'),
+          icon: 'mdi-view-grid',
+          url: import.meta.env.VITE_API_URL + 'admin/'
+        },
+      ]
+      return items
+    }
   },
+  methods: {
+    openMenu(item) {
+      const url = item['url']
+
+      if (url) {
+        window.open(url, '_blank')
+      }
+      else {
+        const to = item['to']
+        this.$router.push(item.to)
+      }
+    },
+  }
 }
 </script>
 

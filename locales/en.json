@@ -5,7 +5,8 @@
         "THEME": "Theme",
         "THEME_DARK": "Dark mode",
         "YES": "Yes",
-        "NO": "No"
+        "NO": "No",
+        "ADMIN": "Admin"
     },
     "menu": {
         "HOME": "Home",
@@ -14,7 +15,8 @@
         "FIND_PASSWORD": "Find password",
         "RESET_PASSWORD": "Reset password",
         "CHANGE_PASSWORD": "Change password",
-        "DELETE_ACCOUNT": "Delete account"
+        "DELETE_ACCOUNT": "Delete account",
+        "SITE_ADMIN": "Site admin"
     },
     "action": {
         "LOGIN": "Log in",

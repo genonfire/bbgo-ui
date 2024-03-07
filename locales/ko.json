@@ -5,7 +5,8 @@
         "THEME": "테마",
         "THEME_DARK": "야간 모드",
         "YES": "예",
-        "NO": "아니오"
+        "NO": "아니오",
+        "ADMIN": "관리자"
     },
     "menu": {
         "HOME": "홈",
@@ -14,7 +15,8 @@
         "FIND_PASSWORD": "비밀번호 찾기",
         "RESET_PASSWORD": "비밀번호 초기화",
         "CHANGE_PASSWORD": "비밀번호 변경",
-        "DELETE_ACCOUNT": "회원 탈퇴"
+        "DELETE_ACCOUNT": "회원 탈퇴",
+        "SITE_ADMIN": "사이트 관리"
     },
     "action": {
         "LOGIN": "로그인",
