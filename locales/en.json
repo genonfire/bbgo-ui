@@ -28,6 +28,7 @@
         "SEND": "Send",
         "SAVE": "Save",
         "OK": "OK",
+        "CANCEL": "Cancel",
         "CHANGE": "Change",
         "DELETE": "Delete",
         "DELETE_USER": "Delete user",
@@ -56,7 +57,8 @@
         "APPROVED": "Approved",
         "STAFF": "Staff",
         "USERS": "Users",
-        "STAFFS": "Staffs"
+        "STAFFS": "Staffs",
+        "DELETE_USER": "Delete user?"
     },
     "hint": {
         "REMEMBER_ME": "Remember me",
@@ -72,6 +74,7 @@
         "SEARCH_USERNAME_NAME": "Search by username, name",
         "TALLY_ITEMS": "Tally {total} items",
         "PAGESIZE_BY": "by {pageSize}",
+        "DELETE_USER_DESCRIPTION": "Are you sure you want to delete this user? This action cannot be undone.",
         "DELETE_ACCOUNT_DESCRIPTION": "After deleting your membership, your account will be closed and all data will be irretrievable.",
         "DELETE_ACCOUNT_CONSENT": "I have read and agree to the terms and conditions.",
         "DELETE_ACCOUNT_COMPLETE": "Thank you for your time with our service."

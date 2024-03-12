@@ -400,6 +400,58 @@
               {{ $t('action.SAVE') }}
             </v-btn>
           </v-card-actions>
+
+          <v-row
+            class="mt-2"
+          >
+            <v-spacer></v-spacer>
+            <v-dialog
+              v-model="deleteDialog"
+              max-width="400"
+              persistent
+            >
+              <template v-slot:activator="{ props: activatorProps }">
+                <v-btn
+                  v-bind="activatorProps"
+                  variant="text"
+                  color="pale"
+                  size="small"
+                >
+                  {{ $t('action.DELETE_USER') }}
+                </v-btn>
+              </template>
+
+              <v-card
+                :title="$t('accounts.DELETE_USER')"
+                :text="$t('hint.DELETE_USER_DESCRIPTION')"
+              >
+                <template v-slot:prepend>
+                  <v-icon
+                    icon="mdi-alert"
+                    color="secondary"
+                  ></v-icon>
+                </template>
+                <template v-slot:actions>
+                  <v-spacer></v-spacer>
+
+                  <v-btn
+                    variant="outlined"
+                    color="pale"
+                    @click="deleteDialog = false"
+                  >
+                    {{ $t('action.CANCEL') }}
+                  </v-btn>
+
+                  <v-btn
+                    color="secondary"
+                    @click="deleteUser"
+                  >
+                    {{ $t('action.DELETE_USER') }}
+                  </v-btn>
+                </template>
+              </v-card>
+            </v-dialog>
+          </v-row>
         </v-form>
       </v-card>
     </v-dialog>
@@ -429,6 +481,7 @@ export default {
   data() {
     return {
       dialog: false,
+      deleteDialog: false,
       users: [],
       pagination : null,
       staff: false,
@@ -623,6 +676,28 @@ export default {
         vm.$toast.error(useError(error, api))
       })
     },
+    deleteUser() {
+      var vm = this
+
+      let api = 'ADMIN_DELETE_USER'
+      if (this.staff) {
+        api = 'ADMIN_DELETE_STAFF'
+      }
+
+      this.$axios({
+        method: this.$api(api).method,
+        url: this.$api(api).url.replace('{pk}', this.user.id),
+      })
+      .then(function (response) {
+        vm.deleteDialog = false
+        vm.dialog = false
+        vm.user = null
+        vm.getUsers()
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, api))
+      })
+    }
   }
 }
 </script>

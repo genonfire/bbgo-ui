@@ -28,6 +28,7 @@
         "SEND": "보내기",
         "SAVE": "저장",
         "OK": "확인",
+        "CANCEL": "취소",
         "CHANGE": "변경",
         "DELETE": "삭제",
         "DELETE_USER": "강퇴하기",
@@ -56,7 +57,8 @@
         "APPROVED": "승인",
         "STAFF": "관리자",
         "USERS": "회원",
-        "STAFFS": "관리자"
+        "STAFFS": "관리자",
+        "DELETE_USER": "강퇴하시겠습니까?"
     },
     "hint": {
         "REMEMBER_ME": "자동 로그인",
@@ -72,6 +74,7 @@
         "SEARCH_USERNAME_NAME": "아이디, 이름으로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
+        "DELETE_USER_DESCRIPTION": "정말로 이 사용자를 강퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_ACCOUNT_DESCRIPTION": "회원 탈퇴 후에는 이용중인 계정이 폐쇄되며 모든 데이터는 복구가 불가능합니다.",
         "DELETE_ACCOUNT_CONSENT": "안내사항을 모두 확인하였으며 이에 동의합니다.",
         "DELETE_ACCOUNT_COMPLETE": "그동안 이용해 주셔서 감사합니다."
