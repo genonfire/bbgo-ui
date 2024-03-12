@@ -33,10 +33,13 @@ export default createVuetify({
     defaultTheme: 'light'
   },
   defaults: {
+    VCol: {
+      class: 'py-0'
+    },
     VCardActions: {
       VBtn: {
         variant: 'flat',
-      }
-    }
+      },
+    },
   },
 })

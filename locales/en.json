@@ -1,5 +1,6 @@
 {
     "common": {
+        "ID": "id",
         "SEARCH": "Search",
         "LANGUAGE": "Language",
         "THEME": "Theme",
@@ -16,6 +17,7 @@
         "RESET_PASSWORD": "Reset password",
         "CHANGE_PASSWORD": "Change password",
         "DELETE_ACCOUNT": "Delete account",
+        "MANAGE_USERS": "Manage users",
         "SITE_ADMIN": "Site admin"
     },
     "action": {
@@ -29,6 +31,7 @@
         "CHANGE": "Change",
         "DELETE": "Delete",
         "REMOVE": "Remove",
+        "EXPORT": "Export",
         "TERMS": "Terms of Use",
         "PRIVACY": "Privacy Policy",
         "DELETE_ACCOUNT": "Delete account"
@@ -45,7 +48,12 @@
         "NEW_PASSWORD_CONFIRM": "New password confirm",
         "UPLOAD_PHOTO": "Upload photo",
         "TEL": "Tel",
-        "ADDRESS": "Address"
+        "ADDRESS": "Address",
+        "DATE_JOINED": "Date joined",
+        "LAST_LOGIN": "Last login",
+        "ACTIVE": "Active",
+        "USERS": "Users",
+        "STAFFS": "Staffs"
     },
     "hint": {
         "REMEMBER_ME": "Remember me",
@@ -58,6 +66,9 @@
         "PASSWORD_CHANGE_DESCRIPTION": "Changing your password will reset any login information stored in your browser and on the server and require a new login on all devices.",
         "PASSWORD_CHANGE_COMPLETE": "Password changed. please log in again.",
         "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}.",
+        "SEARCH_USERNAME_NAME": "Search by username, name",
+        "TALLY_ITEMS": "Tally {total} items",
+        "PAGESIZE_BY": "by {pageSize}",
         "DELETE_ACCOUNT_DESCRIPTION": "After deleting your membership, your account will be closed and all data will be irretrievable.",
         "DELETE_ACCOUNT_CONSENT": "I have read and agree to the terms and conditions.",
         "DELETE_ACCOUNT_COMPLETE": "Thank you for your time with our service."

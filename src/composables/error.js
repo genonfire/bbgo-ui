@@ -12,6 +12,12 @@ export function useError(error, api=null) {
       message = e['message']
     }
   }
+  else if (error.response && error.response.status == 403) {
+    message = error.response.data['detail']
+  }
+  else if (error && error.message) {
+    message = error.message
+  }
 
   return message
 }

@@ -2,7 +2,7 @@
   <v-dialog
     v-model="dialog"
     activator="parent"
-    width="500"
+    max-width="500"
   >
     <v-card
       class="pa-6"
@@ -52,9 +52,7 @@
       <v-row
         class="text-subtitle-2 text-right"
       >
-        <v-col
-          class="py-0"
-        >
+        <v-col>
           <v-checkbox
             v-model="remember"
             density="compact"

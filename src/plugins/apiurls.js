@@ -40,6 +40,43 @@ export default {
     'url': '/accounts/deactivate/'
   },
 
+  ADMIN_USERS: {
+    'method': 'get',
+    'url': '/admin/users/'
+  },
+  ADMIN_EXPORT_USERS: {
+    'method': 'get',
+    'url': '/admin/users/export/'
+  },
+  ADMIN_USER: {
+    'method': 'get',
+    'url': '/admin/users/{pk}/'
+  },
+  ADMIN_EDIT_USER: {
+    'method': 'patch',
+    'url': '/admin/users/{pk}/'
+  },
+  ADMIN_DELETE_USER: {
+    'method': 'delete',
+    'url': '/admin/users/{pk}/'
+  },
+  ADMIN_STAFFS: {
+    'method': 'get',
+    'url': '/admin/users/staff/'
+  },
+  ADMIN_STAFF: {
+    'method': 'get',
+    'url': '/admin/users/staff/{pk}/'
+  },
+  ADMIN_EDIT_STAFF: {
+    'method': 'patch',
+    'url': '/admin/users/staff/{pk}/'
+  },
+  ADMIN_DELETE_STAFF: {
+    'method': 'delete',
+    'url': '/admin/users/staff/{pk}/'
+  },
+
   FILE_UPLOAD: {
     'method': 'post',
     'url': '/things/file/'

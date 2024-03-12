@@ -69,6 +69,11 @@ export default {
     staffMenu() {
       let items = [
         {
+          text: this.$t('menu.MANAGE_USERS'),
+          icon: 'mdi-account-outline',
+          to: { name: 'admin.users' }
+        },
+        {
           text: this.$t('menu.SITE_ADMIN'),
           icon: 'mdi-view-grid',
           url: import.meta.env.VITE_API_URL + 'admin/'

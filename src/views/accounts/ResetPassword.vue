@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto mt-3 pa-6 pt-2"
-    width="500"
+    max-width="500"
   >
     <v-card-title
       class="mb-4 text-h5 font-weight-bold text-center"
@@ -31,9 +31,7 @@
         v-model="validation"
       >
         <v-row>
-          <v-col
-            class="mb-0 pb-0"
-          >
+          <v-col>
             <div class="text-body-2 font-weight-medium">
               {{ $t('accounts.PASSWORD') }}
             </div>
@@ -50,9 +48,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col
-            class="mb-0 pb-0"
-          >
+          <v-col>
             <div class="text-body-2 font-weight-medium">
               {{ $t('accounts.PASSWORD_CONFIRM') }}
             </div>

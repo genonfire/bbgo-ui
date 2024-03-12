@@ -1,5 +1,6 @@
 {
     "common": {
+        "ID": "id",
         "SEARCH": "검색",
         "LANGUAGE": "언어",
         "THEME": "테마",
@@ -16,6 +17,7 @@
         "RESET_PASSWORD": "비밀번호 초기화",
         "CHANGE_PASSWORD": "비밀번호 변경",
         "DELETE_ACCOUNT": "회원 탈퇴",
+        "MANAGE_USERS": "사용자 관리",
         "SITE_ADMIN": "사이트 관리"
     },
     "action": {
@@ -29,6 +31,7 @@
         "CHANGE": "변경",
         "DELETE": "삭제",
         "REMOVE": "제거",
+        "EXPORT": "내보내기",
         "TERMS": "이용약관",
         "PRIVACY": "개인정보처리방침",
         "DELETE_ACCOUNT": "탈퇴하기"
@@ -45,7 +48,12 @@
         "NEW_PASSWORD_CONFIRM": "새 비밀번호 확인",
         "UPLOAD_PHOTO": "사진 올리기",
         "TEL": "전화번호",
-        "ADDRESS": "주소"
+        "ADDRESS": "주소",
+        "DATE_JOINED": "가입일",
+        "LAST_LOGIN": "최근 로그인",
+        "ACTIVE": "활성",
+        "USERS": "회원",
+        "STAFFS": "관리자"
     },
     "hint": {
         "REMEMBER_ME": "자동 로그인",
@@ -58,6 +66,9 @@
         "PASSWORD_CHANGE_DESCRIPTION": "비밀번호 변경 시 브라우저 및 서버에 저장된 로그인 정보가 모두 초기화 되며 모든 기기에서 새로 로그인 해야 합니다.",
         "PASSWORD_CHANGE_COMPLETE": "비밀번호를 변경했습니다. 다시 로그인 해주세요.",
         "SIGNUP_CONSENT": "{terms} 및 {privacy}에 동의합니다.",
+        "SEARCH_USERNAME_NAME": "아이디, 이름으로 검색",
+        "TALLY_ITEMS": "총 {total} 개",
+        "PAGESIZE_BY": "{pageSize}개씩",
         "DELETE_ACCOUNT_DESCRIPTION": "회원 탈퇴 후에는 이용중인 계정이 폐쇄되며 모든 데이터는 복구가 불가능합니다.",
         "DELETE_ACCOUNT_CONSENT": "안내사항을 모두 확인하였으며 이에 동의합니다.",
         "DELETE_ACCOUNT_COMPLETE": "그동안 이용해 주셔서 감사합니다."
