@@ -223,6 +223,16 @@ export default {
       this.updatePhoto({ photo: null })
       this.files = null
     },
+    uploadPhoto() {
+      this.$refs.fileInput.click();
+    },
+    handleFileChange() {
+      if (this.files) {
+        let formData = new FormData()
+        formData.append('photo', this.files[0])
+        this.updatePhoto(formData)
+      }
+    },
     save() {
       var vm = this
 
@@ -240,20 +250,11 @@ export default {
       .then(function (response) {
         vm.user = response.data['data']
         vm.$store.setUser(response.data['data'])
+        vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
       })
       .catch(function (error) {
         vm.$toast.error(useError(error, 'ACCOUNTS_EDIT_PROFILE'))
       })
-    },
-    uploadPhoto() {
-      this.$refs.fileInput.click();
-    },
-    handleFileChange() {
-      if (this.files) {
-        let formData = new FormData()
-        formData.append('photo', this.files[0])
-        this.updatePhoto(formData)
-      }
     },
   }
 }

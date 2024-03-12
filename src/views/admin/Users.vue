@@ -26,6 +26,7 @@
           variant="outlined"
           prepend-icon="mdi-microsoft-excel"
           color="secondary"
+          :disabled="staff"
           @click="exportExcel"
         >
           {{ $t('action.EXPORT') }}
@@ -99,6 +100,8 @@
             <tr
               v-for="user in users"
               :key="user.id"
+              @click="editUser(user)"
+              style="cursor:pointer"
             >
               <td>{{ user.id }}</td>
               <td>{{ user.username }}</td>
@@ -160,6 +163,247 @@
         ></v-select>
       </v-col>
     </v-row>
+
+    <v-dialog
+      v-model="dialog"
+      max-width="500"
+      v-if="user"
+    >
+      <v-card
+        width="100%"
+        class="mx-auto mt-3 pa-6 pt-2"
+      >
+        <v-card-title
+          class="mb-4 text-h6 font-weight-bold text-center"
+        >
+          {{ user.username }}
+        </v-card-title>
+
+        <v-form
+          v-model="validation"
+        >
+          <v-row>
+            <v-card
+              flat
+              class="ml-3"
+              v-if="user.photo"
+            >
+              <v-img
+                :src="user.photo"
+                width="80"
+                height="80"
+              ></v-img>
+            </v-card>
+
+            <v-card
+              flat
+              width="80"
+              height="80"
+              class="ml-3"
+              v-else
+            >
+              <v-icon
+                size="x-large"
+                class="pa-10"
+                icon="mdi-account-outline"
+              >
+              </v-icon>
+            </v-card>
+
+            <div
+              class="py-6 ml-10"
+            >
+              <v-btn
+                variant="outlined"
+                color="secondary"
+                @click="uploadPhoto"
+              >
+                {{ $t('accounts.UPLOAD_PHOTO') }}
+              </v-btn>
+              <v-file-input
+                v-model="files"
+                accept="image/*"
+                ref="fileInput"
+                @change="handleFileChange"
+                style="display:none;"
+              ></v-file-input>
+              <v-btn
+                variant="text"
+                color="pale"
+                class="ml-4"
+                @click="deletePhoto"
+              >
+                {{ $t('action.REMOVE') }}
+              </v-btn>
+            </div>
+          </v-row>
+
+          <v-row
+            class="mt-4"
+          >
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.FIRST_NAME' )}}
+              </div>
+              <v-text-field
+                v-model="user.first_name"
+                density="compact"
+                :rules="[rules.required]"
+              ></v-text-field>
+            </v-col>
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.LAST_NAME' )}}
+              </div>
+              <v-text-field
+                v-model="user.last_name"
+                density="compact"
+                :rules="[rules.required]"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row
+            class="my-0"
+          >
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.CALL_NAME') }}
+              </div>
+              <v-text-field
+                v-model="user.call_name"
+                density="compact"
+                :rules="[rules.required]"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row
+            class="my-0"
+          >
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.TEL') }}
+              </div>
+              <v-text-field
+                v-model="user.tel"
+                density="compact"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row
+            class="my-0"
+          >
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.ADDRESS') }}
+              </div>
+              <v-text-field
+                v-model="user.address"
+                density="compact"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row
+            class="my-0"
+          >
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.DATE_JOINED') }}
+              <v-text-field
+                :placeholder="formatDate(user.date_joined)"
+                density="compact"
+                readonly
+              ></v-text-field>
+              </div>
+            </v-col>
+          </v-row>
+
+          <v-row
+            class="my-0"
+          >
+            <v-col>
+              <div class="text-body-2 font-weight-medium">
+                {{ $t('accounts.LAST_LOGIN') }}
+                <v-text-field
+                  :placeholder="formatDateTime(user.last_login)"
+                  density="compact"
+                  readonly
+                ></v-text-field>
+              </div>
+            </v-col>
+          </v-row>
+
+          <v-row
+            class="my-0"
+          >
+            <v-col
+            >
+              <v-switch
+                v-model="user.is_active"
+                color="secondary"
+              >
+                <template v-slot:prepend>
+                  <span
+                    class="mr-8"
+                  >
+                    {{ $t('accounts.ACTIVE') }}
+                  </span>
+                </template>
+              </v-switch>
+            </v-col>
+            <v-col
+              v-if="staff"
+            >
+              <v-switch
+                v-model="user.is_staff"
+                color="secondary"
+              >
+                <template v-slot:prepend>
+                  <span
+                    class="mr-8"
+                  >
+                    {{ $t('accounts.STAFF') }}
+                  </span>
+                </template>
+              </v-switch>
+            </v-col>
+            <v-col
+              v-else
+            >
+              <v-switch
+                v-model="user.is_approved"
+                color="secondary"
+              >
+                <template v-slot:prepend>
+                  <span
+                    class="mr-8"
+                  >
+                    {{ $t('accounts.APPROVED') }}
+                  </span>
+                </template>
+              </v-switch>
+            </v-col>
+          </v-row>
+
+          <v-card-actions
+            class="my-0 pa-0"
+          >
+            <v-btn
+              color="secondary"
+              block
+              :disabled="!validation"
+              @click="save"
+            >
+              {{ $t('action.SAVE') }}
+            </v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card>
+    </v-dialog>
+
   </v-container>
 
   <v-progress-linear
@@ -171,17 +415,20 @@
 </template>
 
 <script>
+import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
 import { useDownload } from '@/composables/download'
 
 export default {
   setup() {
+    const { rules } = useRules()
     const { formatDateTime, formatDate } = useFormatDate()
-    return { formatDateTime, formatDate }
+    return { formatDateTime, formatDate ,rules }
   },
   data() {
     return {
+      dialog: false,
       users: [],
       pagination : null,
       staff: false,
@@ -217,6 +464,9 @@ export default {
       page: 1,
       search: null,
       init: false,
+      validation: false,
+      user: null,
+      files: null,
     }
   },
   computed: {
@@ -280,7 +530,99 @@ export default {
     exportExcel() {
       const api = this.$api('ADMIN_EXPORT_USERS')
       useDownload(api.method, api.url, 'users')
-    }
+    },
+    getUser(pk) {
+      const vm = this
+
+      let api = 'ADMIN_USER'
+      if (this.staff) {
+        api = 'ADMIN_STAFF'
+      }
+
+      this.$axios({
+        method: this.$api(api).method,
+        url: this.$api(api).url.replace('{pk}', pk),
+      })
+      .then(function (response) {
+        vm.user = response.data['data']
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, api))
+      })
+    },
+    editUser(user) {
+      this.getUser(user.id)
+      this.dialog = true
+    },
+    updatePhoto(data) {
+      var vm = this
+
+      let api = 'ADMIN_EDIT_USER'
+      if (this.staff) {
+        api = 'ADMIN_EDIT_STAFF'
+      }
+
+      this.$axios({
+        method: this.$api(api).method,
+        url: this.$api(api).url.replace('{pk}', this.user.id),
+        data: data,
+      })
+      .then(function (response) {
+        vm.user = response.data['data']
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, api))
+      })
+    },
+    deletePhoto() {
+      this.updatePhoto({ photo: null })
+      this.files = null
+    },
+    uploadPhoto() {
+      this.$refs.fileInput.click();
+    },
+    handleFileChange() {
+      if (this.files) {
+        let formData = new FormData()
+        formData.append('photo', this.files[0])
+        this.updatePhoto(formData)
+      }
+    },
+    save() {
+      var vm = this
+
+      let api = 'ADMIN_EDIT_USER'
+      let data = {
+        first_name: this.user.first_name,
+        last_name: this.user.last_name,
+        call_name: this.user.call_name,
+        tel: this.user.tel,
+        address: this.user.address,
+        is_active: this.user.is_active,
+      }
+
+      if (this.staff) {
+        api = 'ADMIN_EDIT_STAFF'
+        data['is_staff'] = this.user.is_staff
+      }
+      else {
+        data['is_approved'] = this.user.is_approved
+      }
+
+
+      this.$axios({
+        method: this.$api(api).method,
+        url: this.$api(api).url.replace('{pk}', this.user.id),
+        data: data,
+      })
+      .then(function (response) {
+        vm.user = response.data['data']
+        vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, api))
+      })
+    },
   }
 }
 </script>

@@ -110,6 +110,7 @@ export default {
       const theme = (this.dark) ? 'dark': 'light'
       this.setTheme(theme)
       this.changeLocale(this.locale)
+      this.$toast.success(this.$t('message.SAVED_SUCCESSFULLY'))
     }
   }
 }

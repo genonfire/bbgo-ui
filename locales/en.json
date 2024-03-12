@@ -30,6 +30,7 @@
         "OK": "OK",
         "CHANGE": "Change",
         "DELETE": "Delete",
+        "DELETE_USER": "Delete user",
         "REMOVE": "Remove",
         "EXPORT": "Export",
         "TERMS": "Terms of Use",
@@ -52,6 +53,8 @@
         "DATE_JOINED": "Date joined",
         "LAST_LOGIN": "Last login",
         "ACTIVE": "Active",
+        "APPROVED": "Approved",
+        "STAFF": "Staff",
         "USERS": "Users",
         "STAFFS": "Staffs"
     },
@@ -76,7 +79,8 @@
     "message": {
         "SIGNUP_COMPLETE": "Signup completed.",
         "HELLO_USER": "Hello {call_name}!",
-        "LOGOUT_COMPLETE": "You are Successfully logged out."
+        "LOGOUT_COMPLETE": "You are Successfully logged out.",
+        "SAVED_SUCCESSFULLY": "Saved successfully."
     },
     "error": {
         "REQUIRED_FIELD": "* Required.",

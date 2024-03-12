@@ -30,6 +30,7 @@
         "OK": "확인",
         "CHANGE": "변경",
         "DELETE": "삭제",
+        "DELETE_USER": "강퇴하기",
         "REMOVE": "제거",
         "EXPORT": "내보내기",
         "TERMS": "이용약관",
@@ -52,6 +53,8 @@
         "DATE_JOINED": "가입일",
         "LAST_LOGIN": "최근 로그인",
         "ACTIVE": "활성",
+        "APPROVED": "승인",
+        "STAFF": "관리자",
         "USERS": "회원",
         "STAFFS": "관리자"
     },
@@ -76,7 +79,8 @@
     "message": {
         "SIGNUP_COMPLETE": "가입이 완료되었습니다.",
         "HELLO_USER": "{call_name}님 안녕하세요!",
-        "LOGOUT_COMPLETE": "로그아웃되었습니다."
+        "LOGOUT_COMPLETE": "로그아웃되었습니다.",
+        "SAVED_SUCCESSFULLY": "저장했습니다."
     },
     "error": {
         "REQUIRED_FIELD": "* 필수",
