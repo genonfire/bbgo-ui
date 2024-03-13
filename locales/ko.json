@@ -65,8 +65,8 @@
     },
     "forum": {
         "FORUMS": "Forums",
-        "FORUM_NAME": "포럼 아이디",
-        "FORUM_TITLE": "포럼명",
+        "FORUM_NAME": "포럼명",
+        "FORUM_TITLE": "포럼 주제",
         "THREAD_COUNT": "게시글 수",
         "REPLY_COUNT": "댓글 수"
     },

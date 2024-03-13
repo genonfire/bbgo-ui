@@ -17,6 +17,7 @@
           variant="outlined"
           prepend-icon="mdi-plus"
           color="secondary"
+          @click="newForum"
         >
           {{ $t('action.NEW') }}
         </v-btn>
@@ -42,7 +43,7 @@
         cols="2"
         class="ml-1 pl-0 pr-3 hidden-sm-and-down"
       >
-        <SelectActive
+        <ActiveSelector
           v-model="active"
           :getItems="getForums"
         />
@@ -114,7 +115,7 @@
 
 <script>
 import NumberPagination from '@/components/NumberPagination'
-import SelectActive from '@/components/SelectActive'
+import ActiveSelector from '@/components/ActiveSelector'
 import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
@@ -127,7 +128,7 @@ export default {
   },
   components: {
     NumberPagination,
-    SelectActive,
+    ActiveSelector,
   },
   data() {
     return {
@@ -154,7 +155,12 @@ export default {
         q = '&q=' + this.search
       }
 
-      let url = `${this.$api('FORUMS').url}?page_size=${this.pageSize}&page=${page}&active=${this.active}&${q}`
+      let active = ''
+      if (this.active) {
+        active = '&active=' + this.active
+      }
+
+      let url = `${this.$api('FORUMS').url}?page_size=${this.pageSize}&page=${page}${active}${q}`
 
       this.$axios({
         method: this.$api('FORUMS').method,
@@ -172,6 +178,8 @@ export default {
     },
     onEnter() {
       this.getForums()
+    },
+    newForum() {
     },
     getForum(pk) {
     },

@@ -65,8 +65,8 @@
     },
     "forum": {
         "FORUMS": "Forums",
-        "FORUM_NAME": "Forum id",
-        "FORUM_TITLE": "Forum name",
+        "FORUM_NAME": "Forum name",
+        "FORUM_TITLE": "Forum title",
         "THREAD_COUNT": "Thread count",
         "REPLY_COUNT": "Reply count"
     },

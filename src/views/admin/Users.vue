@@ -66,7 +66,7 @@
         cols="2"
         class="ml-1 pl-0 pr-3 hidden-sm-and-down"
       >
-        <SelectActive
+        <ActiveSelector
           v-model="active"
           :getItems="getUsers"
         />
@@ -429,7 +429,7 @@
 
 <script>
 import NumberPagination from '@/components/NumberPagination'
-import SelectActive from '@/components/SelectActive'
+import ActiveSelector from '@/components/ActiveSelector'
 import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
@@ -443,7 +443,7 @@ export default {
   },
   components: {
     NumberPagination,
-    SelectActive,
+    ActiveSelector,
   },
   data() {
     return {
@@ -478,7 +478,12 @@ export default {
         q = '&q=' + this.search
       }
 
-      let url = `${this.$api(api).url}?page_size=${this.pageSize}&page=${page}&active=${this.active}&${q}`
+      let active = ''
+      if (this.active) {
+        active = '&active=' + this.active
+      }
+
+      let url = `${this.$api(api).url}?page_size=${this.pageSize}&page=${page}${active}${q}`
 
       this.$axios({
         method: this.$api(api).method,
