@@ -7,6 +7,8 @@
         "THEME_DARK": "야간 모드",
         "YES": "예",
         "NO": "아니오",
+        "ACTIVE": "활성",
+        "DATE_CREATED": "생성일",
         "ADMIN": "관리자"
     },
     "menu": {
@@ -18,6 +20,7 @@
         "CHANGE_PASSWORD": "비밀번호 변경",
         "DELETE_ACCOUNT": "회원 탈퇴",
         "MANAGE_USERS": "사용자 관리",
+        "MANAGE_FORUMS": "포럼 관리",
         "SITE_ADMIN": "사이트 관리"
     },
     "action": {
@@ -28,6 +31,7 @@
         "SEND": "보내기",
         "SAVE": "저장",
         "OK": "확인",
+        "NEW": "만들기",
         "CANCEL": "취소",
         "CHANGE": "변경",
         "DELETE": "삭제",
@@ -53,12 +57,18 @@
         "ADDRESS": "주소",
         "DATE_JOINED": "가입일",
         "LAST_LOGIN": "최근 로그인",
-        "ACTIVE": "활성",
         "APPROVED": "승인",
         "STAFF": "관리자",
         "USERS": "회원",
         "STAFFS": "관리자",
         "DELETE_USER": "강퇴하시겠습니까?"
+    },
+    "forum": {
+        "FORUMS": "Forums",
+        "FORUM_NAME": "포럼 아이디",
+        "FORUM_TITLE": "포럼명",
+        "THREAD_COUNT": "게시글 수",
+        "REPLY_COUNT": "댓글 수"
     },
     "hint": {
         "REMEMBER_ME": "자동 로그인",
@@ -72,6 +82,7 @@
         "PASSWORD_CHANGE_COMPLETE": "비밀번호를 변경했습니다. 다시 로그인 해주세요.",
         "SIGNUP_CONSENT": "{terms} 및 {privacy}에 동의합니다.",
         "SEARCH_USERNAME_NAME": "아이디, 이름으로 검색",
+        "SEARCH_NAME_TITLE": "포럼 아이디, 포럼명으로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
         "DELETE_USER_DESCRIPTION": "정말로 이 사용자를 강퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.",

@@ -74,6 +74,11 @@ export default {
           to: { name: 'admin.users' }
         },
         {
+          text: this.$t('menu.MANAGE_FORUMS'),
+          icon: 'mdi-forum-outline',
+          to: { name: 'admin.forums' }
+        },
+        {
           text: this.$t('menu.SITE_ADMIN'),
           icon: 'mdi-view-grid',
           url: import.meta.env.VITE_API_URL + 'admin/'
@@ -90,8 +95,7 @@ export default {
         window.open(url, '_blank')
       }
       else {
-        const to = item['to']
-        this.$router.push(item.to)
+        this.$router.push(item['to'])
       }
     },
   }

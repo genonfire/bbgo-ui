@@ -40,6 +40,112 @@ export default {
     'url': '/accounts/deactivate/'
   },
 
+  FORUM_CREATE: {
+    'method': 'post',
+    'url': '/communities/forum/'
+  },
+  FORUM_EDIT: {
+    'method': 'patch',
+    'url': '/communities/forum/{pk}/'
+  },
+  FORUM_DELETE: {
+    'method': 'delete',
+    'url': '/communities/forum/{pk}/'
+  },
+  FORUMS: {
+    'method': 'get',
+    'url': 'communities/forums/'
+  },
+  FORUM: {
+    'method': 'get',
+    'url': 'communities/forums/{pk}/'
+  },
+  THREAD_WRITE: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/write/'
+  },
+  THREAD_EDIT: {
+    'method': 'patch',
+    'url': 'communities/f/{forum}/{pk}/'
+  },
+  THREAD_DELETE: {
+    'method': 'delete',
+    'url': 'communities/f/{forum}/{pk}/'
+  },
+  THREAD_RESTORE: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/{pk}/restore/'
+  },
+  THREAD_PIN: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/{pk}/pin/'
+  },
+  THREAD_UNPIN: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/{pk}/unpin/'
+  },
+  THREAD_ATTACH_FILES: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/{pk}/file/'
+  },
+  THREAD_DELETE_FILES: {
+    'method': 'delete',
+    'url': 'communities/f/{forum}/{pk}/file/'
+  },
+  THREAD_READ: {
+    'method': 'get',
+    'url': 'communities/f/{forum}/read/{pk}/'
+  },
+  THREAD_UP: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/up/{pk}/'
+  },
+  THREAD_DOWN: {
+    'method': 'post',
+    'url': 'communities/f/{forum}/down/{pk}/'
+  },
+  THREAD_TRASH: {
+    'method': 'get',
+    'url': 'communities/f/{forum}/trash/'
+  },
+  THREAD_REPLIES: {
+    'method': 'get',
+    'url': 'communities/f/{pk}/replies/'
+  },
+  THREAD_REPLY: {
+    'method': 'post',
+    'url': 'communities/f/{pk}/reply/'
+  },
+  REPLY_EDIT: {
+    'method': 'patch',
+    'url': 'communities/r/{pk}/'
+  },
+  REPLY_DELETE: {
+    'method': 'delete',
+    'url': 'communities/r/{pk}/'
+  },
+  REPLY_UP: {
+    'method': 'post',
+    'url': 'communities/r/{pk}/up/'
+  },
+  REPLY_DOWN: {
+    'method': 'post',
+    'url': 'communities/r/{pk}/down/'
+  },
+
+  FILE_UPLOAD: {
+    'method': 'post',
+    'url': '/things/file/'
+  },
+  FILE_DELETE: {
+    'method': 'delete',
+    'url': '/things/file/{pk}/'
+  },
+  FILE_LIST: {
+    'method': 'get',
+    'url': '/things/files/'
+  },
+
   ADMIN_USERS: {
     'method': 'get',
     'url': '/admin/users/'
@@ -75,18 +181,5 @@ export default {
   ADMIN_DELETE_STAFF: {
     'method': 'delete',
     'url': '/admin/users/staff/{pk}/'
-  },
-
-  FILE_UPLOAD: {
-    'method': 'post',
-    'url': '/things/file/'
-  },
-  FILE_DELETE: {
-    'method': 'delete',
-    'url': '/things/file/{pk}/'
-  },
-  FILE_LIST: {
-    'method': 'get',
-    'url': '/things/files/?q='
   },
 }

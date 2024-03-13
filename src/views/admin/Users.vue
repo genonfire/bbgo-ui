@@ -33,11 +33,11 @@
         </v-btn>
       </v-col>
     </v-row>
+
     <v-row
       class="py-2"
     >
-      <v-col
-      >
+      <v-col>
         <v-tabs
           v-model="staff"
           density="comfortable"
@@ -66,17 +66,10 @@
         cols="2"
         class="ml-1 pl-0 pr-3 hidden-sm-and-down"
       >
-          <v-select
-            v-model="active"
-            clearable
-            variant="outlined"
-            density="compact"
-            :label="$t('accounts.ACTIVE')"
-            :items="activeItems"
-            item-title="text"
-            item-value="value"
-            @update:modelValue="onUpdateActive"
-          ></v-select>
+        <SelectActive
+          v-model="active"
+          :getItems="getUsers"
+        />
       </v-col>
     </v-row>
 
@@ -93,7 +86,7 @@
               <th>{{ $t('accounts.CALL_NAME') }}</th>
               <th>{{ $t('accounts.DATE_JOINED') }}</th>
               <th>{{ $t('accounts.LAST_LOGIN') }}</th>
-              <th>{{ $t('accounts.ACTIVE') }}</th>
+              <th>{{ $t('common.ACTIVE') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -126,43 +119,11 @@
       </v-col>
     </v-row>
 
-    <v-row
-      class="pt-5"
-    >
-      <v-col
-        cols="2"
-        class="pt-3 hidden-sm-and-down"
-      >
-        {{ tallyItems }}
-      </v-col>
-      <v-col
-      >
-        <v-pagination
-          v-model="page"
-          :length="pagination.page_total"
-          :total-visible="6"
-          variant="flat"
-          active-color="secondary"
-          density="comfortable"
-          @click="onPageClick"
-        >
-        </v-pagination>
-      </v-col>
-      <v-col
-        cols="2"
-        class="text-right hidden-sm-and-down"
-      >
-        <v-select
-          v-model="pageSize"
-          variant="outlined"
-          density="compact"
-          :items="pageSizeItems"
-          item-title="text"
-          item-value="value"
-          @update:modelValue="onUpdatePageSize"
-        ></v-select>
-      </v-col>
-    </v-row>
+    <NumberPagination
+      v-model="pageSize"
+      :pagination="pagination"
+      :getItems="getUsers"
+    />
 
     <v-dialog
       v-model="dialog"
@@ -349,7 +310,7 @@
                   <span
                     class="mr-8"
                   >
-                    {{ $t('accounts.ACTIVE') }}
+                    {{ $t('common.ACTIVE') }}
                   </span>
                 </template>
               </v-switch>
@@ -467,6 +428,8 @@
 </template>
 
 <script>
+import NumberPagination from '@/components/NumberPagination'
+import SelectActive from '@/components/SelectActive'
 import useRules from '@/composables/rules'
 import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
@@ -478,60 +441,31 @@ export default {
     const { formatDateTime, formatDate } = useFormatDate()
     return { formatDateTime, formatDate ,rules }
   },
+  components: {
+    NumberPagination,
+    SelectActive,
+  },
   data() {
     return {
       dialog: false,
       deleteDialog: false,
       users: [],
-      pagination : null,
-      staff: false,
-      active: null,
-      activeItems: [
-        {
-          text: this.$t('common.YES'),
-          value: 'true'
-        },
-        {
-          text: this.$t('common.NO'),
-          value: 'false'
-        }
-      ],
-      pageSize: {
-        text: this.$t('hint.PAGESIZE_BY', { pageSize: 20 }),
-        value: 20
-      },
-      pageSizeItems: [
-        {
-          text: this.$t('hint.PAGESIZE_BY', { pageSize: 20 }),
-          value: 20
-        },
-        {
-          text: this.$t('hint.PAGESIZE_BY', { pageSize: 50 }),
-          value: 50
-        },
-        {
-          text: this.$t('hint.PAGESIZE_BY', { pageSize: 100 }),
-          value: 100
-        }
-      ],
-      page: 1,
-      search: null,
-      init: false,
-      validation: false,
       user: null,
       files: null,
-    }
-  },
-  computed: {
-    tallyItems() {
-      return this.$t('hint.TALLY_ITEMS', { total: this.pagination.item_total })
+      pagination : null,
+      pageSize: 20,
+      active: null,
+      search: null,
+      staff: false,
+      validation: false,
+      init: false,
     }
   },
   mounted() {
     this.getUsers()
   },
   methods: {
-    getUsers() {
+    getUsers(page=1) {
       const vm = this
 
       let api = 'ADMIN_USERS'
@@ -544,7 +478,7 @@ export default {
         q = '&q=' + this.search
       }
 
-      let url = `${this.$api(api).url}?page_size=${this.pageSize}&page=${this.page}&active=${this.active}&${q}`
+      let url = `${this.$api(api).url}?page_size=${this.pageSize}&page=${page}&active=${this.active}&${q}`
 
       this.$axios({
         method: this.$api(api).method,
@@ -561,23 +495,11 @@ export default {
       })
     },
     onTabUpdate() {
-      this.page = 1
       this.active = null
       this.search = null
       this.getUsers()
     },
-    onPageClick() {
-      this.getUsers()
-    },
     onEnter() {
-      this.getUsers()
-    },
-    onUpdateActive() {
-      this.page = 1
-      this.getUsers()
-    },
-    onUpdatePageSize() {
-      this.page = 1
       this.getUsers()
     },
     exportExcel() {
@@ -606,6 +528,28 @@ export default {
     editUser(user) {
       this.getUser(user.id)
       this.dialog = true
+    },
+    deleteUser() {
+      var vm = this
+
+      let api = 'ADMIN_DELETE_USER'
+      if (this.staff) {
+        api = 'ADMIN_DELETE_STAFF'
+      }
+
+      this.$axios({
+        method: this.$api(api).method,
+        url: this.$api(api).url.replace('{pk}', this.user.id),
+      })
+      .then(function (response) {
+        vm.deleteDialog = false
+        vm.dialog = false
+        vm.user = null
+        vm.getUsers()
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, api))
+      })
     },
     updatePhoto(data) {
       var vm = this
@@ -676,28 +620,6 @@ export default {
         vm.$toast.error(useError(error, api))
       })
     },
-    deleteUser() {
-      var vm = this
-
-      let api = 'ADMIN_DELETE_USER'
-      if (this.staff) {
-        api = 'ADMIN_DELETE_STAFF'
-      }
-
-      this.$axios({
-        method: this.$api(api).method,
-        url: this.$api(api).url.replace('{pk}', this.user.id),
-      })
-      .then(function (response) {
-        vm.deleteDialog = false
-        vm.dialog = false
-        vm.user = null
-        vm.getUsers()
-      })
-      .catch(function (error) {
-        vm.$toast.error(useError(error, api))
-      })
-    }
   }
 }
 </script>
