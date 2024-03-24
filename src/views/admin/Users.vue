@@ -551,6 +551,7 @@ export default {
         vm.dialog = false
         vm.user = null
         vm.getUsers()
+        vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
       })
       .catch(function (error) {
         vm.$toast.error(useError(error, api))
