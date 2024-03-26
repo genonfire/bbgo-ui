@@ -28,6 +28,7 @@
           prepend-icon="mdi-plus"
           color="secondary"
           @click="newThread"
+          :disabled="!forum.permissions.write"
         >
           {{ $t('action.NEW') }}
         </v-btn>
