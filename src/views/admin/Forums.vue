@@ -394,10 +394,6 @@ export default {
       init: false,
     }
   },
-  mounted() {
-    this.getForums()
-    this.getManagers()
-  },
   computed: {
     permissions() {
       return ['all', 'member', 'staff']
@@ -410,6 +406,10 @@ export default {
         return this.forum.name
       }
     },
+  },
+  mounted() {
+    this.getForums()
+    this.getManagers()
   },
   methods: {
     dataToItems(data) {
@@ -541,6 +541,12 @@ export default {
       })
     },
     goForum(forum) {
+      this.$router.push({
+        name: 'thread',
+        params: {
+          forum: forum.name
+        }
+      })
     },
     save() {
       const vm = this

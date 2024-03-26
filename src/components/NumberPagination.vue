@@ -11,7 +11,7 @@
     <v-col
     >
       <v-pagination
-        v-model="page"
+        v-model="pageModel"
         :length="pagination.page_total"
         :total-visible="6"
         variant="flat"
@@ -33,6 +33,7 @@
         item-title="text"
         item-value="value"
         @update:modelValue="onUpdatePageSize"
+        v-if="pageSize"
       ></v-select>
     </v-col>
   </v-row>
@@ -44,13 +45,17 @@ export default {
     modelValue: Number,
     pagination: Object,
     getItems: Function,
+    page: {
+      type: Number,
+      default: 1,
+    },
   },
   emits: [
     'update:modelValue'
   ],
   data() {
     return {
-      page: 1,
+      pageModel: this.page,
       pageSizeItems: [
         {
           text: this.$t('hint.PAGESIZE_BY', { pageSize: 20 }),
@@ -82,11 +87,11 @@ export default {
   },
   methods: {
     onPageClick() {
-      this.getItems(this.page)
+      this.getItems(this.pageModel)
     },
     onUpdatePageSize() {
-      this.page = 1
-      this.getItems(this.page)
+      this.pageModel = 1
+      this.getItems(this.pageModel)
     },
   }
 }

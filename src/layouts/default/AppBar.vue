@@ -111,7 +111,22 @@ export default {
       this.searchAnything(this.search)
     },
     searchAnything(search) {
+      if (!this.search) {
+        return
+      }
       this.onEsc()
+
+      if (this.$route.name.includes('thread')) {
+        this.$router.push({
+          name: 'thread',
+          params: {
+            forum: this.$route.params.forum
+          },
+          query: {
+            q: this.search
+          }
+        })
+      }
     },
   }
 }

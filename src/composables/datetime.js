@@ -20,9 +20,19 @@ export function useFormatDate() {
     return new Date(datetime).toLocaleTimeString()
   }
 
+  const formatDateOrTime = (dateOrTime) => {
+    if (dateOrTime.date) {
+      return formatDate(dateOrTime.date)
+    }
+    else {
+      return dateOrTime.time
+    }
+  }
+
   return {
     formatDateTime,
     formatDate,
     formatTime,
+    formatDateOrTime,
   }
 }

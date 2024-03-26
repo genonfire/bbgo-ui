@@ -60,6 +60,10 @@ export default {
     'method': 'get',
     'url': 'communities/forums/{pk}/'
   },
+  THREAD_LIST: {
+    'method': 'get',
+    'url': 'communities/f/{forum}/'
+  },
   THREAD_WRITE: {
     'method': 'post',
     'url': 'communities/f/{forum}/write/'

@@ -1,6 +1,7 @@
 {
     "common": {
         "ID": "id",
+        "PK": "No",
         "SEARCH": "Search",
         "LANGUAGE": "Language",
         "THEME": "Theme",
@@ -9,6 +10,7 @@
         "NO": "No",
         "ACTIVE": "Active",
         "DATE_CREATED": "Date created",
+        "DATE": "Date",
         "ADMIN": "Admin"
     },
     "menu": {
@@ -54,7 +56,7 @@
         "OLD_PASSWORD": "Old password",
         "NEW_PASSWORD": "New password",
         "NEW_PASSWORD_CONFIRM": "New password confirm",
-        "UPLOAD_PHOTO": "Upload photo",
+        "UPLOAD_PHOTO": "Upload",
         "TEL": "Tel",
         "ADDRESS": "Address",
         "DATE_JOINED": "Date joined",
@@ -82,6 +84,8 @@
         "NEW_FORUM": "New forum",
         "EDIT_FORUM": "Edit forum",
         "DELETE_FORUM": "Delete forum?",
+        "THREAD_TITLE": "Title",
+        "THREAD_USER": "User",
         "THREAD_COUNT": "Thread count",
         "REPLY_COUNT": "Reply count"
     },

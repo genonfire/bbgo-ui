@@ -1,6 +1,7 @@
 {
     "common": {
-        "ID": "id",
+        "ID": "Id",
+        "PK": "No",
         "SEARCH": "검색",
         "LANGUAGE": "언어",
         "THEME": "테마",
@@ -9,6 +10,7 @@
         "NO": "아니오",
         "ACTIVE": "활성",
         "DATE_CREATED": "생성일",
+        "DATE": "날짜",
         "ADMIN": "관리자"
     },
     "menu": {
@@ -82,6 +84,8 @@
         "NEW_FORUM": "포럼 생성",
         "EDIT_FORUM": "포럼 수정",
         "DELETE_FORUM": "포럼 삭제?",
+        "THREAD_TITLE": "제목",
+        "THREAD_USER": "글쓴이",
         "THREAD_COUNT": "게시글 수",
         "REPLY_COUNT": "댓글 수"
     },
