@@ -167,6 +167,12 @@ export default {
       })
     },
     newThread() {
+      this.$router.push({
+        name: 'thread.write',
+        params: {
+          forum: this.$route.params.forum
+        }
+      })
     },
   }
 }
