@@ -41,5 +41,8 @@ export default createVuetify({
         variant: 'flat',
       },
     },
+    VTooltip: {
+      location: 'top',
+    },
   },
 })

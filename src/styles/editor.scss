@@ -1,0 +1,135 @@
+.tiptap {
+  position: relative;
+  margin: 0 auto 1rem auto;
+  border: 1px solid #CDCDCD;
+
+  padding: 1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+
+  * {
+    caret-color: currentColor;
+  }
+
+  pre {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 5px;
+    background: #282922;
+    color: #ffffff;
+    font-size: 0.8rem;
+    overflow-x: auto;
+
+    code {
+      display: block;
+    }
+  }
+
+  p code {
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    padding: 0.15rem 0.3rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background: rgba(#000000, 0.1);
+    color: rgba(#000000, 0.8);
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+  }
+
+  li > p,
+  li > ol,
+  li > ul {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  blockquote {
+    border-left: 3px solid rgba(#000000, 0.1);
+    color: rgba(#000000, 0.8);
+    padding-left: 0.8rem;
+    font-style: italic;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  hr {
+    margin: 0.7rem 0rem;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+
+    td,
+    th {
+      min-width: 1em;
+      border: 2px solid #ced4da;
+      padding: 3px 5px;
+      vertical-align: top;
+      box-sizing: border-box;
+      position: relative;
+
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    th {
+      font-weight: bold;
+      text-align: left;
+      background-color: #f1f3f5;
+    }
+
+    .selectedCell:after {
+      z-index: 2;
+      position: absolute;
+      content: "";
+      left: 0; right: 0; top: 0; bottom: 0;
+      background: rgba(200, 200, 255, 0.4);
+      pointer-events: none;
+    }
+
+    .column-resize-handle {
+      position: absolute;
+      right: -2px;
+      top: 0;
+      bottom: -2px;
+      width: 4px;
+      background-color: #adf;
+      pointer-events: none;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .tableWrapper {
+    margin: .5em 0;
+    overflow-x: auto;
+  }
+
+  .resize-cursor {
+    cursor: ew-resize;
+    cursor: col-resize;
+  }
+}
