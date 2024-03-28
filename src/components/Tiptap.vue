@@ -55,19 +55,15 @@
     </button>
     <button @click="editor.chain().focus().setParagraph().run()" :class="{ 'is-active': editor.isActive('paragraph') }">
       <img class="icon" src="@/assets/tiptap/paragraph.svg" />
-      <v-tooltip activator="parent">{{ $t('tiptap.PARAGRAPH') }}</v-tooltip>
     </button>
     <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
       h1
-      <v-tooltip activator="parent">{{ $t('tiptap.H1') }}</v-tooltip>
     </button>
     <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
       h2
-      <v-tooltip activator="parent">{{ $t('tiptap.H2') }}</v-tooltip>
     </button>
     <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
       h3
-      <v-tooltip activator="parent">{{ $t('tiptap.H3') }}</v-tooltip>
     </button>
     <button @click="editor.chain().focus().setHorizontalRule().run()">
       <img class="icon" src="@/assets/tiptap/hr.svg" />
@@ -81,6 +77,103 @@
       <img class="icon" src="@/assets/tiptap/codeblock.svg" />
       <v-tooltip activator="parent">{{ $t('tiptap.CODE_BLOCK') }}</v-tooltip>
     </button>
+
+    <v-dialog
+      v-model="imageDialog"
+      max-width="500"
+    >
+      <template v-slot:activator="{ props: activatorProps }">
+        <button
+          v-bind="activatorProps"
+          :class="supportImage ? '' : 'is-disabled'"
+          :disabled="!supportImage"
+        >
+          <img class="icon" src="@/assets/tiptap/image.svg" />
+          <v-tooltip activator="parent">{{ $t('tiptap.IMAGE') }}</v-tooltip>
+        </button>
+      </template>
+
+      <template v-slot:default="{ isActive }">
+        <v-card>
+          <v-tabs
+            v-model="imageTab"
+            color="secondary"
+            grow
+          >
+            <v-tab value="upload">
+              {{ $t('tiptap.IMAGE_UPLOAD') }}
+            </v-tab>
+            <v-tab value="link">
+              {{ $t('tiptap.IMAGE_LINK') }}
+            </v-tab>
+          </v-tabs>
+
+          <v-card-text>
+            <v-window
+              v-model="imageTab"
+            >
+              <v-window-item
+                value="upload"
+              >
+                <v-card-text
+                  class="pa-0"
+                >
+                  <v-file-input
+                    v-model="files"
+                    density="compact"
+                    accept="image/*"
+                    prepend-icon="mdi-camera"
+                    :label="files ? null : $t('tiptap.SELECT_IMAGE')"
+                    @change="handleFileChange"
+                    @click:clear="clearFile"
+                    show-size
+                  >
+                  </v-file-input>
+                </v-card-text>
+                <v-card-actions
+                  class="pa-0"
+                >
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="secondary"
+                    @click="insertImage(fileURL)"
+                  >
+                    {{ $t('tiptap.INSERT_IMAGE') }}
+                  </v-btn>
+                </v-card-actions>
+              </v-window-item>
+              <v-window-item
+                value="link"
+              >
+                <v-card-text
+                  class="pa-0"
+                >
+                  <v-text-field
+                    v-model="linkURL"
+                    density="compact"
+                    prepend-icon="mdi-web"
+                    :placeholder="$t('tiptap.IMAGE_LINK')"
+                  >
+                  </v-text-field>
+                </v-card-text>
+                <v-card-actions
+                  class="pa-0"
+                >
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="secondary"
+                    @click="insertImage(linkURL)"
+                  >
+                    {{ $t('tiptap.INSERT_IMAGE') }}
+                  </v-btn>
+                </v-card-actions>
+              </v-window-item>
+            </v-window>
+          </v-card-text>
+        </v-card>
+      </template>
+    </v-dialog>
+
     <button @click="editor.chain().focus().setTextAlign('left').run()" :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }">
       <img class="icon" src="@/assets/tiptap/align_left.svg" />
       <v-tooltip activator="parent">{{ $t('tiptap.ALIGN_LEFT') }}</v-tooltip>
@@ -164,6 +257,7 @@
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
+import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import StarterKit from '@tiptap/starter-kit'
 import Table from '@tiptap/extension-table'
@@ -178,10 +272,10 @@ export default {
   props: {
     options: Object
     // content: initial and updated text
-    // readonly: read only if true
-    // autofocus: Focus the editor on init
-    // supportImage: upload and link images
-    // supportVideo: embed video
+    // readonly: read only if true (default: false)
+    // autofocus: Focus the editor on init (default: false)
+    // supportImage: upload and link images (default: true)
+    // supportVideo: embed video (default: true)
   },
   components: {
     EditorContent,
@@ -191,6 +285,13 @@ export default {
       editor: null,
       readonly: this.options.readonly || false,
       autofocus: this.options.autofocus || false,
+      supportImage: this.options.supportImage != false,
+      supportVideo: this.options.supportVideo != false,
+      imageDialog: false,
+      imageTab: null,
+      fileURL: null,
+      linkURL: null,
+      files: null,
     }
   },
   mounted() {
@@ -201,6 +302,7 @@ export default {
           resizable: true,
         }),
         Highlight,
+        Image,
         Link.configure({
           openOnClick: false,
         }),
@@ -229,6 +331,39 @@ export default {
   methods: {
     openColorPicker() {
       document.getElementById("colorPicker").click()
+    },
+    imageUpload(data) {
+      var vm = this
+
+      this.$axios({
+        method: this.$api('FILE_UPLOAD').method,
+        url: this.$api('FILE_UPLOAD').url,
+        data: data,
+      })
+      .then(function (response) {
+        vm.fileURL = response.data['data']['file']
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, 'FILE_UPLOAD'))
+      })
+    },
+    handleFileChange() {
+      if (this.files) {
+        let formData = new FormData()
+        formData.append('file', this.files[0])
+        this.imageUpload(formData)
+      }
+    },
+    clearFile() {
+      this.files = null
+      this.fileURL = null
+    },
+    insertImage(url) {
+      this.editor.chain().focus().setImage({ src: url }).run()
+      this.imageDialog = false
+      this.files = null
+      this.fileURL = null
+      this.linkURL = null
     },
   }
 }

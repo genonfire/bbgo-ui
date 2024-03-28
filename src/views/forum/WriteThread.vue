@@ -46,8 +46,6 @@ export default {
     return {
       options: {
         content: '',
-        supportImage: true,
-        supportVideo: true
       },
       title: null,
       init: false,
