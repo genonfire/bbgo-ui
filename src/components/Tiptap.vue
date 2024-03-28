@@ -267,6 +267,7 @@ import TableRow from '@tiptap/extension-table-row'
 import TextAlign from '@tiptap/extension-text-align'
 import TextStyle from '@tiptap/extension-text-style'
 import Underline from '@tiptap/extension-underline'
+import Youtube from '@tiptap/extension-youtube'
 
 export default {
   props: {
@@ -316,6 +317,9 @@ export default {
         TextStyle,
         Color,
         Underline,
+        Youtube.configure({
+          autoplay: false,
+        })
       ],
       content: this.options.content,
       editable: !this.readonly,
