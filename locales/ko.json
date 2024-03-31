@@ -87,7 +87,8 @@
         "THREAD_TITLE": "제목",
         "THREAD_USER": "글쓴이",
         "THREAD_COUNT": "게시글 수",
-        "REPLY_COUNT": "댓글 수"
+        "REPLY_COUNT": "댓글 수",
+        "ATTACHMENTS": "첨부 파일"
     },
     "tiptap": {
         "UNDO": "실행 취소",
@@ -141,6 +142,7 @@
         "SEARCH_NAME_TITLE": "포럼 아이디, 포럼명으로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
+        "DROP_FILES_HERE": "파일을 여기에 떨구세요.",
         "DELETE_FORUM_DESCRIPTION": "정말로 이 포럼을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_USER_DESCRIPTION": "정말로 이 사용자를 강퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_ACCOUNT_DESCRIPTION": "회원 탈퇴 후에는 이용중인 계정이 폐쇄되며 모든 데이터는 복구가 불가능합니다.",
@@ -160,7 +162,8 @@
         "INVALID_EMAIL": "* 올바른 이메일 주소가 아닙니다.",
         "PASSWORD_NOT_MATCH": "* 비밀번호가 일치하지 않습니다.",
         "ALPHABETS_NUMBER_ONLY": "* 알파벳 대소문자와 숫자만 가능합니다..",
-        "ERROR_REQUIRED_FIELDS": "필수입력 항목을 확인해 주세요."
+        "ERROR_REQUIRED_FIELDS": "필수입력 항목을 확인해 주세요.",
+        "PERMISSION_DENIED": "권한이 없습니다."
     },
     "info": {
         "SITENAME": "bbgo"

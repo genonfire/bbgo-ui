@@ -77,103 +77,14 @@
       <img class="icon" src="@/assets/tiptap/codeblock.svg" />
       <v-tooltip activator="parent">{{ $t('tiptap.CODE_BLOCK') }}</v-tooltip>
     </button>
-
-    <v-dialog
-      v-model="imageDialog"
-      max-width="500"
+    <button
+      :class="supportImage ? '' : 'is-disabled'"
+      :disabled="!supportImage"
+      @click="openImageTab"
     >
-      <template v-slot:activator="{ props: activatorProps }">
-        <button
-          v-bind="activatorProps"
-          :class="supportImage ? '' : 'is-disabled'"
-          :disabled="!supportImage"
-        >
-          <img class="icon" src="@/assets/tiptap/image.svg" />
-          <v-tooltip activator="parent">{{ $t('tiptap.IMAGE') }}</v-tooltip>
-        </button>
-      </template>
-
-      <template v-slot:default="{ isActive }">
-        <v-card>
-          <v-tabs
-            v-model="imageTab"
-            color="secondary"
-            grow
-          >
-            <v-tab value="upload">
-              {{ $t('tiptap.IMAGE_UPLOAD') }}
-            </v-tab>
-            <v-tab value="link">
-              {{ $t('tiptap.IMAGE_LINK') }}
-            </v-tab>
-          </v-tabs>
-
-          <v-card-text>
-            <v-window
-              v-model="imageTab"
-            >
-              <v-window-item
-                value="upload"
-              >
-                <v-card-text
-                  class="pa-0"
-                >
-                  <v-file-input
-                    v-model="files"
-                    density="compact"
-                    accept="image/*"
-                    prepend-icon="mdi-camera"
-                    :label="files ? null : $t('tiptap.SELECT_IMAGE')"
-                    @change="handleFileChange"
-                    @click:clear="clearFile"
-                    show-size
-                  >
-                  </v-file-input>
-                </v-card-text>
-                <v-card-actions
-                  class="pa-0"
-                >
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    color="secondary"
-                    @click="insertImage(fileURL)"
-                  >
-                    {{ $t('tiptap.INSERT_IMAGE') }}
-                  </v-btn>
-                </v-card-actions>
-              </v-window-item>
-              <v-window-item
-                value="link"
-              >
-                <v-card-text
-                  class="pa-0"
-                >
-                  <v-text-field
-                    v-model="linkURL"
-                    density="compact"
-                    prepend-icon="mdi-web"
-                    :placeholder="$t('tiptap.IMAGE_LINK')"
-                  >
-                  </v-text-field>
-                </v-card-text>
-                <v-card-actions
-                  class="pa-0"
-                >
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    color="secondary"
-                    @click="insertImage(linkURL)"
-                  >
-                    {{ $t('tiptap.INSERT_IMAGE') }}
-                  </v-btn>
-                </v-card-actions>
-              </v-window-item>
-            </v-window>
-          </v-card-text>
-        </v-card>
-      </template>
-    </v-dialog>
-
+      <img class="icon" src="@/assets/tiptap/image.svg" />
+      <v-tooltip activator="parent">{{ $t('tiptap.IMAGE') }}</v-tooltip>
+    </button>
     <button @click="editor.chain().focus().setTextAlign('left').run()" :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }">
       <img class="icon" src="@/assets/tiptap/align_left.svg" />
       <v-tooltip activator="parent">{{ $t('tiptap.ALIGN_LEFT') }}</v-tooltip>
@@ -247,6 +158,89 @@
       </button>
     </span>
   </div>
+
+  <v-dialog
+    v-model="imageDialog"
+    max-width="500"
+  >
+    <v-card>
+      <v-tabs
+        v-model="imageTab"
+        color="secondary"
+        grow
+      >
+        <v-tab value="upload">
+          {{ $t('tiptap.IMAGE_UPLOAD') }}
+        </v-tab>
+        <v-tab value="link">
+          {{ $t('tiptap.IMAGE_LINK') }}
+        </v-tab>
+      </v-tabs>
+
+      <v-card-text>
+        <v-window
+          v-model="imageTab"
+        >
+          <v-window-item
+            value="upload"
+          >
+            <v-card-text
+              class="pa-0"
+            >
+              <v-file-input
+                v-model="files"
+                density="compact"
+                accept="image/*"
+                prepend-icon="mdi-camera"
+                :label="files ? null : $t('tiptap.SELECT_IMAGE')"
+                @change="handleFileChange"
+                @click:clear="clearFile"
+                show-size
+              >
+              </v-file-input>
+            </v-card-text>
+            <v-card-actions
+              class="pa-0"
+            >
+              <v-spacer></v-spacer>
+              <v-btn
+                color="secondary"
+                @click="insertImage(fileURL)"
+              >
+                {{ $t('tiptap.INSERT_IMAGE') }}
+              </v-btn>
+            </v-card-actions>
+          </v-window-item>
+          <v-window-item
+            value="link"
+          >
+            <v-card-text
+              class="pa-0"
+            >
+              <v-text-field
+                v-model="linkURL"
+                density="compact"
+                prepend-icon="mdi-web"
+                :placeholder="$t('tiptap.IMAGE_LINK')"
+              >
+              </v-text-field>
+            </v-card-text>
+            <v-card-actions
+              class="pa-0"
+            >
+              <v-spacer></v-spacer>
+              <v-btn
+                color="secondary"
+                @click="insertImage(linkURL)"
+              >
+                {{ $t('tiptap.INSERT_IMAGE') }}
+              </v-btn>
+            </v-card-actions>
+          </v-window-item>
+        </v-window>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 
   <editor-content
     :editor="editor"
@@ -336,6 +330,12 @@ export default {
     openColorPicker() {
       document.getElementById("colorPicker").click()
     },
+    openImageTab() {
+      this.files = null
+      this.fileURL = null
+      this.linkURL = null
+      this.imageDialog = true
+    },
     imageUpload(data) {
       var vm = this
 
@@ -365,14 +365,13 @@ export default {
     insertImage(url) {
       this.editor.chain().focus().setImage({ src: url }).run()
       this.imageDialog = false
-      this.files = null
-      this.fileURL = null
-      this.linkURL = null
     },
   }
 }
 </script>
 
 <style lang="scss">
-  @import '@/styles/tiptap.scss'
+  @import "@/styles/editor";
+  @import "@/styles/menubar";
+  @import "@/styles/icons";
 </style>

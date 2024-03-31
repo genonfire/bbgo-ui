@@ -87,7 +87,8 @@
         "THREAD_TITLE": "Title",
         "THREAD_USER": "User",
         "THREAD_COUNT": "Thread count",
-        "REPLY_COUNT": "Reply count"
+        "REPLY_COUNT": "Reply count",
+        "ATTACHMENTS": "Attachments"
     },
     "tiptap": {
         "UNDO": "Undo",
@@ -141,6 +142,7 @@
         "SEARCH_NAME_TITLE": "Search by name, title",
         "TALLY_ITEMS": "Tally {total} items",
         "PAGESIZE_BY": "by {pageSize}",
+        "DROP_FILES_HERE": "Drop files here",
         "DELETE_FORUM_DESCRIPTION": "Are you sure you want to delete this forum? This action cannot be undone.",
         "DELETE_USER_DESCRIPTION": "Are you sure you want to delete this user? This action cannot be undone.",
         "DELETE_ACCOUNT_DESCRIPTION": "After deleting your membership, your account will be closed and all data will be irretrievable.",
@@ -160,7 +162,8 @@
         "INVALID_EMAIL": "* Invalid Email address.",
         "PASSWORD_NOT_MATCH": "* The password don't match.",
         "ALPHABETS_NUMBER_ONLY": "* Alphabets and number only.",
-        "ERROR_REQUIRED_FIELDS": "Please check required fields."
+        "ERROR_REQUIRED_FIELDS": "Please check required fields.",
+        "PERMISSION_DENIED": "You don't have permission."
     },
     "info": {
         "SITENAME": "bbgo"

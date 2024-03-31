@@ -64,6 +64,10 @@ export default {
     'method': 'get',
     'url': 'communities/f/{forum}/'
   },
+  THREAD_SEEK: {
+    'method': 'get',
+    'url': 'communities/f/{forum}/seek/'
+  },
   THREAD_WRITE: {
     'method': 'post',
     'url': 'communities/f/{forum}/write/'
@@ -145,10 +149,6 @@ export default {
     'method': 'delete',
     'url': '/things/file/{pk}/'
   },
-  FILE_LIST: {
-    'method': 'get',
-    'url': '/things/files/'
-  },
 
   ADMIN_USERS: {
     'method': 'get',
@@ -185,5 +185,9 @@ export default {
   ADMIN_DELETE_STAFF: {
     'method': 'delete',
     'url': '/admin/users/staff/{pk}/'
+  },
+  ADMIN_FILES: {
+    'method': 'get',
+    'url': '/admin/files/'
   },
 }
