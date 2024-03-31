@@ -83,6 +83,7 @@
         "FORUM_MANAGERS": "포럼 관리자",
         "NEW_FORUM": "포럼 생성",
         "EDIT_FORUM": "포럼 수정",
+        "QUIT_EDITING": "글 작성을 그만두시겠습니까?",
         "DELETE_FORUM": "포럼 삭제?",
         "THREAD_TITLE": "제목",
         "THREAD_USER": "글쓴이",

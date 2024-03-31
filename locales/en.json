@@ -83,6 +83,7 @@
         "FORUM_MANAGERS": "Managers",
         "NEW_FORUM": "New forum",
         "EDIT_FORUM": "Edit forum",
+        "QUIT_EDITING": "Are you sure to quit editing?",
         "DELETE_FORUM": "Delete forum?",
         "THREAD_TITLE": "Title",
         "THREAD_USER": "User",

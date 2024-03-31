@@ -122,6 +122,14 @@ export default {
   mounted() {
     this.seekForum(this.$route.params.forum)
   },
+  beforeRouteLeave(to, from, next) {
+    if (confirm(this.$t('forum.QUIT_EDITING'))) {
+      next()
+    }
+    else {
+      next(false)
+    }
+  },
   methods: {
     seekForum(forum) {
       const vm = this
