@@ -377,6 +377,7 @@
                   variant="text"
                   color="pale"
                   size="small"
+                  v-if="user.is_active"
                 >
                   {{ $t('action.DELETE_USER') }}
                 </v-btn>

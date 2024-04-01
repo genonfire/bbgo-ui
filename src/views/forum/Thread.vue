@@ -180,14 +180,6 @@ export default {
 </script>
 
 <style scoped>
-  a {
-    color: #000;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
   table {
     width: 100%;
     table-layout: fixed;
