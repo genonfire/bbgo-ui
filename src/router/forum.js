@@ -19,4 +19,9 @@ export default [
     name: 'thread.read',
     component: () => import('@/views/forum/ReadThread.vue')
   },
+  {
+    path: 'f/:forum/edit/:thread/',
+    name: 'thread.edit',
+    component: () => import('@/views/forum/EditThread.vue')
+  },
 ]

@@ -41,33 +41,71 @@
       </div>
       </v-col>
       <v-col
-        cols="3"
-        class="text-right py-2"
+        cols="2"
+        class="text-right py-2 d-flex justify-end"
         v-if="thread.editable"
       >
-        <v-btn
-          variant="outlined"
-          prepend-icon="mdi-plus"
-          color="secondary"
-          @click="editThread"
+        <v-tooltip
+          location="bottom"
+          :text="$t('action.EDIT')"
         >
-          {{ $t('action.EDIT') }}
-        </v-btn>
-        <v-btn
-          icon="mdi-trash-can-outline"
-          variant="text"
-          color="pale"
-          class="ml-1"
-          @click="deleteDialog = true"
+          <template v-slot:activator="{ props }">
+            <v-btn
+              v-bind="props"
+              icon="mdi-pencil-outline"
+              density="comfortable"
+              variant="text"
+              color="secondary"
+              class="ml-1"
+              @click="editThread"
+            >
+            </v-btn>
+          </template>
+        </v-tooltip>
+        <v-tooltip
+          location="bottom"
+          :text="$t('action.DELETE')"
         >
-        </v-btn>
+          <template v-slot:activator="{ props }">
+            <v-btn
+              v-bind="props"
+              icon="mdi-trash-can-outline"
+              density="comfortable"
+              variant="text"
+              color="pale"
+              class="ml-1"
+              @click="deleteDialog = true"
+            >
+            </v-btn>
+          </template>
+        </v-tooltip>
       </v-col>
     </v-row>
     <v-row>
       <v-col
         class="mt-2 mb-5 text-h4"
+        :class="thread.is_pinned ? 'font-weight-bold': ''"
       >
-        {{ thread.title }}
+        <v-icon
+          icon="mdi-pin-outline"
+          size="x-small"
+          v-if="thread.is_pinned"
+        ></v-icon>
+        <span
+          v-if="$store.isStaff"
+        >
+          <a
+            style="cursor: pointer;"
+            @click="togglePin"
+          >
+            {{ thread.title }}
+          </a>
+        </span>
+        <span
+          v-else
+        >
+          {{ thread.title }}
+        </span>
       </v-col>
     </v-row>
     <v-row>
@@ -136,7 +174,7 @@
             color="secondary"
             @click="deleteThread()"
           >
-            {{ $t('action.DELETE') }}
+            {{ $t('action.DELETE_THREAD') }}
           </v-btn>
         </template>
       </v-card>
@@ -214,7 +252,40 @@ export default {
         vm.$toast.error(useError(error, 'THREAD_READ'))
       })
     },
+    togglePin() {
+      const vm = this
+      let api = 'THREAD_PIN'
+
+      if (this.thread.is_pinned) {
+        api = 'THREAD_UNPIN'
+      }
+
+      this.$axios({
+        method: this.$api(api).method,
+        url: this.$api(api).url.replace('{forum}', this.thread.forum.name).replace('{pk}', this.thread.id),
+      })
+      .then(function (response) {
+        vm.thread = response.data['data']
+
+        if (vm.thread.is_pinned) {
+          vm.$toast.success(vm.$t('forum.THREAD_PINNED'))
+        }
+        else {
+          vm.$toast.success(vm.$t('forum.THREAD_UNPINNED'))
+        }
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, api))
+      })
+    },
     editThread() {
+      this.$router.push({
+        name: 'thread.edit',
+        params: {
+          forum: this.$route.params.forum,
+          thread: this.$route.params.thread
+        }
+      })
     },
     deleteThread() {
       const vm = this

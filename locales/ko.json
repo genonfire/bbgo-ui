@@ -39,6 +39,7 @@
         "EDIT": "편집",
         "DELETE": "삭제",
         "DELETE_FORUM": "포럼 삭제",
+        "DELETE_THREAD": "글 삭제",
         "DELETE_USER": "강퇴하기",
         "REMOVE": "제거",
         "EXPORT": "내보내기",
@@ -84,13 +85,17 @@
         "NEW_FORUM": "포럼 생성",
         "EDIT_FORUM": "포럼 수정",
         "QUIT_EDITING": "글 작성을 그만두시겠습니까?",
-        "DELETE_FORUM": "포럼 삭제?",
+        "DELETE_FORUM": "포럼을 삭제하시겠습니까?",
+        "DELETE_THREAD": "글을 삭제하시겠습니까?",
         "THREAD_TITLE": "제목",
         "THREAD_USER": "글쓴이",
         "THREAD_COUNT": "게시글 수",
         "REPLY_COUNT": "댓글 수",
         "ATTACHMENTS": "첨부 파일",
-        "DELETE_THREAD": "글을 삭제하시겠습니까?"
+        "THREAD_PINNED": "고정했습니다.",
+        "THREAD_UNPINNED": "고정 해제했습니다.",
+        "THREAD_RESTORED": "복구했습니다.",
+        "THREAD_TRASH": "휴지통"
     },
     "tiptap": {
         "UNDO": "실행 취소",

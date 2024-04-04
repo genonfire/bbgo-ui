@@ -39,6 +39,7 @@
         "EDIT": "Edit",
         "DELETE": "Delete",
         "DELETE_FORUM": "Delete forum",
+        "DELETE_THREAD": "Delete thread",
         "DELETE_USER": "Delete user",
         "REMOVE": "Remove",
         "EXPORT": "Export",
@@ -85,12 +86,16 @@
         "EDIT_FORUM": "Edit forum",
         "QUIT_EDITING": "Are you sure to quit editing?",
         "DELETE_FORUM": "Delete forum?",
+        "DELETE_THREAD": "Delete thread?",
         "THREAD_TITLE": "Title",
         "THREAD_USER": "User",
         "THREAD_COUNT": "Thread count",
         "REPLY_COUNT": "Reply count",
         "ATTACHMENTS": "Attachments",
-        "DELETE_THREAD": "Delete thread?"
+        "THREAD_PINNED": "Pinned",
+        "THREAD_UNPINNED": "Unpinned",
+        "THREAD_RESTORED": "Thread restored",
+        "THREAD_TRASH": "Trash"
     },
     "tiptap": {
         "UNDO": "Undo",

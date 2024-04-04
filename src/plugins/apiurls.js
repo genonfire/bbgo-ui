@@ -82,15 +82,15 @@ export default {
   },
   THREAD_RESTORE: {
     'method': 'post',
-    'url': 'communities/f/{forum}/{pk}/restore/'
+    'url': 'communities/f/{forum}/restore/{pk}/'
   },
   THREAD_PIN: {
     'method': 'post',
-    'url': 'communities/f/{forum}/{pk}/pin/'
+    'url': 'communities/f/{forum}/pin/{pk}/'
   },
   THREAD_UNPIN: {
     'method': 'post',
-    'url': 'communities/f/{forum}/{pk}/unpin/'
+    'url': 'communities/f/{forum}/unpin/{pk}/'
   },
   THREAD_ATTACH_FILES: {
     'method': 'post',
