@@ -45,11 +45,10 @@
               variant="tonal"
               class="mx-1 my-1"
               closable
-              removable
               @click:close="removeItem(item)"
               @update:modelValue="true"
             >
-              {{ item.filename }} ({{ showFileSize(item.size) }})
+              {{ item.filename }} ({{ fileSize(item.size) }})
             </v-chip>
           </div>
           <v-card
@@ -99,8 +98,13 @@
 <script>
 import Tiptap from '@/components/Tiptap'
 import { useError } from '@/composables/error'
+import { useFile } from '@/composables/file'
 
 export default {
+  setup() {
+    const { fileSize } = useFile()
+    return { fileSize }
+  },
   components: {
     Tiptap,
   },
@@ -116,6 +120,7 @@ export default {
       files: [],
       fileChips: [],
       isHovering: false,
+      saved: false,
       init: false,
     }
   },
@@ -123,7 +128,7 @@ export default {
     this.seekForum(this.$route.params.forum)
   },
   beforeRouteLeave(to, from, next) {
-    if (confirm(this.$t('forum.QUIT_EDITING'))) {
+    if (this.saved || confirm(this.$t('forum.QUIT_EDITING'))) {
       next()
     }
     else {
@@ -170,8 +175,10 @@ export default {
         data: data
       })
       .then(function (response) {
+        vm.saved = true
         vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
-        vm.$router.push({
+
+        vm.$router.replace({
           name: 'thread',
           params: {
             forum: vm.forum.name
@@ -220,14 +227,6 @@ export default {
     removeItem(item) {
       const index = this.files.indexOf(item)
       this.files.splice(index, 1)
-    },
-    showFileSize(byteSize) {
-      const size = byteSize / 1024
-      if (size < 1024) {
-        return size.toFixed(2) + " KB";
-      } else {
-        return (size / 1024).toFixed(2) + " MB";
-      }
     },
   }
 }

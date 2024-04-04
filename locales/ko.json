@@ -89,7 +89,8 @@
         "THREAD_USER": "글쓴이",
         "THREAD_COUNT": "게시글 수",
         "REPLY_COUNT": "댓글 수",
-        "ATTACHMENTS": "첨부 파일"
+        "ATTACHMENTS": "첨부 파일",
+        "DELETE_THREAD": "글을 삭제하시겠습니까?"
     },
     "tiptap": {
         "UNDO": "실행 취소",
@@ -144,6 +145,7 @@
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",
+        "DELETE_THREAD_DESCRIPTION": "정말로 이 글을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_FORUM_DESCRIPTION": "정말로 이 포럼을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_USER_DESCRIPTION": "정말로 이 사용자를 강퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_ACCOUNT_DESCRIPTION": "회원 탈퇴 후에는 이용중인 계정이 폐쇄되며 모든 데이터는 복구가 불가능합니다.",

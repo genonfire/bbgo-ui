@@ -68,6 +68,13 @@
                   }"
                 >
                   {{ thread.title }}
+                  <span
+                    v-if="thread.reply_count"
+                    class="font-weight-bold"
+                    style="color: #2384e2;"
+                  >
+                    [{{ thread.reply_count }}]
+                  </span>
                 </router-link>
               </td>
               <td>{{ getUsername(thread) }}</td>

@@ -20,6 +20,7 @@ export default createVuetify({
           secondary: '#EB6669',
           base: "#F9CECE",
           pale: "#9095A0",
+          ashen: "#ECEFF1",
         },
       },
       dark: {
@@ -27,6 +28,7 @@ export default createVuetify({
           secondary: '#EB6669',
           base: "#F9CECE",
           pale: "#9095A0",
+          ashen: "#ECEFF1",
         },
       },
     },
