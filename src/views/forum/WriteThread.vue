@@ -154,15 +154,15 @@ export default {
     save() {
       const vm = this
       let data = {
-        'title': this.title,
-        'content': this.options.content,
+        title: this.title,
+        content: this.options.content,
       }
       let files = []
 
       if (this.files) {
         for (let i=0; i<this.files.length; i++) {
           files.push({
-            'id': this.files[i].id
+            id: this.files[i].id
           })
         }
 

@@ -211,11 +211,6 @@ export default {
       init: false,
     }
   },
-  computed: {
-    files() {
-      return this.thread.files
-    }
-  },
   mounted() {
     this.getThread(this.$route.params.forum, this.$route.params.thread)
   },
