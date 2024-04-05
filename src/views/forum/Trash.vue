@@ -16,54 +16,28 @@
         <p
           class="pl-2 text-body-2"
         >
-          {{ forum.description }}
+          {{ $t('forum.THREAD_TRASH') }}
         </p>
       </v-col>
       <v-col
         cols="3"
-        class="py-2 d-flex justify-end"
+        class="text-right py-2"
       >
         <v-btn
           variant="outlined"
-          prepend-icon="mdi-pencil-outline"
+          prepend-icon="mdi-arrow-left"
           color="secondary"
-          @click="newThread"
-          :disabled="!forum.permissions.write"
+          @click="$router.back()"
         >
-          {{ $t('action.WRITE') }}
+          {{ $t('action.BACK') }}
         </v-btn>
-        <v-tooltip
-          location="bottom"
-          :text="$t('forum.THREAD_TRASH')"
-          v-if="$store.isStaff"
-        >
-          <template v-slot:activator="{ props }">
-            <v-btn
-              v-bind="props"
-              icon="mdi-trash-can-outline"
-              density="comfortable"
-              variant="text"
-              color="pale"
-              class="ml-1"
-              @click="$router.push(
-                {
-                  name: 'thread.trash',
-                  params: {
-                    forum: forum.name
-                  }
-                }
-              )"
-            >
-            </v-btn>
-          </template>
-        </v-tooltip>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col>
         <v-table
-          density="comfortable"
+          density="compact"
           :hover="true"
         >
           <thead>
@@ -93,13 +67,6 @@
                   }"
                 >
                   {{ thread.title }}
-                  <span
-                    v-if="thread.reply_count"
-                    class="font-weight-bold"
-                    style="color: #2384e2;"
-                  >
-                    [{{ thread.reply_count }}]
-                  </span>
                 </router-link>
               </td>
               <td>{{ getUsername(thread) }}</td>
@@ -112,7 +79,7 @@
 
     <NumberPagination
       :pagination="pagination"
-      :getItems="threadPage"
+      :getItems="trashPage"
       :page="parseInt(page)"
     />
 
@@ -137,7 +104,7 @@ export default {
       forum: null,
       threads: [],
       pagination : null,
-      pageSize: 20,
+      pageSize: 100,
       page: 1,
       init: false,
     }
@@ -146,12 +113,12 @@ export default {
     if (this.$route.params.page) {
       this.page = this.$route.params.page
     }
-    this.getThreads(this.page, this.$route.query.q)
+    this.getTrash(this.page, this.$route.query.q)
   },
   methods: {
-    threadPage(page=1) {
+    trashPage(page=1) {
       this.$router.push({
-        name: 'thread.page',
+        name: 'thread.trash.page',
         params: {
           forum: this.forum.name,
           page: page,
@@ -172,7 +139,7 @@ export default {
     escapeTitle(title) {
       return title.replace(/ /g, '_')
     },
-    getThreads(page=1, search=null) {
+    getTrash(page=1, search=null) {
       const vm = this
 
       let q = ''
@@ -180,10 +147,10 @@ export default {
         q = '&q=' + search
       }
 
-      let url = `${this.$api('THREAD_LIST').url}?page_size=${this.pageSize}&page=${page}${q}`
+      let url = `${this.$api('THREAD_TRASH').url}?page_size=${this.pageSize}&page=${page}${q}`
 
       this.$axios({
-        method: this.$api('THREAD_LIST').method,
+        method: this.$api('THREAD_TRASH').method,
         url: url.replace('{forum}', this.$route.params.forum),
       })
       .then(function (response) {
@@ -194,15 +161,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_LIST'))
-      })
-    },
-    newThread() {
-      this.$router.push({
-        name: 'thread.write',
-        params: {
-          forum: this.$route.params.forum
-        }
+        vm.$toast.error(useError(error, 'THREAD_TRASH'))
       })
     },
   }

@@ -30,10 +30,12 @@
         "SIGNUP": "회원가입",
         "REGISTER": "등록",
         "LOGOUT": "로그아웃",
+        "BACK": "돌아가기",
         "SEND": "보내기",
         "SAVE": "저장",
         "OK": "확인",
         "NEW": "만들기",
+        "WRITE": "글쓰기",
         "CANCEL": "취소",
         "CHANGE": "변경",
         "EDIT": "편집",
@@ -41,11 +43,12 @@
         "DELETE": "삭제",
         "DELETE_FORUM": "포럼 삭제",
         "DELETE_THREAD": "글 삭제",
-        "DELETE_USER": "강퇴하기",
+        "RESTORE_THREAD": "글 복구",
         "REMOVE": "제거",
         "EXPORT": "내보내기",
         "TERMS": "이용약관",
         "PRIVACY": "개인정보처리방침",
+        "DELETE_USER": "강퇴하기",
         "DELETE_ACCOUNT": "탈퇴하기"
     },
     "accounts": {
@@ -164,7 +167,8 @@
         "LOGOUT_COMPLETE": "로그아웃되었습니다.",
         "CREATED_SUCCESSFULLY": "생성했습니다.",
         "SAVED_SUCCESSFULLY": "저장했습니다.",
-        "DELETED_SUCCESSFULLY": "삭제했습니다."
+        "DELETED_SUCCESSFULLY": "삭제했습니다.",
+        "RESTORED_SUCCESSFULLY": "복구했습니다."
     },
     "error": {
         "REQUIRED_FIELD": "* 필수",

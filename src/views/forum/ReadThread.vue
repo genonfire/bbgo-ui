@@ -48,6 +48,7 @@
         <v-tooltip
           location="bottom"
           :text="$t('action.EDIT')"
+          v-if="!thread.is_deleted"
         >
           <template v-slot:activator="{ props }">
             <v-btn
@@ -62,9 +63,19 @@
             </v-btn>
           </template>
         </v-tooltip>
+        <v-btn
+          variant="outlined"
+          prepend-icon="mdi-restore"
+          color="secondary"
+          @click="restoreThread"
+          v-if="thread.is_deleted"
+        >
+          {{ $t('action.RESTORE_THREAD') }}
+        </v-btn>
         <v-tooltip
           location="bottom"
-          :text="$t('action.DELETE')"
+          :text="$t('action.DELETE_THREAD')"
+          v-else
         >
           <template v-slot:activator="{ props }">
             <v-btn
@@ -304,6 +315,22 @@ export default {
         vm.$toast.error(useError(error, 'THREAD_DELETE'))
       })
     },
+    restoreThread() {
+      const vm = this
+
+      this.$axios({
+        method: this.$api('THREAD_RESTORE').method,
+        url: this.$api('THREAD_RESTORE').url.replace('{forum}', this.thread.forum.name).replace('{pk}', this.thread.id),
+      })
+      .then(function (response) {
+        vm.deleteDialog = false
+        vm.$toast.success(vm.$t('message.RESTORED_SUCCESSFULLY'))
+        vm.backToList()
+      })
+      .catch(function (error) {
+        vm.$toast.error(useError(error, 'THREAD_RESTORE'))
+      })
+    },
     downloadFile(file) {
       useDownload('GET', file.file, file.filename)
     },
@@ -343,6 +370,7 @@ export default {
 
       th {
         font-weight: bold;
+        text-align: left;
         background-color: #ebebeb;
         color: #000;
       }

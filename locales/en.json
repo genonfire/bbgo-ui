@@ -30,10 +30,12 @@
         "SIGNUP": "Sign up",
         "REGISTER": "Register",
         "LOGOUT": "Log out",
+        "BACK": "Back",
         "SEND": "Send",
         "SAVE": "Save",
         "OK": "OK",
         "NEW": "New",
+        "WRITE": "Write",
         "CANCEL": "Cancel",
         "CHANGE": "Change",
         "EDIT": "Edit",
@@ -41,11 +43,12 @@
         "DELETE": "Delete",
         "DELETE_FORUM": "Delete forum",
         "DELETE_THREAD": "Delete thread",
-        "DELETE_USER": "Delete user",
+        "RESTORE_THREAD": "Restore",
         "REMOVE": "Remove",
         "EXPORT": "Export",
         "TERMS": "Terms of Use",
         "PRIVACY": "Privacy Policy",
+        "DELETE_USER": "Delete user",
         "DELETE_ACCOUNT": "Delete account"
     },
     "accounts": {
@@ -164,7 +167,8 @@
         "LOGOUT_COMPLETE": "You are Successfully logged out.",
         "CREATED_SUCCESSFULLY": "Created successfully.",
         "SAVED_SUCCESSFULLY": "Saved successfully.",
-        "DELETED_SUCCESSFULLY": "Deleted successfully."
+        "DELETED_SUCCESSFULLY": "Deleted successfully.",
+        "RESTORED_SUCCESSFULLY": "Restored successfully."
     },
     "error": {
         "REQUIRED_FIELD": "* Required.",
