@@ -37,6 +37,7 @@
         "CANCEL": "Cancel",
         "CHANGE": "Change",
         "EDIT": "Edit",
+        "TOGGLE_PIN": "Pin/Unpin",
         "DELETE": "Delete",
         "DELETE_FORUM": "Delete forum",
         "DELETE_THREAD": "Delete thread",

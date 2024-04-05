@@ -98,6 +98,12 @@
             style="cursor: pointer;"
             @click="togglePin"
           >
+            <v-tooltip
+              activator="parent"
+              location="bottom"
+            >
+              {{ $t('action.TOGGLE_PIN') }}
+            </v-tooltip>
             {{ thread.title }}
           </a>
         </span>

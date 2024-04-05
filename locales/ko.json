@@ -37,6 +37,7 @@
         "CANCEL": "취소",
         "CHANGE": "변경",
         "EDIT": "편집",
+        "TOGGLE_PIN": "고정/고정 해제",
         "DELETE": "삭제",
         "DELETE_FORUM": "포럼 삭제",
         "DELETE_THREAD": "글 삭제",
