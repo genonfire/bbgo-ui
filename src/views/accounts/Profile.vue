@@ -174,7 +174,6 @@
 
 <script>
 import useRules from '@/composables/rules'
-import { useError } from '@/composables/error'
 
 export default {
   setup() {
@@ -199,7 +198,7 @@ export default {
       vm.user = response.data['data']
     })
     .catch(function (error) {
-      vm.$toast.error(useError(error, 'ACCOUNTS_GET_PROFILE'))
+      vm.$toast.error(vm.$error(error, 'ACCOUNTS_GET_PROFILE'))
     })
   },
   methods: {
@@ -216,7 +215,7 @@ export default {
         vm.$store.setUser(response.data['data'])
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ACCOUNTS_EDIT_PROFILE'))
+        vm.$toast.error(vm.$error(error, 'ACCOUNTS_EDIT_PROFILE'))
       })
     },
     deletePhoto() {
@@ -253,7 +252,7 @@ export default {
         vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ACCOUNTS_EDIT_PROFILE'))
+        vm.$toast.error(vm.$error(error, 'ACCOUNTS_EDIT_PROFILE'))
       })
     },
   }

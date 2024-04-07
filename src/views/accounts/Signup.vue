@@ -137,7 +137,6 @@
 
 <script>
 import useRules from '@/composables/rules'
-import { useError } from '@/composables/error'
 
 export default {
   setup() {
@@ -174,7 +173,7 @@ export default {
         vm.$toast.success(vm.$t('message.SIGNUP_COMPLETE'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ACCOUNTS_SIGNUP'))
+        vm.$toast.error(vm.$error(error, 'ACCOUNTS_SIGNUP'))
       })
     },
   }

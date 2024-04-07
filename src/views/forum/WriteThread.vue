@@ -97,7 +97,6 @@
 
 <script>
 import Tiptap from '@/components/Tiptap'
-import { useError } from '@/composables/error'
 import { useFile } from '@/composables/file'
 
 export default {
@@ -148,7 +147,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_SEEK'))
+        vm.$toast.error(vm.$error(error, 'THREAD_SEEK'))
       })
     },
     save() {
@@ -186,7 +185,7 @@ export default {
         })
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_WRITE'))
+        vm.$toast.error(vm.$error(error, 'THREAD_WRITE'))
       })
     },
     allowDrop(event) {
@@ -218,7 +217,7 @@ export default {
             vm.fileChips.push(response.data['data'])
           })
           .catch(function (error) {
-            vm.$toast.error(useError(error, 'FILE_UPLOAD'))
+            vm.$toast.error(vm.$error(error, 'FILE_UPLOAD'))
           })
         }
 

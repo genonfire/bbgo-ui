@@ -16,6 +16,7 @@ import App from './App.vue'
 
 // Composables
 import { createApp } from 'vue'
+import { useError } from '@/composables/error'
 
 const app = createApp(App)
 
@@ -23,6 +24,7 @@ registerPlugins(app)
 
 app.config.globalProperties.$axios = axios
 app.config.globalProperties.$toast = toast
+app.config.globalProperties.$error = useError
 app.config.globalProperties.$store = useAppStore()
 app.config.globalProperties.$api = (key) => APIs[key]
 

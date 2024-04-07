@@ -432,7 +432,6 @@
 import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import useRules from '@/composables/rules'
-import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
 import { useDownload } from '@/composables/download'
 
@@ -497,7 +496,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
     onTabUpdate() {
@@ -528,7 +527,7 @@ export default {
         vm.user = response.data['data']
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
     editUser(user) {
@@ -555,7 +554,7 @@ export default {
         vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
     updatePhoto(data) {
@@ -575,7 +574,7 @@ export default {
         vm.user = response.data['data']
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
     deletePhoto() {
@@ -624,7 +623,7 @@ export default {
         vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
   }

@@ -102,7 +102,6 @@
 
 <script>
 import useRules from '@/composables/rules'
-import { useError } from '@/composables/error'
 
 export default {
   setup() {
@@ -137,7 +136,7 @@ export default {
         vm.done = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ACCOUNTS_PASSWORD_CHANGE'))
+        vm.$toast.error(vm.$error(error, 'ACCOUNTS_PASSWORD_CHANGE'))
       })
     }
   }

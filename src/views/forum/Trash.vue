@@ -88,7 +88,6 @@
 
 <script>
 import NumberPagination from '@/components/NumberPagination'
-import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
 
 export default {
@@ -161,7 +160,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_TRASH'))
+        vm.$toast.error(vm.$error(error, 'THREAD_TRASH'))
       })
     },
   }

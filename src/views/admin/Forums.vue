@@ -364,7 +364,6 @@
 import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import useRules from '@/composables/rules'
-import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
 
 export default {
@@ -446,7 +445,7 @@ export default {
         vm.managerList = vm.dataToItems(response.data['data'])
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ADMIN_STAFFS'))
+        vm.$toast.error(vm.$error(error, 'ADMIN_STAFFS'))
       })
     },
     getForums(page=1) {
@@ -475,7 +474,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'FORUMS'))
+        vm.$toast.error(vm.$error(error, 'FORUMS'))
       })
     },
     onEnter() {
@@ -493,7 +492,7 @@ export default {
         vm.managers = vm.dataToItems(response.data['data']['managers'])
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'FORUM'))
+        vm.$toast.error(vm.$error(error, 'FORUM'))
       })
     },
     newForum() {
@@ -537,7 +536,7 @@ export default {
         vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'FORUM_DELETE'))
+        vm.$toast.error(vm.$error(error, 'FORUM_DELETE'))
       })
     },
     goForum(forum) {
@@ -580,7 +579,7 @@ export default {
         }
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
   }

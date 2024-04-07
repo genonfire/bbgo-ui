@@ -206,7 +206,6 @@
 </template>
 
 <script>
-import { useError } from '@/composables/error'
 import { useFormatDate } from '@/composables/datetime'
 import { useDownload } from '@/composables/download'
 import { useFile } from '@/composables/file'
@@ -261,7 +260,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_READ'))
+        vm.$toast.error(vm.$error(error, 'THREAD_READ'))
       })
     },
     togglePin() {
@@ -287,7 +286,7 @@ export default {
         }
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, api))
+        vm.$toast.error(vm.$error(error, api))
       })
     },
     editThread() {
@@ -312,7 +311,7 @@ export default {
         vm.backToList()
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_DELETE'))
+        vm.$toast.error(vm.$error(error, 'THREAD_DELETE'))
       })
     },
     restoreThread() {
@@ -328,7 +327,7 @@ export default {
         vm.backToList()
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_RESTORE'))
+        vm.$toast.error(vm.$error(error, 'THREAD_RESTORE'))
       })
     },
     downloadFile(file) {

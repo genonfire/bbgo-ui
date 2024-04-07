@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import { useError } from '@/composables/error'
-
 export default {
   computed: {
     menu() {
@@ -66,7 +64,7 @@ export default {
         vm.$toast.info(vm.$t('message.LOGOUT_COMPLETE'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ACCOUNTS_LOGOUT'))
+        vm.$toast.error(vm.$error(error, 'ACCOUNTS_LOGOUT'))
       })
     }
   }

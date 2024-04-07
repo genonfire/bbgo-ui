@@ -70,7 +70,6 @@
 
 <script>
 import useRules from '@/composables/rules'
-import { useError } from '@/composables/error'
 
 export default {
   setup() {
@@ -101,7 +100,7 @@ export default {
         vm.done = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'ACCOUNTS_DEACTIVATE'))
+        vm.$toast.error(vm.$error(error, 'ACCOUNTS_DEACTIVATE'))
       })
     }
   }

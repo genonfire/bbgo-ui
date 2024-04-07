@@ -97,7 +97,6 @@
 
 <script>
 import Tiptap from '@/components/Tiptap'
-import { useError } from '@/composables/error'
 import { useFile } from '@/composables/file'
 
 export default {
@@ -146,7 +145,7 @@ export default {
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_READ'))
+        vm.$toast.error(vm.$error(error, 'THREAD_READ'))
       })
     },
     save() {
@@ -166,7 +165,7 @@ export default {
         vm.$router.back()
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_EDIT'))
+        vm.$toast.error(vm.$error(error, 'THREAD_EDIT'))
       })
     },
     allowDrop(event) {
@@ -210,11 +209,11 @@ export default {
             .then(function (response) {
             })
             .catch(function (error) {
-              vm.$toast.error(useError(error, 'THREAD_ATTACH_FILES'))
+              vm.$toast.error(vm.$error(error, 'THREAD_ATTACH_FILES'))
             })
           })
           .catch(function (error) {
-            vm.$toast.error(useError(error, 'FILE_UPLOAD'))
+            vm.$toast.error(vm.$error(error, 'FILE_UPLOAD'))
           })
         }
       }
@@ -238,7 +237,7 @@ export default {
         vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'THREAD_DELETE_FILES'))
+        vm.$toast.error(vm.$error(error, 'THREAD_DELETE_FILES'))
       })
     },
   }

@@ -348,7 +348,7 @@ export default {
         vm.fileURL = response.data['data']['file']
       })
       .catch(function (error) {
-        vm.$toast.error(useError(error, 'FILE_UPLOAD'))
+        vm.$toast.error(vm.$error(error, 'FILE_UPLOAD'))
       })
     },
     handleFileChange() {
