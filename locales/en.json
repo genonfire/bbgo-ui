@@ -102,7 +102,8 @@
         "THREAD_TRASH": "Trash",
         "ADD_COMMENT": "Add a comment",
         "REPLY": "Reply",
-        "Author": "Author"
+        "AUTHOR": "Author",
+        "DELETED_COMMENT": "[Deleted]"
     },
     "tiptap": {
         "UNDO": "Undo",

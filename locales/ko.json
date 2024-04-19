@@ -102,7 +102,8 @@
         "THREAD_TRASH": "휴지통",
         "ADD_COMMENT": "댓글 달기",
         "REPLY": "댓글",
-        "Author": "작성자"
+        "AUTHOR": "작성자",
+        "DELETED_COMMENT": "[삭제됨]"
     },
     "tiptap": {
         "UNDO": "실행 취소",

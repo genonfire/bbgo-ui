@@ -15,7 +15,7 @@
         prepend-icon="mdi-plus"
         color="secondary"
         class="my-5"
-        @click="newReply"
+        @click="writeReply(0)"
         v-if="thread.forum.permissions.reply"
       >
         {{ $t('forum.ADD_COMMENT') }}
@@ -39,7 +39,7 @@
           class="mr-2"
           v-if="reply.user.id == thread.user.id"
         >
-          {{ $t('forum.Author') }}
+          {{ $t('forum.AUTHOR') }}
         </v-chip>
         <span
           class="font-weight-bold"
@@ -53,38 +53,45 @@
         </span>
       </v-card-text>
       <v-card-text
-        class="py-0 px-5"
+        class="py-2"
+        v-if="!reply.is_deleted"
       >
         {{ reply.content }}
+        <v-card-actions
+          class="pl-0 d-flex"
+        >
+          <v-btn
+            variant="text"
+            prepend-icon="mdi-message-reply-outline"
+            @click="writeReply(reply.id)"
+          >
+            {{ $t('forum.REPLY') }}
+          </v-btn>
+          <v-btn
+            variant="text"
+            prepend-icon="mdi-pencil-outline"
+            @click="editReply(reply.id)"
+            v-if="reply.editable"
+          >
+            {{ $t('action.EDIT') }}
+          </v-btn>
+          <v-btn
+            variant="text"
+            prepend-icon="mdi-trash-can-outline"
+            color="secondary"
+            @click="deleteReply(reply.id)"
+            v-if="reply.editable"
+          >
+            {{ $t('action.DELETE') }}
+          </v-btn>
+        </v-card-actions>
       </v-card-text>
-      <v-card-actions
-        class="pl-3 py-0 d-flex"
+      <v-card-text
+        class="py-2"
+        v-else
       >
-        <v-btn
-          variant="text"
-          prepend-icon="mdi-message-reply-outline"
-          @click="newReply(reply.id)"
-        >
-          {{ $t('forum.REPLY') }}
-        </v-btn>
-        <v-btn
-          variant="text"
-          prepend-icon="mdi-pencil-outline"
-          @click="editReply(reply.id)"
-          v-if="reply.editable"
-        >
-          {{ $t('action.EDIT') }}
-        </v-btn>
-        <v-btn
-          variant="text"
-          prepend-icon="mdi-trash-can-outline"
-          color="secondary"
-          @click="deleteReply(reply.id)"
-          v-if="reply.editable"
-        >
-          {{ $t('action.DELETE') }}
-        </v-btn>
-      </v-card-actions>
+        {{ $t('forum.DELETED_COMMENT') }}
+      </v-card-text>
     </v-card>
   </v-container>
 </template>
@@ -106,6 +113,7 @@ export default {
       pageSize: 50,
       init: false,
       replyDialog: false,
+      replyId: 0,
     }
   },
   mounted() {
@@ -128,7 +136,11 @@ export default {
         vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
       })
     },
-    newReply(replyId=0) {
+    writeReply(replyId) {
+      this.replyId = replyId
+      this.replyDialog = true
+    },
+    saveReply() {
     },
     editReply(replyId) {
     },
