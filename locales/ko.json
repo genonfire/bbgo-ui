@@ -99,7 +99,10 @@
         "THREAD_PINNED": "고정했습니다.",
         "THREAD_UNPINNED": "고정 해제했습니다.",
         "THREAD_RESTORED": "복구했습니다.",
-        "THREAD_TRASH": "휴지통"
+        "THREAD_TRASH": "휴지통",
+        "ADD_COMMENT": "댓글 달기",
+        "REPLY": "댓글",
+        "Author": "작성자"
     },
     "tiptap": {
         "UNDO": "실행 취소",

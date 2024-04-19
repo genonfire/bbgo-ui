@@ -99,7 +99,10 @@
         "THREAD_PINNED": "Pinned",
         "THREAD_UNPINNED": "Unpinned",
         "THREAD_RESTORED": "Thread restored",
-        "THREAD_TRASH": "Trash"
+        "THREAD_TRASH": "Trash",
+        "ADD_COMMENT": "Add a comment",
+        "REPLY": "Reply",
+        "Author": "Author"
     },
     "tiptap": {
         "UNDO": "Undo",
