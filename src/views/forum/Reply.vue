@@ -57,6 +57,7 @@
         v-if="!reply.is_deleted"
       >
         {{ reply.content }}
+
         <v-card-actions
           class="pl-0 d-flex"
         >
@@ -93,10 +94,24 @@
         {{ $t('forum.DELETED_COMMENT') }}
       </v-card-text>
     </v-card>
+
+    <div v-if="loading">
+      <v-progress-linear
+        indeterminate
+        :height="1"
+        color="secondary"
+      ></v-progress-linear>
+    </div>
+
+    <Observer
+      @show="getMoreReplies"
+    />
+
   </v-container>
 </template>
 
 <script>
+import Observer from '@/components/Observer'
 import { useFormatDate } from '@/composables/datetime'
 
 export default {
@@ -107,13 +122,17 @@ export default {
     const { formatDateOrTime } = useFormatDate()
     return { formatDateOrTime }
   },
+  components: {
+      Observer
+    },
   data() {
     return {
       replies: null,
+      dataStored: [],
+      nextLink: null,
       pageSize: 50,
       init: false,
-      replyDialog: false,
-      replyId: 0,
+      loading: false,
     }
   },
   mounted() {
@@ -129,6 +148,7 @@ export default {
         url: url,
       })
       .then(function (response) {
+        vm.nextLink = response.data['pagination']['next_link']
         vm.replies = response.data['data']
         vm.init = true
       })
@@ -136,9 +156,38 @@ export default {
         vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
       })
     },
+    updateData() {
+      this.loading = false
+      this.replies = [...this.replies, ...this.dataStored]
+    },
+    getMoreReplies() {
+      if (!this.nextLink) {
+        return
+      }
+
+      const vm = this
+
+      this.usersStored = []
+      this.loading = true
+
+      this.$axios({
+        method: this.$api('THREAD_REPLIES').method,
+        url: this.nextLink,
+      })
+      .then(function (response) {
+        vm.nextLink = response.data['pagination']['next_link']
+        vm.dataStored = response.data['data']
+
+        setTimeout(
+          vm.updateData,
+          1000,
+        )
+      })
+      .catch(function (error) {
+        vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
+      })
+    },
     writeReply(replyId) {
-      this.replyId = replyId
-      this.replyDialog = true
     },
     saveReply() {
     },
