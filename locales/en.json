@@ -9,6 +9,7 @@
         "YES": "Yes",
         "NO": "No",
         "ACTIVE": "Active",
+        "DELETED": "Deleted",
         "DATE_CREATED": "Date created",
         "DATE": "Date",
         "ADMIN": "Admin"
@@ -23,6 +24,7 @@
         "DELETE_ACCOUNT": "Delete account",
         "MANAGE_USERS": "Manage users",
         "MANAGE_FORUMS": "Manage forums",
+        "MANAGE_THREADS": "Manage threads",
         "SITE_ADMIN": "Site admin"
     },
     "action": {
@@ -104,7 +106,8 @@
         "REPLY": "Reply",
         "AUTHOR": "Author",
         "DELETE_REPLY": "Delete reply?",
-        "DELETED_COMMENT": "[Deleted]"
+        "DELETED_COMMENT": "[Deleted]",
+        "THREADS": "Threads"
     },
     "tiptap": {
         "UNDO": "Undo",
@@ -156,6 +159,7 @@
         "SIGNUP_CONSENT": "By signing up, I agree with the {terms} & {privacy}.",
         "SEARCH_USERNAME_NAME": "Search by username, name",
         "SEARCH_NAME_TITLE": "Search by name, title",
+        "SEARCH_NAME_TITLE_CONTENTS": "Search by name, title, contents",
         "TALLY_ITEMS": "Tally {total} items",
         "PAGESIZE_BY": "by {pageSize}",
         "DROP_FILES_HERE": "Drop files here",

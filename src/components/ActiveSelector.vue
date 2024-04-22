@@ -4,7 +4,7 @@
     clearable
     variant="outlined"
     density="compact"
-    :label="$t('common.ACTIVE')"
+    :label="customLabel"
     :items="activeItems"
     item-title="text"
     item-value="value"
@@ -17,6 +17,7 @@ export default {
   props: {
     modelValue: String,
     getItems: Function,
+    label: String,
   },
   emits: [
     'update:modelValue'
@@ -43,7 +44,14 @@ export default {
       set(value) {
         this.$emit('update:modelValue', value)
       }
-    }
+    },
+    customLabel() {
+      if (!this.label) {
+        return this.$t('common.ACTIVE')
+      }
+
+      return this.label
+    },
   },
   methods: {
     onUpdateActive() {

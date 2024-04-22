@@ -11,4 +11,10 @@ export default [
     meta: { StaffOnly: true },
     component: () => import('@/views/admin/Forums.vue')
   },
+  {
+    path: 'threads',
+    name: 'admin.threads',
+    meta: { StaffOnly: true },
+    component: () => import('@/views/admin/Threads.vue')
+  },
 ]

@@ -88,7 +88,7 @@
                     params: {
                       forum: forum.name,
                       thread: thread.id,
-                      title: escapeTitle(thread.title)
+                      title: thread.title.replace(/ /g, '_')
                     }
                   }"
                 >
@@ -167,9 +167,6 @@ export default {
       else {
         return thread.name
       }
-    },
-    escapeTitle(title) {
-      return title.replace(/ /g, '_')
     },
     getThreads(page=1, search=null) {
       const vm = this

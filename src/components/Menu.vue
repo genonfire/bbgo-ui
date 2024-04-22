@@ -79,6 +79,11 @@ export default {
           to: { name: 'admin.forums' }
         },
         {
+          text: this.$t('menu.MANAGE_THREADS'),
+          icon: 'mdi-note-outline',
+          to: { name: 'admin.threads' }
+        },
+        {
           text: this.$t('menu.SITE_ADMIN'),
           icon: 'mdi-view-grid',
           url: import.meta.env.VITE_API_URL + 'admin/'

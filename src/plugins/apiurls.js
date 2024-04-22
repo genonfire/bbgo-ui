@@ -186,6 +186,14 @@ export default {
     'method': 'delete',
     'url': '/admin/users/staff/{pk}/'
   },
+  ADMIN_THREADS: {
+    'method': 'get',
+    'url': '/admin/threads/'
+  },
+  ADMIN_REPLIES: {
+    'method': 'get',
+    'url': '/admin/replies/'
+  },
   ADMIN_FILES: {
     'method': 'get',
     'url': '/admin/files/'

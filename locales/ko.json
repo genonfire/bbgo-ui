@@ -9,6 +9,7 @@
         "YES": "예",
         "NO": "아니오",
         "ACTIVE": "활성",
+        "DELETED": "삭제됨",
         "DATE_CREATED": "생성일",
         "DATE": "날짜",
         "ADMIN": "관리자"
@@ -23,6 +24,7 @@
         "DELETE_ACCOUNT": "회원 탈퇴",
         "MANAGE_USERS": "사용자 관리",
         "MANAGE_FORUMS": "포럼 관리",
+        "MANAGE_THREADS": "게시글 관리",
         "SITE_ADMIN": "사이트 관리"
     },
     "action": {
@@ -104,7 +106,8 @@
         "REPLY": "댓글",
         "AUTHOR": "작성자",
         "DELETE_REPLY": "댓글을 삭제하시겠습니까?",
-        "DELETED_COMMENT": "[삭제됨]"
+        "DELETED_COMMENT": "[삭제됨]",
+        "THREADS": "게시글"
     },
     "tiptap": {
         "UNDO": "실행 취소",
@@ -156,6 +159,7 @@
         "SIGNUP_CONSENT": "{terms} 및 {privacy}에 동의합니다.",
         "SEARCH_USERNAME_NAME": "아이디, 이름으로 검색",
         "SEARCH_NAME_TITLE": "포럼 아이디, 포럼명으로 검색",
+        "SEARCH_NAME_TITLE_CONTENTS": "이름, 제목, 내용으로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",
