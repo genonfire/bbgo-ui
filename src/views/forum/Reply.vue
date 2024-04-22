@@ -15,16 +15,46 @@
         prepend-icon="mdi-plus"
         color="secondary"
         class="my-5"
-        @click="writeReply(0)"
+        @click="commenting = true"
         v-if="thread.forum.permissions.reply"
       >
         {{ $t('forum.ADD_COMMENT') }}
       </v-btn>
+
+      <div
+          class="text-right"
+          v-if="commenting"
+        >
+          <v-textarea
+            v-model="comment"
+            rows="3"
+            variant="outlined"
+          >
+          </v-textarea>
+          <v-btn
+            variant="flat"
+            density="comfortable"
+            color="ashen"
+            class="mr-2"
+            @click="cancelReply(-1)"
+          >
+            {{ $t('action.CANCEL') }}
+          </v-btn>
+          <v-btn
+            variant="flat"
+            density="comfortable"
+            color="secondary"
+            @click="saveReply(-1, 0)"
+            :disabled="!comment"
+          >
+            {{ $t('action.SAVE') }}
+          </v-btn>
+        </div>
     </div>
 
     <v-card
       variant="flat"
-      v-for="reply in replies"
+      v-for="(reply, index) in replies"
       :key="reply.id"
       :class="reply.reply_id ? 'ml-5': ''"
       :disabled="reply.is_deleted"
@@ -64,17 +94,9 @@
           <v-btn
             variant="text"
             prepend-icon="mdi-message-reply-outline"
-            @click="writeReply(reply.id)"
+            @click="replying[index] = true"
           >
             {{ $t('forum.REPLY') }}
-          </v-btn>
-          <v-btn
-            variant="text"
-            prepend-icon="mdi-pencil-outline"
-            @click="editReply(reply.id)"
-            v-if="reply.editable"
-          >
-            {{ $t('action.EDIT') }}
           </v-btn>
           <v-btn
             variant="text"
@@ -86,6 +108,36 @@
             {{ $t('action.DELETE') }}
           </v-btn>
         </v-card-actions>
+
+        <div
+          class="text-right"
+          v-if="replying[index]"
+        >
+          <v-textarea
+            v-model="textareas[index]"
+            rows="3"
+            variant="outlined"
+          >
+          </v-textarea>
+          <v-btn
+            variant="flat"
+            density="comfortable"
+            color="ashen"
+            class="mr-2"
+            @click="cancelReply(index)"
+          >
+            {{ $t('action.CANCEL') }}
+          </v-btn>
+          <v-btn
+            variant="flat"
+            density="comfortable"
+            color="secondary"
+            @click="saveReply(index, reply.id)"
+            :disabled="!textareas[index]"
+          >
+            {{ $t('action.SAVE') }}
+          </v-btn>
+        </div>
       </v-card-text>
       <v-card-text
         class="py-2"
@@ -129,10 +181,15 @@ export default {
     return {
       replies: null,
       dataStored: [],
+      test: null,
       nextLink: null,
       pageSize: 50,
       init: false,
       loading: false,
+      comment: null,
+      commenting: false,
+      textareas: [],
+      replying: [],
     }
   },
   mounted() {
@@ -150,6 +207,10 @@ export default {
       .then(function (response) {
         vm.nextLink = response.data['pagination']['next_link']
         vm.replies = response.data['data']
+        vm.replying = new Array(vm.replies.length).fill(false)
+        vm.textareas = new Array(vm.replies.length).fill(null)
+        vm.commenting = false
+        vm.comment = null
         vm.init = true
       })
       .catch(function (error) {
@@ -157,8 +218,12 @@ export default {
       })
     },
     updateData() {
-      this.loading = false
       this.replies = [...this.replies, ...this.dataStored]
+      this.replying = new Array(this.replies.length).fill(false)
+      this.textareas = new Array(this.replies.length).fill(null)
+      this.commenting = false
+      this.comment = null
+      this.loading = false
     },
     getMoreReplies() {
       if (!this.nextLink) {
@@ -187,13 +252,58 @@ export default {
         vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
       })
     },
-    writeReply(replyId) {
+    cancelReply(index) {
+      if (index == -1) {
+        this.commenting = false
+        this.comment = null
+      }
+      else {
+        this.replying[index] = false
+        this.textareas[index] = null
+      }
     },
-    saveReply() {
-    },
-    editReply(replyId) {
+    saveReply(index, replyId) {
+      const vm = this
+
+      let data = {
+        reply_id: replyId,
+        content: this.textareas[index]
+      }
+
+      if (index == -1) {
+        data = {
+          content: this.comment
+        }
+      }
+
+      this.$axios({
+        method: this.$api('THREAD_REPLY').method,
+        url: this.$api('THREAD_REPLY').url.replace('{pk}', this.thread.id),
+        data: data
+      })
+      .then(function (response) {
+        vm.getReplies()
+      })
+      .catch(function (error) {
+        vm.$toast.error(vm.$error(error, 'THREAD_REPLY'))
+      })
     },
     deleteReply(replyId) {
+      const vm = this
+
+      if (confirm(this.$t('forum.DELETE_REPLY'))) {
+        this.$axios({
+          method: this.$api('REPLY_DELETE').method,
+          url: this.$api('REPLY_DELETE').url.replace('{pk}', replyId),
+        })
+        .then(function (response) {
+          vm.getReplies()
+          vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
+        })
+        .catch(function (error) {
+          vm.$toast.error(vm.$error(error, 'REPLY_DELETE'))
+        })
+      }
     },
   }
 }

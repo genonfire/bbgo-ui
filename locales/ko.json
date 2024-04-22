@@ -103,6 +103,7 @@
         "ADD_COMMENT": "댓글 달기",
         "REPLY": "댓글",
         "AUTHOR": "작성자",
+        "DELETE_REPLY": "댓글을 삭제하시겠습니까?",
         "DELETED_COMMENT": "[삭제됨]"
     },
     "tiptap": {

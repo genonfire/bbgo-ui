@@ -103,6 +103,7 @@
         "ADD_COMMENT": "Add a comment",
         "REPLY": "Reply",
         "AUTHOR": "Author",
+        "DELETE_REPLY": "Delete reply?",
         "DELETED_COMMENT": "[Deleted]"
     },
     "tiptap": {
