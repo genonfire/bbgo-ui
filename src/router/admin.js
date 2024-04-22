@@ -17,4 +17,10 @@ export default [
     meta: { StaffOnly: true },
     component: () => import('@/views/admin/Threads.vue')
   },
+  {
+    path: 'replies',
+    name: 'admin.replies',
+    meta: { StaffOnly: true },
+    component: () => import('@/views/admin/Replies.vue')
+  },
 ]

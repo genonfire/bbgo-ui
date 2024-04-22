@@ -25,6 +25,7 @@
         "MANAGE_USERS": "Manage users",
         "MANAGE_FORUMS": "Manage forums",
         "MANAGE_THREADS": "Manage threads",
+        "MANAGE_REPLIES": "Manage replies",
         "SITE_ADMIN": "Site admin"
     },
     "action": {
@@ -95,6 +96,7 @@
         "DELETE_THREAD": "Delete thread?",
         "THREAD_TITLE": "Title",
         "THREAD_USER": "User",
+        "CONTENT": "Content",
         "THREAD_COUNT": "Thread count",
         "REPLY_COUNT": "Reply count",
         "ATTACHMENTS": "Attachments",
@@ -107,7 +109,8 @@
         "AUTHOR": "Author",
         "DELETE_REPLY": "Delete reply?",
         "DELETED_COMMENT": "[Deleted]",
-        "THREADS": "Threads"
+        "THREADS": "Threads",
+        "REPLIES": "Replies"
     },
     "tiptap": {
         "UNDO": "Undo",
@@ -160,6 +163,7 @@
         "SEARCH_USERNAME_NAME": "Search by username, name",
         "SEARCH_NAME_TITLE": "Search by name, title",
         "SEARCH_NAME_TITLE_CONTENTS": "Search by name, title, contents",
+        "SEARCH_NAME_CONTENTS": "Search by name, contents",
         "TALLY_ITEMS": "Tally {total} items",
         "PAGESIZE_BY": "by {pageSize}",
         "DROP_FILES_HERE": "Drop files here",

@@ -84,6 +84,11 @@ export default {
           to: { name: 'admin.threads' }
         },
         {
+          text: this.$t('menu.MANAGE_REPLIES'),
+          icon: 'mdi-message-reply-outline',
+          to: { name: 'admin.replies' }
+        },
+        {
           text: this.$t('menu.SITE_ADMIN'),
           icon: 'mdi-view-grid',
           url: import.meta.env.VITE_API_URL + 'admin/'

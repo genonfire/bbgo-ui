@@ -25,6 +25,7 @@
         "MANAGE_USERS": "사용자 관리",
         "MANAGE_FORUMS": "포럼 관리",
         "MANAGE_THREADS": "게시글 관리",
+        "MANAGE_REPLIES": "댓글 관리",
         "SITE_ADMIN": "사이트 관리"
     },
     "action": {
@@ -95,6 +96,7 @@
         "DELETE_THREAD": "글을 삭제하시겠습니까?",
         "THREAD_TITLE": "제목",
         "THREAD_USER": "글쓴이",
+        "CONTENT": "내용",
         "THREAD_COUNT": "게시글 수",
         "REPLY_COUNT": "댓글 수",
         "ATTACHMENTS": "첨부 파일",
@@ -107,7 +109,8 @@
         "AUTHOR": "작성자",
         "DELETE_REPLY": "댓글을 삭제하시겠습니까?",
         "DELETED_COMMENT": "[삭제됨]",
-        "THREADS": "게시글"
+        "THREADS": "게시글",
+        "REPLIES": "댓글"
     },
     "tiptap": {
         "UNDO": "실행 취소",
@@ -160,6 +163,7 @@
         "SEARCH_USERNAME_NAME": "아이디, 이름으로 검색",
         "SEARCH_NAME_TITLE": "포럼 아이디, 포럼명으로 검색",
         "SEARCH_NAME_TITLE_CONTENTS": "이름, 제목, 내용으로 검색",
+        "SEARCH_NAME_CONTENTS": "이름, 내용으로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",

@@ -20,6 +20,11 @@ export default [
     component: () => import('@/views/forum/ReadThread.vue')
   },
   {
+    path: 'f/:forum/read/:thread/:reply/:title',
+    name: 'thread.reply',
+    component: () => import('@/views/forum/ReadThread.vue')
+  },
+  {
     path: 'f/:forum/edit/:thread/',
     name: 'thread.edit',
     component: () => import('@/views/forum/EditThread.vue')

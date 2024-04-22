@@ -8,7 +8,7 @@
       <v-col
         class="text-h5 font-weight-bold py-2"
       >
-        {{ $t('forum.THREADS') }}
+        {{ $t('forum.REPLIES') }}
       </v-col>
     </v-row>
 
@@ -22,7 +22,7 @@
           density="compact"
           hide-details
           prepend-inner-icon="mdi-magnify"
-          :placeholder="$t('hint.SEARCH_NAME_TITLE_CONTENTS')"
+          :placeholder="$t('hint.SEARCH_NAME_CONTENTS')"
           @keydown.enter="onEnter"
         >
         </v-text-field>
@@ -33,7 +33,7 @@
       >
         <ActiveSelector
           v-model="active"
-          :getItems="getThreads"
+          :getItems="getReplies"
         />
       </v-col>
     </v-row>
@@ -48,7 +48,7 @@
             <tr>
               <th>{{ $t('common.ID') }}</th>
               <th>{{ $t('forum.FORUM_NAME') }}</th>
-              <th>{{ $t('forum.THREAD_TITLE') }}</th>
+              <th>{{ $t('forum.CONTENT') }}</th>
               <th>{{ $t('forum.THREAD_USER') }}</th>
               <th>{{ $t('common.DATE_CREATED') }}</th>
               <th>{{ $t('common.ACTIVE') }}</th>
@@ -56,40 +56,34 @@
           </thead>
           <tbody>
             <tr
-              v-for="thread in threads"
-              :key="thread.id"
-              :style="thread.is_deleted ? { opacity: 0.5 } : ''"
+              v-for="reply in replies"
+              :key="reply.id"
+              :style="reply.is_deleted ? { opacity: 0.5 } : ''"
             >
-              <td>{{ thread.id }}</td>
-              <td>{{ thread.forum_name }}</td>
+              <td>{{ reply.id }}</td>
+              <td>{{ reply.forum_name }}</td>
               <td>
                 <router-link
                   :to="{
-                    name: 'thread.read',
+                    name: 'thread.reply',
                     params: {
-                      forum: thread.forum_name,
-                      thread: thread.id,
-                      title: thread.title.replace(/ /g, '_')
+                      forum: reply.forum_name,
+                      thread: reply.thread.id,
+                      reply:reply.id,
+                      title: reply.thread.title.replace(/ /g, '_')
                     }
                   }"
                 >
-                  {{ thread.title }}
-                  <span
-                    v-if="thread.reply_count"
-                    class="font-weight-bold"
-                    style="color: #2384e2;"
-                  >
-                    [{{ thread.reply_count }}]
-                  </span>
+                  {{ reply.content }}
                 </router-link>
               </td>
-              <td>{{ thread.user.call_name }}</td>
-              <td>{{ formatDateTime(thread.created_at) }}</td>
+              <td>{{ reply.user.call_name }}</td>
+              <td>{{ formatDateTime(reply.created_at) }}</td>
               <td>
                 <v-icon
                   icon="mdi-check-circle-outline"
                   color="success"
-                  v-if="!thread.is_deleted"
+                  v-if="!reply.is_deleted"
                 ></v-icon>
                 <v-icon
                   icon="mdi-close-circle-outline"
@@ -106,7 +100,7 @@
     <NumberPagination
       v-model="pageSize"
       :pagination="pagination"
-      :getItems="getThreads"
+      :getItems="getReplies"
     />
 
   </v-container>
@@ -135,7 +129,7 @@ export default {
   },
   data() {
     return {
-      threads: [],
+      replies: [],
       pagination : null,
       pageSize: 20,
       active: null,
@@ -154,10 +148,10 @@ export default {
     },
   },
   mounted() {
-    this.getThreads()
+    this.getReplies()
   },
   methods: {
-    getThreads(page=1) {
+    getReplies(page=1) {
       const vm = this
 
       let q = ''
@@ -170,24 +164,24 @@ export default {
         active = '&delete=' + this.delete
       }
 
-      let url = `${this.$api('ADMIN_THREADS').url}?page_size=${this.pageSize}&page=${page}${active}${q}`
+      let url = `${this.$api('ADMIN_REPLIES').url}?page_size=${this.pageSize}&page=${page}${active}${q}`
 
       this.$axios({
-        method: this.$api('ADMIN_THREADS').method,
+        method: this.$api('ADMIN_REPLIES').method,
         url: url,
       })
       .then(function (response) {
         vm.pagination = response.data['pagination']
-        vm.threads = response.data['data']
+        vm.replies = response.data['data']
 
         vm.init = true
       })
       .catch(function (error) {
-        vm.$toast.error(vm.$error(error, 'ADMIN_THREADS'))
+        vm.$toast.error(vm.$error(error, 'ADMIN_REPLIES'))
       })
     },
     onEnter() {
-      this.getThreads()
+      this.getReplies()
     },
     goThread(thread) {
       this.$router.push({

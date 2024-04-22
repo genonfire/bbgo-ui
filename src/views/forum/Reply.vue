@@ -56,6 +56,7 @@
       variant="flat"
       v-for="(reply, index) in replies"
       :key="reply.id"
+      :id="'reply_' + reply.id"
       :class="reply.reply_id ? 'ml-5': ''"
       :disabled="reply.is_deleted"
     >
@@ -190,12 +191,31 @@ export default {
       commenting: false,
       textareas: [],
       replying: [],
+      scrollTo: null,
     }
   },
   mounted() {
     this.getReplies()
+
+    if (this.$route.params.reply) {
+      this.scrollTo = 'reply_' + this.$route.params.reply
+    }
   },
   methods: {
+    scrollToReply() {
+      const targetSection = document.getElementById(this.scrollTo);
+
+      if (targetSection) {
+        targetSection.scrollIntoView(
+          {
+            behavior: 'smooth',
+            block: 'start',
+          }
+        )
+      }
+
+      this.scrollTo = null
+    },
     getReplies() {
       const vm = this
       const url = `${this.$api('THREAD_REPLIES').url.replace('{pk}', this.thread.id)}?page_size=${this.pageSize}`
@@ -212,6 +232,13 @@ export default {
         vm.commenting = false
         vm.comment = null
         vm.init = true
+
+        if (vm.scrollTo) {
+          setTimeout(
+            vm.scrollToReply,
+            300,
+          )
+        }
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
