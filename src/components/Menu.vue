@@ -74,6 +74,11 @@ export default {
           to: { name: 'admin.users' }
         },
         {
+          text: this.$t('menu.MANAGE_BLOGS'),
+          icon: 'mdi-post-outline',
+          to: { name: 'admin.blogs' }
+        },
+        {
           text: this.$t('menu.MANAGE_FORUMS'),
           icon: 'mdi-forum-outline',
           to: { name: 'admin.forums' }

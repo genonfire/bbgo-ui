@@ -141,6 +141,55 @@ export default {
     'url': 'communities/r/{pk}/down/'
   },
 
+  BLOG_OPTION: {
+    'method': 'get',
+    'url': 'contents/blog_option/'
+  },
+  EDIT_BLOG_OPTION: {
+    'method': 'patch',
+    'url': 'contents/blog_option/'
+  },
+  WRITE_BLOG: {
+    'method': 'post',
+    'url': 'contents/blog/'
+  },
+  EDIT_BLOG: {
+    'method': 'patch',
+    'url': 'contents/blog/{pk}/'
+  },
+  DELETE_BLOG: {
+    'method': 'delete',
+    'url': 'contents/blog/{pk}/'
+  },
+  BLOG_LIST: {
+    'method': 'get',
+    'url': 'contents/blogs/'
+  },
+  READ_BLOG: {
+    'method': 'get',
+    'url': 'contents/blogs/{pk}/'
+  },
+  LIKE_BLOG: {
+    'method': 'post',
+    'url': 'contents/blogs/{pk}/like/'
+  },
+  COMMENT: {
+    'method': 'post',
+    'url': 'contents/blogs/{pk}/comment/'
+  },
+  EDIT_COMMENT: {
+    'method': 'patch',
+    'url': 'contents/comment/{pk}/'
+  },
+  DELETE_COMMENT: {
+    'method': 'delete',
+    'url': 'contents/comment/{pk}/'
+  },
+  COMMENT_LIST: {
+    'method': 'get',
+    'url': 'contents/blogs/{pk}/comments/'
+  },
+
   FILE_UPLOAD: {
     'method': 'post',
     'url': '/things/file/'
@@ -185,6 +234,14 @@ export default {
   ADMIN_DELETE_STAFF: {
     'method': 'delete',
     'url': '/admin/users/staff/{pk}/'
+  },
+  ADMIN_BLOGS: {
+    'method': 'get',
+    'url': '/admin/blogs/'
+  },
+  ADMIN_COMMENTS: {
+    'method': 'get',
+    'url': '/admin/comments/'
   },
   ADMIN_THREADS: {
     'method': 'get',

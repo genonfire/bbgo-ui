@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAppStore } from '@/store/app'
 import AccountsRoutes from '@/router/accounts'
+import BlogRoutes from '@/router/blog'
 import ForumRoutes from '@/router/forum'
 import AdminRoutes from '@/router/admin'
 
@@ -22,6 +23,13 @@ const routes = [
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       ...AccountsRoutes,
+    ]
+  },
+  {
+    path: '/blog/',
+    component: () => import('@/layouts/default/Default.vue'),
+    children: [
+      ...BlogRoutes,
     ]
   },
   {

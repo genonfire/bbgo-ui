@@ -23,6 +23,7 @@
         "CHANGE_PASSWORD": "비밀번호 변경",
         "DELETE_ACCOUNT": "회원 탈퇴",
         "MANAGE_USERS": "사용자 관리",
+        "MANAGE_BLOGS": "블로그 관리",
         "MANAGE_FORUMS": "포럼 관리",
         "MANAGE_THREADS": "게시글 관리",
         "MANAGE_REPLIES": "댓글 관리",
@@ -74,6 +75,11 @@
         "USERS": "회원",
         "STAFFS": "관리자",
         "DELETE_USER": "강퇴하시겠습니까?"
+    },
+    "blog": {
+        "BLOG_OPTION": "블로그 설정",
+        "BLOGS": "블로그",
+        "COMMENTS": "댓글"
     },
     "forum": {
         "FORUMS": "Forums",
@@ -164,6 +170,7 @@
         "SEARCH_NAME_TITLE": "포럼 아이디, 포럼명으로 검색",
         "SEARCH_NAME_TITLE_CONTENTS": "이름, 제목, 내용으로 검색",
         "SEARCH_NAME_CONTENTS": "이름, 내용으로 검색",
+        "SEARCH_TITLE_CONTENTS_TAG": "제목, 내용, 태그로로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",

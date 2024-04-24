@@ -23,6 +23,7 @@
         "CHANGE_PASSWORD": "Change password",
         "DELETE_ACCOUNT": "Delete account",
         "MANAGE_USERS": "Manage users",
+        "MANAGE_BLOGS": "Manage blogs",
         "MANAGE_FORUMS": "Manage forums",
         "MANAGE_THREADS": "Manage threads",
         "MANAGE_REPLIES": "Manage replies",
@@ -74,6 +75,11 @@
         "USERS": "Users",
         "STAFFS": "Staffs",
         "DELETE_USER": "Delete user?"
+    },
+    "blog": {
+        "BLOG_OPTION": "Blog option",
+        "BLOGS": "Blogs",
+        "COMMENTS": "Comments"
     },
     "forum": {
         "FORUMS": "Forums",
@@ -164,6 +170,7 @@
         "SEARCH_NAME_TITLE": "Search by name, title",
         "SEARCH_NAME_TITLE_CONTENTS": "Search by name, title, contents",
         "SEARCH_NAME_CONTENTS": "Search by name, contents",
+        "SEARCH_TITLE_CONTENTS_TAG": "Search by title, contents, tag",
         "TALLY_ITEMS": "Tally {total} items",
         "PAGESIZE_BY": "by {pageSize}",
         "DROP_FILES_HERE": "Drop files here",
