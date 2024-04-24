@@ -80,13 +80,8 @@ export default {
         },
         {
           text: this.$t('menu.MANAGE_THREADS'),
-          icon: 'mdi-note-outline',
-          to: { name: 'admin.threads' }
-        },
-        {
-          text: this.$t('menu.MANAGE_REPLIES'),
           icon: 'mdi-message-reply-outline',
-          to: { name: 'admin.replies' }
+          to: { name: 'admin.threads' }
         },
         {
           text: this.$t('menu.SITE_ADMIN'),

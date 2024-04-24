@@ -16,6 +16,17 @@
       class="py-2"
     >
       <v-col>
+        <v-tabs
+          v-model="section"
+          density="comfortable"
+          color="secondary"
+          @update:model-value="onTabUpdate"
+        >
+          <v-tab value="threads">{{ $t('forum.THREADS') }}</v-tab>
+          <v-tab value="replies">{{ $t('forum.REPLIES') }}</v-tab>
+        </v-tabs>
+      </v-col>
+      <v-col>
         <v-text-field
           v-model="search"
           variant="outlined"
@@ -134,6 +145,7 @@ export default {
       pageSize: 20,
       active: null,
       search: null,
+      section: 'replies',
       init: false,
     }
   },
@@ -179,6 +191,16 @@ export default {
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'ADMIN_REPLIES'))
       })
+    },
+    onTabUpdate() {
+      this.active = null
+      this.search = null
+
+      if (this.section == 'threads') {
+        this.$router.push({
+          name: 'admin.threads',
+        })
+      }
     },
     onEnter() {
       this.getReplies()
