@@ -88,7 +88,7 @@
                   {{ reply.content }}
                 </router-link>
               </td>
-              <td>{{ reply.user.call_name }}</td>
+              <td>{{ username(reply) }}</td>
               <td>{{ formatDateTime(reply.created_at) }}</td>
               <td>
                 <v-icon
@@ -128,11 +128,13 @@
 import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import { useFormatDate } from '@/composables/datetime'
+import { useUser } from '@/composables/user'
 
 export default {
   setup() {
     const { formatDateTime } = useFormatDate()
-    return { formatDateTime }
+    const { username } = useUser()
+    return { formatDateTime, username }
   },
   components: {
     NumberPagination,

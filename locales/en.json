@@ -93,7 +93,10 @@
         "PERMISSION_READ": "Read permission",
         "PERMISSION_WRITE": "Write permission",
         "PERMISSION_REPLY": "Reply permission",
-        "PERMISSION_VOTE": "Vote permission"
+        "PERMISSION_VOTE": "Vote permission",
+        "REPLY_USER": "User",
+        "REPLY_CONTENT": "Comment",
+        "REPLY_BLOG": "Blog"
     },
     "forum": {
         "FORUMS": "Forums",

@@ -68,14 +68,14 @@
           density="comfortable"
           color="secondary"
           class="mr-2"
-          v-if="reply.user.id == thread.user.id"
+          v-if="reply.user && (reply.user.id == thread.user.id)"
         >
           {{ $t('forum.AUTHOR') }}
         </v-chip>
         <span
           class="font-weight-bold"
         >
-          {{ reply.user.call_name }}
+          {{ username(reply) }}
         </span>
         <span
           style="color: #565E6C"
@@ -166,6 +166,7 @@
 <script>
 import Observer from '@/components/Observer'
 import { useFormatDate } from '@/composables/datetime'
+import { useUser } from '@/composables/user'
 
 export default {
   props: {
@@ -173,7 +174,8 @@ export default {
   },
   setup() {
     const { formatDateOrTime } = useFormatDate()
-    return { formatDateOrTime }
+    const { username } = useUser()
+    return { formatDateOrTime, username }
   },
   components: {
       Observer

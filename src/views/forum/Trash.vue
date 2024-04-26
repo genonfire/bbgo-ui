@@ -69,7 +69,7 @@
                   {{ thread.title }}
                 </router-link>
               </td>
-              <td>{{ getUsername(thread) }}</td>
+              <td>{{ username(thread) }}</td>
               <td>{{ formatDateOrTime(thread.date_or_time) }}</td>
             </tr>
           </tbody>
@@ -89,11 +89,13 @@
 <script>
 import NumberPagination from '@/components/NumberPagination'
 import { useFormatDate } from '@/composables/datetime'
+import { useUser } from '@/composables/user'
 
 export default {
   setup() {
     const { formatDateOrTime } = useFormatDate()
-    return { formatDateOrTime }
+    const { username } = useUser()
+    return { formatDateOrTime, username }
   },
   components: {
     NumberPagination,
@@ -126,14 +128,6 @@ export default {
           q: this.$route.query.q
         }
       })
-    },
-    getUsername(thread) {
-      if (thread.user) {
-        return thread.user.call_name
-      }
-      else {
-        return thread.name
-      }
     },
     escapeTitle(title) {
       return title.replace(/ /g, '_')

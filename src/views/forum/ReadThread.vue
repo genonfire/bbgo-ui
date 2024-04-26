@@ -30,7 +30,7 @@
             </router-link>
           </div>
           <div>
-            {{ getUsername(thread) }}
+            {{ username(thread) }}
             <span
               class="ml-1 font-weight-regular"
             >
@@ -209,13 +209,15 @@
 import { useFormatDate } from '@/composables/datetime'
 import { useDownload } from '@/composables/download'
 import { useFile } from '@/composables/file'
+import { useUser } from '@/composables/user'
 import Reply from './Reply'
 
 export default {
   setup() {
     const { formatDateTime } = useFormatDate()
     const { fileSize } = useFile()
-    return { formatDateTime, fileSize }
+    const { username } = useUser()
+    return { formatDateTime, fileSize, username }
   },
   components: {
     Reply,
@@ -238,14 +240,6 @@ export default {
       }
       else {
         this.$router.push({ name: 'thread' })
-      }
-    },
-    getUsername(thread) {
-      if (thread.user) {
-        return thread.user.call_name
-      }
-      else {
-        return thread.name
       }
     },
     getThread(forum, thread) {

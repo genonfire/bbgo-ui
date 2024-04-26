@@ -93,7 +93,10 @@
         "PERMISSION_READ": "읽기 권한",
         "PERMISSION_WRITE": "쓰기 권한",
         "PERMISSION_REPLY": "댓글 권한",
-        "PERMISSION_VOTE": "추천 권한"
+        "PERMISSION_VOTE": "추천 권한",
+        "REPLY_USER": "작성자",
+        "REPLY_CONTENT": "댓글",
+        "REPLY_BLOG": "블로그"
     },
     "forum": {
         "FORUMS": "Forums",

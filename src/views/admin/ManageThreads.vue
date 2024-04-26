@@ -94,7 +94,7 @@
                   </span>
                 </router-link>
               </td>
-              <td>{{ thread.user.call_name }}</td>
+              <td>{{ username(thread) }}</td>
               <td>{{ formatDateTime(thread.created_at) }}</td>
               <td>
                 <v-icon
@@ -134,11 +134,13 @@
 import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import { useFormatDate } from '@/composables/datetime'
+import { useUser } from '@/composables/user'
 
 export default {
   setup() {
     const { formatDateTime } = useFormatDate()
-    return { formatDateTime }
+    const { username } = useUser()
+    return { formatDateTime, username }
   },
   components: {
     NumberPagination,
