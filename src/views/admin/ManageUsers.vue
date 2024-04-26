@@ -439,7 +439,7 @@ export default {
   setup() {
     const { rules } = useRules()
     const { formatDateTime, formatDate } = useFormatDate()
-    return { formatDateTime, formatDate ,rules }
+    return { formatDateTime, formatDate, rules }
   },
   components: {
     NumberPagination,

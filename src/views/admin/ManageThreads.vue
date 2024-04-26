@@ -211,16 +211,6 @@ export default {
     onEnter() {
       this.getThreads()
     },
-    goThread(thread) {
-      this.$router.push({
-        name: 'thread.read',
-        params: {
-          forum: thread.forum_name,
-          thread: thread.id,
-          title: thread.title.replace(/ /g, '_')
-        }
-      })
-    },
   }
 }
 </script>
