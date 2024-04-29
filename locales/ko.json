@@ -189,7 +189,7 @@
         "SEARCH_NAME_TITLE": "포럼 아이디, 포럼명으로 검색",
         "SEARCH_NAME_TITLE_CONTENTS": "이름, 제목, 내용으로 검색",
         "SEARCH_NAME_CONTENTS": "이름, 내용으로 검색",
-        "SEARCH_TITLE_CONTENTS_TAGS": "제목, 내용, 태그로로 검색",
+        "SEARCH_TITLE_CONTENTS_TAGS": "제목, 내용, 태그로 검색",
         "TALLY_ITEMS": "총 {total} 개",
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",
