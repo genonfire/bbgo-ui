@@ -16,6 +16,7 @@
     },
     "menu": {
         "HOME": "Home",
+        "BLOG": "Blog",
         "SETTINGS": "Settings",
         "PROFILE": "Profile",
         "FIND_PASSWORD": "Find password",
@@ -84,6 +85,7 @@
         "DESCRIPTION": "Description",
         "CONTENT": "Content",
         "CATEGORY": "Category",
+        "CATEGORY_ALL": "All",
         "TAGS": "Tags",
         "LIKES": "Likes",
         "PUBLISHED": "Published",

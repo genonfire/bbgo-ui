@@ -26,7 +26,7 @@ const routes = [
     ]
   },
   {
-    path: '/blog/',
+    path: '/blogs/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       ...BlogRoutes,

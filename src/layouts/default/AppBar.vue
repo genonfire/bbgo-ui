@@ -111,12 +111,17 @@ export default {
       this.searchAnything(this.search)
     },
     searchAnything(search) {
-      if (!this.search) {
-        return
-      }
       this.onEsc()
 
-      if (this.$route.name.includes('thread')) {
+      if (this.$route.name.includes('blogs')) {
+        this.$router.push({
+          name: 'blogs',
+          query: {
+            q: this.search
+          }
+        })
+      }
+      else if (this.$route.name.includes('thread')) {
         this.$router.push({
           name: 'thread',
           params: {

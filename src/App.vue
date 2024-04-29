@@ -70,6 +70,14 @@ onMounted(() => {
     import.meta.env.VITE_API_URL + prefix + import.meta.env.VITE_API_PREFIX
   )
 
+  axios({
+    method: proxy.$api('BLOG_OPTION').method,
+    url: proxy.$api('BLOG_OPTION').url,
+  })
+  .then(function (response) {
+    store.setBlogOption(response.data['data'])
+  })
+
   if (localToken) {
     axios({
       method: proxy.$api('ACCOUNTS_CONNECT').method,

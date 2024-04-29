@@ -5,6 +5,7 @@
     :variant="variant"
     :density="density"
     :color="color"
+    :label="label"
     class="mr-1 mt-1"
     @click="onTagClick(tag)"
   >
@@ -26,11 +27,21 @@ export default {
     },
     color: {
       type: String,
-      default: 'primary'
-    }
+      default: 'pale'
+    },
+    label: {
+      type: Boolean,
+      default: false
+    },
   },
   methods: {
     onTagClick(tag) {
+      this.$router.push({
+        name: 'blogs',
+        query: {
+          tag: tag,
+        }
+      })
     }
   }
 }

@@ -16,6 +16,7 @@
     },
     "menu": {
         "HOME": "홈",
+        "BLOG": "블로그",
         "SETTINGS": "설정",
         "PROFILE": "개인정보",
         "FIND_PASSWORD": "비밀번호 찾기",
@@ -84,6 +85,7 @@
         "DESCRIPTION": "블로그 소개",
         "CONTENT": "내용",
         "CATEGORY": "카테고리",
+        "CATEGORY_ALL": "All",
         "TAGS": "태그",
         "LIKES": "좋아요",
         "PUBLISHED": "발행됨",

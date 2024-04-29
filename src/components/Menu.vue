@@ -59,9 +59,9 @@ export default {
     menu() {
       const items = [
         {
-          text: this.$t('menu.HOME'),
-          icon: 'mdi-home-outline',
-          to: { name: 'home' }
+          text: this.$t('menu.BLOG'),
+          icon: 'mdi-post-outline',
+          to: { name: 'blogs' }
         },
       ]
       return items

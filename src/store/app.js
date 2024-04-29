@@ -28,6 +28,7 @@ export const useAppStore = defineStore('app', {
     user: null,
     locale: null,
     theme: null,
+    blogOption: null,
   }),
   getters: {
     isLoggedIn: (state) => state.token,
@@ -35,7 +36,8 @@ export const useAppStore = defineStore('app', {
     isStaff: (state) => state.token && state.user && state.user.is_staff,
     getUser: (state) => state.user,
     getLocale: (state) => state.locale,
-    isDarkMode: (state) => state.theme == 'dark'
+    isDarkMode: (state) => state.theme == 'dark',
+    getBlogOption: (state) => state.blogOption,
   },
   actions: {
     setLocale(value, save=true) {
@@ -53,6 +55,9 @@ export const useAppStore = defineStore('app', {
     setUser(value, save=true) {
       this.user = value
       localStore('user', value, save)
+    },
+    setBlogOption(value) {
+      this.blogOption = value
     },
     logout() {
       localStorage.removeItem('token')
