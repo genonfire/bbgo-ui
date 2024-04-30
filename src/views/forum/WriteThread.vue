@@ -76,15 +76,14 @@
       </v-col>
     </v-row>
     <v-row
-      class="mt-5"
+      class="my-10"
     >
-      <v-col></v-col>
       <v-col
         class="text-right"
       >
         <v-btn
-          variant="outlined"
           color="secondary"
+          class="px-8"
           @click="save"
           :disabled="!title || !options.content || !forum.permissions.write"
         >

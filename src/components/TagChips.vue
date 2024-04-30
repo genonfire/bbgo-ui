@@ -8,6 +8,7 @@
     :label="label"
     class="mr-1 mt-1"
     @click="onTagClick(tag)"
+    v-if="tags"
   >
     {{ tag }}
   </v-chip>

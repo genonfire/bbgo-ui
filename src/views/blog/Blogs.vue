@@ -17,7 +17,7 @@
           variant="outlined"
           prepend-icon="mdi-pencil-outline"
           color="secondary"
-          @click=""
+          @click="$router.push({ name: 'blog.write' })"
           v-if="permissionWrite"
         >
           {{ $t('action.WRITE') }}
@@ -50,9 +50,7 @@
     </v-chip-group>
 
     <v-container>
-      <v-row
-        no-glutters
-      >
+      <v-row>
         <v-col
           class="pa-0"
         >
@@ -74,6 +72,13 @@
                   :src="blog.image.file"
                   :width="smAndUp ? 240 : 120"
                   :height="smAndUp ? 240 : 120"
+                  v-if="blog.image"
+                ></v-img>
+                <v-img
+                  src="/image-outline.png"
+                  :width="smAndUp ? 240 : 120"
+                  :height="smAndUp ? 240 : 120"
+                  v-else
                 ></v-img>
               </v-col>
               <v-col
@@ -103,6 +108,7 @@
                 </div>
                 <div
                   class="mt-2 d-flex"
+                  v-if="blog.tags"
                 >
                   <TagChips
                     :tags="blog.tags"
