@@ -71,11 +71,15 @@
               :style="comment.is_deleted ? { opacity: 0.5 } : ''"
             >
               <td>{{ comment.id }}</td>
-              <td>
-                {{ username(comment) }}
-              </td>
+              <td>{{ username(comment) }}</td>
               <td>{{ comment.content }}</td>
-              <td>{{ comment.blog.title }}</td>
+              <td>
+                <router-link
+                  :to="{ name: 'blog.read', params: { pk: comment.blog.id } }"
+                >
+                  {{ comment.blog.title }}
+                </router-link>
+              </td>
               <td>{{ formatDateTime(comment.created_at) }}</td>
               <td>
                 <v-icon
@@ -196,8 +200,6 @@ export default {
           name: 'admin.blogs',
         })
       }
-    },
-    goBlog(blog) {
     },
   }
 }

@@ -101,7 +101,11 @@
             >
               <td>{{ blog.id }}</td>
               <td>
-                {{ blog.title }}
+                <router-link
+                  :to="{ name: 'blog.read', params: { pk: blog.id } }"
+                >
+                  {{ blog.title }}
+                </router-link>
               </td>
               <td>{{ blog.category }}</td>
               <td>
@@ -407,8 +411,6 @@ export default {
           name: 'admin.comments',
         })
       }
-    },
-    goBlog(blog) {
     },
   }
 }

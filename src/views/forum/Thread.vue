@@ -69,9 +69,17 @@
           <thead>
             <tr>
               <th>{{ $t('common.PK') }}</th>
-              <th class="text-center">{{ $t('forum.THREAD_TITLE') }}</th>
+              <th
+                class="text-center"
+              >
+                {{ $t('forum.THREAD_TITLE') }}
+              </th>
               <th>{{ $t('forum.THREAD_USER') }}</th>
-              <th width="120">{{ $t('common.DATE') }}</th>
+              <th
+                width="120"
+              >
+                {{ $t('common.DATE') }}
+              </th>
             </tr>
           </thead>
           <tbody>

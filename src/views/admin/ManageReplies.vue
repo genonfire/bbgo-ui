@@ -61,6 +61,7 @@
               <th>{{ $t('forum.FORUM_NAME') }}</th>
               <th>{{ $t('forum.CONTENT') }}</th>
               <th>{{ $t('forum.THREAD_USER') }}</th>
+              <th>{{ $t('forum.THREAD_TITLE') }}</th>
               <th>{{ $t('common.DATE_CREATED') }}</th>
               <th>{{ $t('common.ACTIVE') }}</th>
             </tr>
@@ -80,7 +81,7 @@
                     params: {
                       forum: reply.forum_name,
                       thread: reply.thread.id,
-                      reply:reply.id,
+                      reply: reply.id,
                       title: reply.thread.title.replace(/ /g, '_')
                     }
                   }"
@@ -89,6 +90,7 @@
                 </router-link>
               </td>
               <td>{{ username(reply) }}</td>
+              <td>{{ reply.thread.title }}</td>
               <td>{{ formatDateTime(reply.created_at) }}</td>
               <td>
                 <v-icon

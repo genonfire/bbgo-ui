@@ -63,7 +63,9 @@
             variant="flat"
             hover
           >
-            <v-row>
+            <v-row
+              @click="$router.push({ name: 'blog.read', params: { pk: blog.id } })"
+            >
               <v-col
                 cols="3"
                 class="px-3 py-2"

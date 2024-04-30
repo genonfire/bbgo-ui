@@ -186,7 +186,7 @@ export default {
       dataStored: [],
       test: null,
       nextLink: null,
-      pageSize: 50,
+      pageSize: 10,
       init: false,
       loading: false,
       comment: null,
