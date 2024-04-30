@@ -69,17 +69,17 @@
                 class="px-3 py-2"
               >
                 <v-img
-                  :src="blog.image.file"
+                  :src="blog.image ? blog.image.file : '/image-outline.png'"
                   :width="smAndUp ? 240 : 120"
                   :height="smAndUp ? 240 : 120"
-                  v-if="blog.image"
-                ></v-img>
-                <v-img
-                  src="/image-outline.png"
-                  :width="smAndUp ? 240 : 120"
-                  :height="smAndUp ? 240 : 120"
-                  v-else
-                ></v-img>
+                >
+                  <span
+                    class="floatingLike"
+                    v-if="smAndUp"
+                  >
+                    {{ blog.like }}
+                  </span>
+                </v-img>
               </v-col>
               <v-col
                 cols="9"
@@ -278,3 +278,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  span.floatingLike {
+    float: right;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    padding-top: .3em;
+    background-color: #85bf69;
+    color: #fff;
+    text-align: center;
+    font-size: .9em;
+  }
+</style>
