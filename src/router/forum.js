@@ -15,12 +15,12 @@ export default [
     component: () => import('@/views/forum/WriteThread.vue')
   },
   {
-    path: 'f/:forum/read/:thread/:title',
+    path: 'f/:forum/read/:thread/:title?',
     name: 'thread.read',
     component: () => import('@/views/forum/ReadThread.vue')
   },
   {
-    path: 'f/:forum/read/:thread/:reply/:title',
+    path: 'f/:forum/read/:thread/:reply/:title?',
     name: 'thread.reply',
     component: () => import('@/views/forum/ReadThread.vue')
   },

@@ -61,63 +61,71 @@
             variant="flat"
             hover
           >
-            <v-row
-              @click="$router.push({ name: 'blog.read', params: { pk: blog.id } })"
+            <router-link
+              :to="{
+                name: 'blog.read',
+                params: {
+                  pk: blog.id,
+                  title: blog.title.replace(/ /g, '_')
+                }
+              }"
             >
-              <v-col
-                cols="3"
-                class="px-3 py-2"
-              >
-                <v-img
-                  :src="blog.image ? blog.image.file : '/image-outline.png'"
-                  :width="smAndUp ? 240 : 120"
-                  :height="smAndUp ? 240 : 120"
+              <v-row>
+                <v-col
+                  cols="3"
+                  class="px-3 py-2"
                 >
-                  <span
-                    class="floatingLike"
-                    v-if="smAndUp"
+                  <v-img
+                    :src="blog.image ? blog.image.file : '/image-outline.png'"
+                    :width="smAndUp ? 240 : 120"
+                    :height="smAndUp ? 240 : 120"
                   >
-                    {{ blog.like }}
-                  </span>
-                </v-img>
-              </v-col>
-              <v-col
-                cols="9"
-                class="pl-8 pr-4  py-5 font-weight-medium d-flex flex-column justify-start"
-                :class="smAndUp ? 'text-h4' : 'text-h6'"
-              >
-                <div
-                  class="text-body-1"
+                    <span
+                      class="floating-like"
+                      v-if="smAndUp"
+                    >
+                      {{ blog.like }}
+                    </span>
+                  </v-img>
+                </v-col>
+                <v-col
+                  cols="9"
+                  class="pl-8 pr-4  py-5 font-weight-medium d-flex flex-column justify-start"
+                  :class="smAndUp ? 'text-h4' : 'text-h6'"
                 >
-                  <v-chip
-                    variant="text"
-                    color="secondary"
-                    class="pl-0 text-body-1 font-weight-medium"
+                  <div
+                    class="text-body-1"
                   >
-                    {{ blog.category }}
-                  </v-chip>
-                  <span
-                    class="text-body-2"
-                    style="color:grey;"
+                    <v-chip
+                      variant="text"
+                      color="secondary"
+                      class="pl-0 text-body-1 font-weight-medium"
+                    >
+                      {{ blog.category }}
+                    </v-chip>
+                    <span
+                      class="text-body-2"
+                      style="color:grey;"
+                    >
+                      {{ formatDate(blog.created_at) }}
+                    </span>
+                  </div>
+                  <div>
+                    {{ blog.title }}
+                  </div>
+                  <div
+                    class="mt-2 d-flex"
+                    v-if="blog.tags"
                   >
-                    {{ formatDate(blog.created_at) }}
-                  </span>
-                </div>
-                <div>
-                  {{ blog.title }}
-                </div>
-                <div
-                  class="mt-2 d-flex"
-                  v-if="blog.tags"
-                >
-                  <TagChips
-                    :tags="blog.tags"
-                    color="pale"
-                    :label="true"
-                  />
-                </div>
-              </v-col>
-            </v-row>
+                    <TagChips
+                      :tags="blog.tags"
+                      color="pale"
+                      :label="true"
+                    />
+                  </div>
+                </v-col>
+              </v-row>
+            </router-link>
           </v-card>
         </v-col>
       </v-row>
@@ -280,7 +288,7 @@ export default {
 </script>
 
 <style scoped>
-  span.floatingLike {
+  span.floating-like {
     float: right;
     position: absolute;
     top: 40px;
@@ -292,5 +300,12 @@ export default {
     color: #fff;
     text-align: center;
     font-size: .9em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    color: #1976D2;
   }
 </style>

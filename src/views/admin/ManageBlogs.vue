@@ -102,7 +102,13 @@
               <td>{{ blog.id }}</td>
               <td>
                 <router-link
-                  :to="{ name: 'blog.read', params: { pk: blog.id } }"
+                  :to="{
+                    name: 'blog.read',
+                    params: {
+                      pk: blog.id,
+                      title: blog.title.replace(/ /g, '_')
+                    }
+                  }"
                 >
                   {{ blog.title }}
                 </router-link>

@@ -75,7 +75,13 @@
               <td>{{ comment.content }}</td>
               <td>
                 <router-link
-                  :to="{ name: 'blog.read', params: { pk: comment.blog.id } }"
+                  :to="{
+                    name: 'blog.read',
+                    params: {
+                      pk: comment.blog.id,
+                      title: comment.blog.title.replace(/ /g, '_')
+                    }
+                  }"
                 >
                   {{ comment.blog.title }}
                 </router-link>
