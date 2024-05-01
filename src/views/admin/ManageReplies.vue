@@ -90,7 +90,20 @@
                 </router-link>
               </td>
               <td>{{ username(reply) }}</td>
-              <td>{{ reply.thread.title }}</td>
+              <td>
+                <router-link
+                  :to="{
+                    name: 'thread.read',
+                    params: {
+                      forum: reply.forum_name,
+                      thread: reply.thread.id,
+                      title: reply.thread.title.replace(/ /g, '_')
+                    }
+                  }"
+                >
+                  {{ reply.thread.title }}
+                </router-link>
+              </td>
               <td>{{ formatDateTime(reply.created_at) }}</td>
               <td>
                 <v-icon

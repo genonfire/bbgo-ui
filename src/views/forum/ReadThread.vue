@@ -210,7 +210,7 @@ import { useFormatDate } from '@/composables/datetime'
 import { useDownload } from '@/composables/download'
 import { useFile } from '@/composables/file'
 import { useUser } from '@/composables/user'
-import Reply from './Reply'
+import Reply from '@/components/Reply'
 
 export default {
   setup() {
