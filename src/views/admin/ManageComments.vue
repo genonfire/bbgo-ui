@@ -78,7 +78,7 @@
                   :to="{
                     name: 'blog.read',
                     params: {
-                      pk: comment.blog.id,
+                      blog: comment.blog.id,
                       title: comment.blog.title.replace(/ /g, '_')
                     }
                   }"

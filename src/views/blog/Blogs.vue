@@ -36,7 +36,7 @@
         class="mx-8 my-2 text-center"
       >
         <v-col
-          v-for="(item, index) in ['', ...blogOption.category]"
+          v-for="item in ['', ...blogOption.category]"
         >
           <v-chip
             :key="item"
@@ -55,7 +55,7 @@
           class="pa-0"
         >
           <v-card
-            v-for="(blog, index) in blogs"
+            v-for="blog in blogs"
             :key="blog.id"
             class="my-5 pa-0"
             variant="flat"
@@ -65,7 +65,7 @@
               :to="{
                 name: 'blog.read',
                 params: {
-                  pk: blog.id,
+                  blog: blog.id,
                   title: blog.title.replace(/ /g, '_')
                 }
               }"
@@ -306,6 +306,6 @@ export default {
     text-decoration: none;
   }
   a:hover {
-    color: #1976D2;
+    color: #379AE6;
   }
 </style>

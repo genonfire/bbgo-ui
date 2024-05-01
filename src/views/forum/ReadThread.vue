@@ -128,7 +128,7 @@
     <v-row>
       <v-col>
         <v-sheet
-          class="thread-content"
+          class="editor-content"
           v-html="thread.content"
         >
         </v-sheet>
@@ -332,41 +332,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .thread-content {
-    white-space: break-spaces;
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    table {
-      border-collapse: collapse;
-      table-layout: fixed;
-      width: 100%;
-      margin: 0;
-      overflow: hidden;
-
-      td,
-      th {
-        min-width: 1em;
-        border: 2px solid #ced4da;
-        padding: 3px 5px;
-        vertical-align: top;
-        box-sizing: border-box;
-        position: relative;
-
-        > * {
-          margin-bottom: 0;
-        }
-      }
-
-      th {
-        font-weight: bold;
-        text-align: left;
-        background-color: #ebebeb;
-        color: #000;
-      }
-    }
-  }
+  @import "@/styles/contents";
 </style>

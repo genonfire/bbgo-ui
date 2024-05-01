@@ -116,14 +116,12 @@
 
 <script>
 import Tiptap from '@/components/Tiptap'
-import { useFile } from '@/composables/file'
 import { useDisplay } from 'vuetify'
 
 export default {
   setup() {
-    const { fileSize } = useFile()
     const { smAndUp } = useDisplay()
-    return { fileSize, smAndUp }
+    return { smAndUp }
   },
   components: {
     Tiptap,

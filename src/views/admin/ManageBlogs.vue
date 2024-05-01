@@ -105,7 +105,7 @@
                   :to="{
                     name: 'blog.read',
                     params: {
-                      pk: blog.id,
+                      blog: blog.id,
                       title: blog.title.replace(/ /g, '_')
                     }
                   }"

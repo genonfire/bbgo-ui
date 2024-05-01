@@ -1,7 +1,7 @@
 <template>
   <v-chip
-    v-for="(tag, index) in tags.split(',').map(item => item.trim())"
-    :key="index"
+    v-for="tag in tags.split(',').map(item => item.trim())"
+    :key="tag"
     :variant="variant"
     :density="density"
     :color="color"

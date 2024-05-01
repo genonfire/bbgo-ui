@@ -15,7 +15,7 @@ export default [
     component: () => import('@/views/blog/WriteBlog.vue')
   },
   {
-    path: 'post/:pk/:title?',
+    path: 'post/:blog/:title?',
     name: 'blog.read',
     component: () => import('@/views/blog/ReadBlog.vue')
   },
