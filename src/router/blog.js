@@ -19,4 +19,9 @@ export default [
     name: 'blog.read',
     component: () => import('@/views/blog/ReadBlog.vue')
   },
+  {
+    path: 'post/edit/:blog',
+    name: 'blog.edit',
+    component: () => import('@/views/blog/EditBlog.vue')
+  },
 ]

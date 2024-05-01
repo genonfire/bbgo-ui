@@ -85,7 +85,7 @@
           variant="flat"
           color="neutral"
           class="mx-2"
-          @click=""
+          @click="$router.push({ name: 'blog.edit', params: { blog: blog.id} })"
           v-if="blog.editable"
         >
           {{ $t('action.EDIT') }}

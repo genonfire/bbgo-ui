@@ -1,11 +1,13 @@
 <template>
-  <v-container>
+  <v-container
+    v-if="init"
+  >
     <v-row
       class="mt-0"
     >
       <v-col>
         <v-text-field
-          v-model="title"
+          v-model="blog.title"
           variant="outlined"
           density="compact"
           :placeholder="$t('blog.TITLE')"
@@ -63,7 +65,7 @@
     >
       <v-col>
         <v-text-field
-          v-model="tags"
+          v-model="blog.tags"
           variant="outlined"
           density="comfortable"
           :placeholder="$t('hint.TAGS_HERE')"
@@ -76,7 +78,7 @@
     >
       <v-col>
         <v-select
-          v-model="category"
+          v-model="blog.category"
           variant="outlined"
           density="comfortable"
           :label="$t('blog.CATEGORY')"
@@ -88,7 +90,7 @@
         class="d-flex justify-center"
       >
         <v-switch
-          v-model="publish"
+          v-model="blog.is_published"
           color="secondary"
           :label="$t('blog.PUBLISH')"
         >
@@ -105,7 +107,7 @@
           color="secondary"
           class="px-8"
           @click="save"
-          :disabled="!title || !options.content || !category"
+          :disabled="!blog.title || !options.content || !blog.category"
         >
           {{ $t('action.SAVE') }}
         </v-btn>
@@ -128,19 +130,18 @@ export default {
   },
   data() {
     return {
-      title: null,
+      blog: null,
       options: {
         content: '',
-        supportImage: true,
-        supportVideo: true,
       },
       file: null,
       featuredImage: null,
-      tags: null,
-      category: null,
-      publish: true,
       saved: false,
+      init: false,
     }
+  },
+  mounted() {
+    this.getBlog(this.$route.params.blog)
   },
   beforeRouteLeave(to, from, next) {
     if (this.saved || confirm(this.$t('forum.QUIT_EDITING'))) {
@@ -151,15 +152,42 @@ export default {
     }
   },
   methods: {
+    getBlog(blog) {
+      const vm = this
+
+      this.$axios({
+        method: this.$api('READ_BLOG').method,
+        url: this.$api('READ_BLOG').url.replace('{pk}', blog),
+      })
+      .then(function (response) {
+        vm.blog = response.data['data']
+        vm.options.content = vm.blog.content
+
+        if (vm.blog.image) {
+          vm.featuredImage = vm.blog.image
+          vm.file = {
+            name: vm.blog.image.filename,
+            size: vm.blog.image.size,
+            type: vm.blog.image.content_type
+          }
+        }
+
+        vm.init = true
+      })
+      .catch(function (error) {
+        vm.$toast.error(vm.$error(error, 'READ_BLOG'))
+      })
+    },
     save() {
       const vm = this
 
       let data = {
-        title: this.title,
+        title: this.blog.title,
         content: this.options.content,
-        category: this.category,
-        tags: this.tags,
-        is_published: this.publish,
+        category: this.blog.category,
+        tags: this.blog.tags,
+        is_published: this.blog.is_published,
+        image: null,
       }
       if (this.featuredImage) {
         data['image'] = {
@@ -168,20 +196,23 @@ export default {
       }
 
       this.$axios({
-        method: this.$api('WRITE_BLOG').method,
-        url: this.$api('WRITE_BLOG').url,
+        method: this.$api('EDIT_BLOG').method,
+        url: this.$api('EDIT_BLOG').url.replace('{pk}', this.blog.id),
         data: data
       })
       .then(function (response) {
         vm.saved = true
         vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
 
-        vm.$router.replace({
-          name: 'blogs',
-        })
+        if (response.data['data']['is_published']) {
+          vm.$router.back()
+        }
+        else {
+          vm.$router.push({ name: 'blogs' })
+        }
       })
       .catch(function (error) {
-        vm.$toast.error(vm.$error(error, 'WRITE_BLOG'))
+        vm.$toast.error(vm.$error(error, 'EDIT_BLOG'))
       })
     },
     imageUpload(data) {
