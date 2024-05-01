@@ -60,7 +60,7 @@
       </v-col>
     </v-row>
     <v-row
-      class="my-8"
+      class="my-10"
     >
       <v-col>
         <TagChips
@@ -69,7 +69,8 @@
         />
       </v-col>
     </v-row>
-    <v-row>
+    <v-row
+    >
       <v-col
         class="text-center"
       >
@@ -137,11 +138,16 @@
       </v-card>
     </v-dialog>
 
+    <Comment
+      :blog="blog"
+    />
+
   </v-container>
 </template>
 
 <script>
 import { useFormatDate } from '@/composables/datetime'
+import Comment from '@/components/Comment'
 import TagChips from '@/components/TagChips'
 
 export default {
@@ -150,6 +156,7 @@ export default {
     return { formatDate }
   },
   components: {
+    Comment,
     TagChips,
   },
   data() {

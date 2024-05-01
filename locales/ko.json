@@ -102,7 +102,12 @@
         "REPLY_USER": "작성자",
         "REPLY_CONTENT": "댓글",
         "REPLY_BLOG": "블로그",
-        "DELETE_BLOG": "글을 삭제하시겠습니까?"
+        "DELETE_BLOG": "글을 삭제하시겠습니까?",
+        "AUTHOR": "작성자",
+        "ADD_COMMENT": "댓글 달기",
+        "DELETE_COMMENT": "댓글을 삭제하시겠습니까?",
+        "REPLY": "댓글",
+        "DELETED_COMMENT": "[삭제됨]"
     },
     "forum": {
         "FORUMS": "Forums",

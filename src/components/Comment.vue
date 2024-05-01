@@ -9,7 +9,7 @@
         prepend-icon="mdi-message-reply-outline"
         class="px-4 mr-2"
       >
-        {{ thread.reply_count }}
+        {{ blog.comment_count }}
       </v-chip>
       <v-btn
         variant="outlined"
@@ -17,9 +17,9 @@
         color="secondary"
         class="my-5"
         @click="commenting = true"
-        v-if="thread.forum.permissions.reply"
+        v-if="true"
       >
-        {{ $t('forum.ADD_COMMENT') }}
+        {{ $t('blog.ADD_COMMENT') }}
       </v-btn>
 
       <div
@@ -37,7 +37,7 @@
           density="comfortable"
           color="ashen"
           class="mr-2"
-          @click="cancelReply(-1)"
+          @click="cancelComment(-1)"
         >
           {{ $t('action.CANCEL') }}
         </v-btn>
@@ -45,7 +45,7 @@
           variant="flat"
           density="comfortable"
           color="secondary"
-          @click="saveReply(-1, 0)"
+          @click="saveComment(-1, 0)"
           :disabled="!newComment"
         >
           {{ $t('action.SAVE') }}
@@ -55,11 +55,11 @@
 
     <v-card
       variant="flat"
-      v-for="(reply, index) in replies"
-      :key="reply.id"
-      :id="'reply-' + reply.id"
-      :class="reply.reply_id ? 'ml-5': ''"
-      :disabled="reply.is_deleted"
+      v-for="(comment, index) in comments"
+      :key="comment.id"
+      :id="'comment-' + comment.id"
+      :class="comment.comment_id ? 'ml-5': ''"
+      :disabled="comment.is_deleted"
     >
       <v-card-text
         class="pb-2"
@@ -69,26 +69,26 @@
           density="compact"
           color="secondary"
           class="mr-2 px-2"
-          v-if="reply.user && (reply.user.id == thread.user.id)"
+          v-if="comment.user && (comment.user.id == blog.user.id)"
         >
-          {{ $t('forum.AUTHOR') }}
+          {{ $t('blog.AUTHOR') }}
         </v-chip>
         <span
           class="font-weight-bold"
         >
-          {{ username(reply) }}
+          {{ username(comment) }}
         </span>
         <span
           style="color: #565E6C"
         >
-          - {{ formatDateOrTime(reply.date_or_time) }}
+          - {{ formatDateOrTime(comment.date_or_time) }}
         </span>
       </v-card-text>
       <v-card-text
         class="py-1"
-        v-if="!reply.is_deleted"
+        v-if="!comment.is_deleted"
       >
-        {{ reply.content }}
+        {{ comment.content }}
 
         <v-card-actions
           class="pl-0 d-flex"
@@ -98,14 +98,14 @@
             prepend-icon="mdi-message-reply-outline"
             @click="replying[index] = true"
           >
-            {{ $t('forum.REPLY') }}
+            {{ $t('blog.REPLY') }}
           </v-btn>
           <v-btn
             variant="text"
             prepend-icon="mdi-trash-can-outline"
             color="secondary"
-            @click="deleteReply(reply.id)"
-            v-if="reply.editable"
+            @click="deleteComment(comment.id)"
+            v-if="comment.editable"
           >
             {{ $t('action.DELETE') }}
           </v-btn>
@@ -126,7 +126,7 @@
             density="comfortable"
             color="ashen"
             class="mr-2"
-            @click="cancelReply(index)"
+            @click="cancelComment(index)"
           >
             {{ $t('action.CANCEL') }}
           </v-btn>
@@ -134,7 +134,7 @@
             variant="flat"
             density="comfortable"
             color="secondary"
-            @click="saveReply(index, reply.id)"
+            @click="saveComment(index, comment.id)"
             :disabled="!textareas[index]"
           >
             {{ $t('action.SAVE') }}
@@ -145,7 +145,7 @@
         class="py-1"
         v-else
       >
-        {{ $t('forum.DELETED_COMMENT') }}
+        {{ $t('blog.DELETED_COMMENT') }}
       </v-card-text>
     </v-card>
 
@@ -158,7 +158,7 @@
     </div>
 
     <Observer
-      @show="getMoreReplies"
+      @show="getMoreComments"
     />
 
   </v-container>
@@ -171,7 +171,7 @@ import { useUser } from '@/composables/user'
 
 export default {
   props: {
-    thread: Object
+    blog: Object
   },
   setup() {
     const { formatDateOrTime } = useFormatDate()
@@ -183,7 +183,7 @@ export default {
     },
   data() {
     return {
-      replies: null,
+      comments: null,
       dataStored: [],
       nextLink: null,
       pageSize: 50,
@@ -197,14 +197,14 @@ export default {
     }
   },
   mounted() {
-    this.getReplies()
+    this.getComments()
 
-    if (this.$route.params.reply) {
-      this.scrollTo = 'reply-' + this.$route.params.reply
+    if (this.$route.params.comment) {
+      this.scrollTo = 'comment-' + this.$route.params.comment
     }
   },
   methods: {
-    scrollToReply() {
+    scrollToComment() {
       const targetSection = document.getElementById(this.scrollTo);
 
       if (targetSection) {
@@ -218,43 +218,43 @@ export default {
 
       this.scrollTo = null
     },
-    getReplies() {
+    getComments() {
       const vm = this
-      const url = `${this.$api('THREAD_REPLIES').url.replace('{pk}', this.thread.id)}?page_size=${this.pageSize}`
+      const url = `${this.$api('BLOG_COMMENTS').url.replace('{pk}', this.blog.id)}?page_size=${this.pageSize}`
 
       this.$axios({
-        method: this.$api('THREAD_REPLIES').method,
+        method: this.$api('BLOG_COMMENTS').method,
         url: url,
       })
       .then(function (response) {
         vm.nextLink = response.data['pagination']['next_link']
-        vm.replies = response.data['data']
-        vm.replying = new Array(vm.replies.length).fill(false)
-        vm.textareas = new Array(vm.replies.length).fill(null)
+        vm.comments = response.data['data']
+        vm.replying = new Array(vm.comments.length).fill(false)
+        vm.textareas = new Array(vm.comments.length).fill(null)
         vm.commenting = false
         vm.newComment = null
         vm.init = true
 
         if (vm.scrollTo) {
           setTimeout(
-            vm.scrollToReply,
+            vm.scrollToComment,
             300,
           )
         }
       })
       .catch(function (error) {
-        vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
+        vm.$toast.error(vm.$error(error, 'BLOG_COMMENTS'))
       })
     },
     updateData() {
-      this.replies = [...this.replies, ...this.dataStored]
-      this.replying = new Array(this.replies.length).fill(false)
-      this.textareas = new Array(this.replies.length).fill(null)
+      this.comments = [...this.comments, ...this.dataStored]
+      this.replying = new Array(this.comments.length).fill(false)
+      this.textareas = new Array(this.comments.length).fill(null)
       this.commenting = false
       this.newComment = null
       this.loading = false
     },
-    getMoreReplies() {
+    getMoreComments() {
       if (!this.nextLink) {
         return
       }
@@ -264,7 +264,7 @@ export default {
       this.loading = true
 
       this.$axios({
-        method: this.$api('THREAD_REPLIES').method,
+        method: this.$api('BLOG_COMMENTS').method,
         url: this.nextLink,
       })
       .then(function (response) {
@@ -277,10 +277,10 @@ export default {
         )
       })
       .catch(function (error) {
-        vm.$toast.error(vm.$error(error, 'THREAD_REPLIES'))
+        vm.$toast.error(vm.$error(error, 'BLOG_COMMENTS'))
       })
     },
-    cancelReply(index) {
+    cancelComment(index) {
       if (index == -1) {
         this.commenting = false
         this.newComment = null
@@ -290,11 +290,11 @@ export default {
         this.textareas[index] = null
       }
     },
-    saveReply(index, replyId) {
+    saveComment(index, commentId) {
       const vm = this
 
       let data = {
-        reply_id: replyId,
+        comment_id: commentId,
         content: this.textareas[index]
       }
 
@@ -305,31 +305,31 @@ export default {
       }
 
       this.$axios({
-        method: this.$api('THREAD_REPLY').method,
-        url: this.$api('THREAD_REPLY').url.replace('{pk}', this.thread.id),
+        method: this.$api('BLOG_COMMENT').method,
+        url: this.$api('BLOG_COMMENT').url.replace('{pk}', this.blog.id),
         data: data
       })
       .then(function (response) {
-        vm.getReplies()
+        vm.getComments()
       })
       .catch(function (error) {
-        vm.$toast.error(vm.$error(error, 'THREAD_REPLY'))
+        vm.$toast.error(vm.$error(error, 'BLOG_COMMENT'))
       })
     },
-    deleteReply(replyId) {
+    deleteComment(commentId) {
       const vm = this
 
-      if (confirm(this.$t('forum.DELETE_REPLY'))) {
+      if (confirm(this.$t('blog.DELETE_COMMENT'))) {
         this.$axios({
-          method: this.$api('REPLY_DELETE').method,
-          url: this.$api('REPLY_DELETE').url.replace('{pk}', replyId),
+          method: this.$api('DELETE_COMMENT').method,
+          url: this.$api('DELETE_COMMENT').url.replace('{pk}', commentId),
         })
         .then(function (response) {
-          vm.getReplies()
+          vm.getComments()
           vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
         })
         .catch(function (error) {
-          vm.$toast.error(vm.$error(error, 'REPLY_DELETE'))
+          vm.$toast.error(vm.$error(error, 'DELETE_COMMENT'))
         })
       }
     },

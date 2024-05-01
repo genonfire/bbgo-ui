@@ -173,7 +173,11 @@ export default {
     'method': 'post',
     'url': 'contents/blogs/{pk}/like/'
   },
-  COMMENT: {
+  BLOG_COMMENTS: {
+    'method': 'get',
+    'url': 'contents/blogs/{pk}/comments/'
+  },
+  BLOG_COMMENT: {
     'method': 'post',
     'url': 'contents/blogs/{pk}/comment/'
   },
@@ -184,10 +188,6 @@ export default {
   DELETE_COMMENT: {
     'method': 'delete',
     'url': 'contents/comment/{pk}/'
-  },
-  COMMENT_LIST: {
-    'method': 'get',
-    'url': 'contents/blogs/{pk}/comments/'
   },
 
   FILE_UPLOAD: {

@@ -102,7 +102,12 @@
         "REPLY_USER": "User",
         "REPLY_CONTENT": "Comment",
         "REPLY_BLOG": "Blog",
-        "DELETE_BLOG": "Delete blog?"
+        "DELETE_BLOG": "Delete blog?",
+        "AUTHOR": "Author",
+        "ADD_COMMENT": "Add a comment",
+        "DELETE_COMMENT": "Delete comment?",
+        "REPLY": "Reply",
+        "DELETED_COMMENT": "[Deleted]"
     },
     "forum": {
         "FORUMS": "Forums",

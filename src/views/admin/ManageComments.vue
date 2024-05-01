@@ -72,7 +72,20 @@
             >
               <td>{{ comment.id }}</td>
               <td>{{ username(comment) }}</td>
-              <td>{{ comment.content }}</td>
+              <td>
+                <router-link
+                  :to="{
+                    name: 'blog.comment',
+                    params: {
+                      blog: comment.blog.id,
+                      comment: comment.id,
+                      title: comment.blog.title.replace(/ /g, '_')
+                    }
+                  }"
+                >
+                  {{ comment.content }}
+                </router-link>
+              </td>
               <td>
                 <router-link
                   :to="{
