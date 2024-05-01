@@ -80,7 +80,6 @@
           density="comfortable"
           :label="$t('blog.CATEGORY')"
           :items="$store.getBlogOption.category"
-          @update:modelValue="console.log(category)"
           v-if="$store.getBlogOption.category"
         ></v-select>
       </v-col>
@@ -196,7 +195,6 @@ export default {
       })
       .then(function (response) {
         vm.featuredImage = response.data['data']
-        console.log(vm.featuredImage)
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'FILE_UPLOAD'))
