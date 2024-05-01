@@ -203,7 +203,7 @@ export default {
     handleFileChange() {
       if (this.file) {
         let formData = new FormData()
-        formData.append('file', this.file[0])
+        formData.append('file', this.file)
         this.imageUpload(formData)
       }
     },

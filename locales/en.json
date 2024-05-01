@@ -46,6 +46,7 @@
         "EDIT": "Edit",
         "TOGGLE_PIN": "Pin/Unpin",
         "DELETE": "Delete",
+        "DELETE_BLOG": "Delete blog",
         "DELETE_FORUM": "Delete forum",
         "DELETE_THREAD": "Delete thread",
         "RESTORE_THREAD": "Restore",
@@ -100,7 +101,8 @@
         "PERMISSION_VOTE": "Vote permission",
         "REPLY_USER": "User",
         "REPLY_CONTENT": "Comment",
-        "REPLY_BLOG": "Blog"
+        "REPLY_BLOG": "Blog",
+        "DELETE_BLOG": "Delete blog?"
     },
     "forum": {
         "FORUMS": "Forums",
@@ -197,6 +199,7 @@
         "PAGESIZE_BY": "by {pageSize}",
         "DROP_FILES_HERE": "Drop files here",
         "HIT_ENTER_FOR_MULTIPLE": "Hit enter for multiple.",
+        "DELETE_BLOG_DESCRIPTION": "Are you sure you want to delete this blog? This action cannot be undone.",
         "DELETE_THREAD_DESCRIPTION": "Are you sure you want to delete this thread? This action cannot be undone.",
         "DELETE_FORUM_DESCRIPTION": "Are you sure you want to delete this forum? This action cannot be undone.",
         "DELETE_USER_DESCRIPTION": "Are you sure you want to delete this user? This action cannot be undone.",
@@ -211,7 +214,8 @@
         "CREATED_SUCCESSFULLY": "Created successfully.",
         "SAVED_SUCCESSFULLY": "Saved successfully.",
         "DELETED_SUCCESSFULLY": "Deleted successfully.",
-        "RESTORED_SUCCESSFULLY": "Restored successfully."
+        "RESTORED_SUCCESSFULLY": "Restored successfully.",
+        "LIKED_SUCCESSFULLY": "Liked successfully."
     },
     "error": {
         "REQUIRED_FIELD": "* Required.",
@@ -219,7 +223,8 @@
         "PASSWORD_NOT_MATCH": "* The password don't match.",
         "ALPHABETS_NUMBER_ONLY": "* Alphabets and number only.",
         "ERROR_REQUIRED_FIELDS": "Please check required fields.",
-        "PERMISSION_DENIED": "You don't have permission."
+        "PERMISSION_DENIED": "You don't have permission.",
+        "ALREADY_LIKED": "You've already liked."
     },
     "info": {
         "SITENAME": "bbgo"

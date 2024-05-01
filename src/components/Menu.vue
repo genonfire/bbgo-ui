@@ -121,9 +121,9 @@ export default {
   }
   .footer a {
     color: #9095A0;
-    text-decoration: none;
   }
   .footer a:hover {
     color: #F9CECE;
+    text-decoration: none;
   }
 </style>

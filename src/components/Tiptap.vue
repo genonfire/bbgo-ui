@@ -188,11 +188,11 @@
               class="pa-0"
             >
               <v-file-input
-                v-model="files"
+                v-model="file"
                 density="compact"
                 accept="image/*"
                 prepend-icon="mdi-camera"
-                :label="files ? null : $t('tiptap.SELECT_IMAGE')"
+                :label="file ? null : $t('tiptap.SELECT_IMAGE')"
                 @change="handleFileChange"
                 @click:clear="clearFile"
                 show-size
@@ -286,7 +286,7 @@ export default {
       imageTab: null,
       fileURL: null,
       linkURL: null,
-      files: null,
+      file: null,
     }
   },
   mounted() {
@@ -331,7 +331,7 @@ export default {
       document.getElementById("colorPicker").click()
     },
     openImageTab() {
-      this.files = null
+      this.file = null
       this.fileURL = null
       this.linkURL = null
       this.imageDialog = true
@@ -352,14 +352,14 @@ export default {
       })
     },
     handleFileChange() {
-      if (this.files) {
+      if (this.file) {
         let formData = new FormData()
-        formData.append('file', this.files[0])
+        formData.append('file', this.file)
         this.imageUpload(formData)
       }
     },
     clearFile() {
-      this.files = null
+      this.file = null
       this.fileURL = null
     },
     insertImage(url) {

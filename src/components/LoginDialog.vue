@@ -165,9 +165,9 @@ export default {
 <style scoped>
   a {
     color: #EB6669;
-    text-decoration: none;
   }
   a:hover {
     color: #F9CECE;
+    text-decoration: none;
   }
 </style>

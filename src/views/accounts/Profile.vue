@@ -54,7 +54,7 @@
               {{ $t('accounts.UPLOAD_PHOTO') }}
             </v-btn>
             <v-file-input
-              v-model="files"
+              v-model="file"
               accept="image/*"
               ref="fileInput"
               @change="handleFileChange"
@@ -184,7 +184,7 @@ export default {
     return {
       validation: false,
       user: null,
-      files: null,
+      file: null,
     }
   },
   mounted() {
@@ -220,15 +220,15 @@ export default {
     },
     deletePhoto() {
       this.updatePhoto({ photo: null })
-      this.files = null
+      this.file = null
     },
     uploadPhoto() {
       this.$refs.fileInput.click();
     },
     handleFileChange() {
-      if (this.files) {
+      if (this.file) {
         let formData = new FormData()
-        formData.append('photo', this.files[0])
+        formData.append('photo', this.file)
         this.updatePhoto(formData)
       }
     },

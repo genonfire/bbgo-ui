@@ -302,10 +302,8 @@ export default {
     font-size: .9em;
   }
 
-  a {
-    text-decoration: none;
-  }
   a:hover {
     color: #379AE6;
+    text-decoration: none;
   }
 </style>

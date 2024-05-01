@@ -46,6 +46,7 @@
         "EDIT": "편집",
         "TOGGLE_PIN": "고정/고정 해제",
         "DELETE": "삭제",
+        "DELETE_BLOG": "블로그 삭제",
         "DELETE_FORUM": "포럼 삭제",
         "DELETE_THREAD": "글 삭제",
         "RESTORE_THREAD": "글 복구",
@@ -100,7 +101,8 @@
         "PERMISSION_VOTE": "추천 권한",
         "REPLY_USER": "작성자",
         "REPLY_CONTENT": "댓글",
-        "REPLY_BLOG": "블로그"
+        "REPLY_BLOG": "블로그",
+        "DELETE_BLOG": "글을 삭제하시겠습니까?"
     },
     "forum": {
         "FORUMS": "Forums",
@@ -197,6 +199,7 @@
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",
         "HIT_ENTER_FOR_MULTIPLE": "엔터로 여러개를 입력하세요.",
+        "DELETE_BLOG_DESCRIPTION": "정말로 이 블로그를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_THREAD_DESCRIPTION": "정말로 이 글을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_FORUM_DESCRIPTION": "정말로 이 포럼을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_USER_DESCRIPTION": "정말로 이 사용자를 강퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
@@ -211,7 +214,8 @@
         "CREATED_SUCCESSFULLY": "생성했습니다.",
         "SAVED_SUCCESSFULLY": "저장했습니다.",
         "DELETED_SUCCESSFULLY": "삭제했습니다.",
-        "RESTORED_SUCCESSFULLY": "복구했습니다."
+        "RESTORED_SUCCESSFULLY": "복구했습니다.",
+        "LIKED_SUCCESSFULLY": "추천했습니다."
     },
     "error": {
         "REQUIRED_FIELD": "* 필수",
@@ -219,7 +223,8 @@
         "PASSWORD_NOT_MATCH": "* 비밀번호가 일치하지 않습니다.",
         "ALPHABETS_NUMBER_ONLY": "* 알파벳 대소문자와 숫자만 가능합니다..",
         "ERROR_REQUIRED_FIELDS": "필수입력 항목을 확인해 주세요.",
-        "PERMISSION_DENIED": "권한이 없습니다."
+        "PERMISSION_DENIED": "권한이 없습니다.",
+        "ALREADY_LIKED": "이미 추천하셨습니다."
     },
     "info": {
         "SITENAME": "bbgo"
