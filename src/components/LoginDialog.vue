@@ -72,6 +72,7 @@
         >
           <router-link
             :to="{ name: 'accounts.password.find' }"
+            class="text-decoration-none"
             @click="dialog=false"
           >
             {{ $t('hint.FORGOT_PASSWORD') }}
@@ -98,6 +99,7 @@
         {{ $t('hint.NO_ACCOUNT') }}
         <router-link
           :to="{ name: 'accounts.signup' }"
+          class="text-decoration-none"
           @click="dialog=false"
         >
           {{ $t('action.SIGNUP') }}
@@ -164,10 +166,9 @@ export default {
 
 <style scoped>
   a {
-    color: #EB6669;
+    color: #EB6669 !important;
   }
   a:hover {
-    color: #F9CECE;
-    text-decoration: none;
+    color: #F9CECE !important;
   }
 </style>
