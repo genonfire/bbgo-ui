@@ -393,8 +393,10 @@ export default {
       })
       .then(function (response) {
         vm.pagination = response.data['pagination']
-        vm.categoryItems = response.data['filter']['category']
         vm.blogs = response.data['data']
+        if (response.data['filter']) {
+          vm.categoryItems = response.data['filter']['category']
+        }
 
         vm.init = true
       })

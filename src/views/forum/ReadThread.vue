@@ -103,7 +103,7 @@
           v-if="thread.is_pinned"
         ></v-icon>
         <span
-          v-if="$store.isStaff"
+          v-if="$store.isStaff && !thread.is_deleted"
         >
           <a
             style="cursor: pointer;"

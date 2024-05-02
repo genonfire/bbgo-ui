@@ -6,6 +6,8 @@ bbgo ui built with Vuetify
 
 API: https://github.com/genonfire/bbgo-core
 
+Demo: https://genonfire.github.io/bbgo-demo/
+
 
 # Getting started with bbgo
     $ nvm use

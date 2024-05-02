@@ -97,6 +97,7 @@
             variant="text"
             prepend-icon="mdi-message-reply-outline"
             @click="replying[index] = true"
+            v-if="thread.forum.permissions.reply"
           >
             {{ $t('forum.REPLY') }}
           </v-btn>

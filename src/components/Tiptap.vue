@@ -206,6 +206,7 @@
               <v-btn
                 color="secondary"
                 @click="insertImage(fileURL)"
+                :disabled="!fileURL"
               >
                 {{ $t('tiptap.INSERT_IMAGE') }}
               </v-btn>
@@ -232,6 +233,7 @@
               <v-btn
                 color="secondary"
                 @click="insertImage(linkURL)"
+                :disabled="!linkURL"
               >
                 {{ $t('tiptap.INSERT_IMAGE') }}
               </v-btn>
