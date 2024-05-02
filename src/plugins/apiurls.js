@@ -54,140 +54,140 @@ export default {
   },
   FORUMS: {
     'method': 'get',
-    'url': 'communities/forums/'
+    'url': '/communities/forums/'
   },
   FORUM: {
     'method': 'get',
-    'url': 'communities/forums/{pk}/'
+    'url': '/communities/forums/{pk}/'
   },
   THREAD_LIST: {
     'method': 'get',
-    'url': 'communities/f/{forum}/'
+    'url': '/communities/f/{forum}/'
   },
   THREAD_SEEK: {
     'method': 'get',
-    'url': 'communities/f/{forum}/seek/'
+    'url': '/communities/f/{forum}/seek/'
   },
   THREAD_WRITE: {
     'method': 'post',
-    'url': 'communities/f/{forum}/write/'
+    'url': '/communities/f/{forum}/write/'
   },
   THREAD_EDIT: {
     'method': 'patch',
-    'url': 'communities/f/{forum}/{pk}/'
+    'url': '/communities/f/{forum}/{pk}/'
   },
   THREAD_DELETE: {
     'method': 'delete',
-    'url': 'communities/f/{forum}/{pk}/'
+    'url': '/communities/f/{forum}/{pk}/'
   },
   THREAD_RESTORE: {
     'method': 'post',
-    'url': 'communities/f/{forum}/restore/{pk}/'
+    'url': '/communities/f/{forum}/restore/{pk}/'
   },
   THREAD_PIN: {
     'method': 'post',
-    'url': 'communities/f/{forum}/pin/{pk}/'
+    'url': '/communities/f/{forum}/pin/{pk}/'
   },
   THREAD_UNPIN: {
     'method': 'post',
-    'url': 'communities/f/{forum}/unpin/{pk}/'
+    'url': '/communities/f/{forum}/unpin/{pk}/'
   },
   THREAD_ATTACH_FILES: {
     'method': 'post',
-    'url': 'communities/f/{forum}/{pk}/file/'
+    'url': '/communities/f/{forum}/{pk}/file/'
   },
   THREAD_DELETE_FILES: {
     'method': 'delete',
-    'url': 'communities/f/{forum}/{pk}/file/'
+    'url': '/communities/f/{forum}/{pk}/file/'
   },
   THREAD_READ: {
     'method': 'get',
-    'url': 'communities/f/{forum}/read/{pk}/'
+    'url': '/communities/f/{forum}/read/{pk}/'
   },
   THREAD_UP: {
     'method': 'post',
-    'url': 'communities/f/{forum}/up/{pk}/'
+    'url': '/communities/f/{forum}/up/{pk}/'
   },
   THREAD_DOWN: {
     'method': 'post',
-    'url': 'communities/f/{forum}/down/{pk}/'
+    'url': '/communities/f/{forum}/down/{pk}/'
   },
   THREAD_TRASH: {
     'method': 'get',
-    'url': 'communities/f/{forum}/trash/'
+    'url': '/communities/f/{forum}/trash/'
   },
   THREAD_REPLIES: {
     'method': 'get',
-    'url': 'communities/f/{pk}/replies/'
+    'url': '/communities/f/{pk}/replies/'
   },
   THREAD_REPLY: {
     'method': 'post',
-    'url': 'communities/f/{pk}/reply/'
+    'url': '/communities/f/{pk}/reply/'
   },
   REPLY_EDIT: {
     'method': 'patch',
-    'url': 'communities/r/{pk}/'
+    'url': '/communities/r/{pk}/'
   },
   REPLY_DELETE: {
     'method': 'delete',
-    'url': 'communities/r/{pk}/'
+    'url': '/communities/r/{pk}/'
   },
   REPLY_UP: {
     'method': 'post',
-    'url': 'communities/r/{pk}/up/'
+    'url': '/communities/r/{pk}/up/'
   },
   REPLY_DOWN: {
     'method': 'post',
-    'url': 'communities/r/{pk}/down/'
+    'url': '/communities/r/{pk}/down/'
   },
 
   BLOG_OPTION: {
     'method': 'get',
-    'url': 'contents/blog_option/'
+    'url': '/contents/blog_option/'
   },
   EDIT_BLOG_OPTION: {
     'method': 'patch',
-    'url': 'contents/blog_option/'
+    'url': '/contents/blog_option/'
   },
   WRITE_BLOG: {
     'method': 'post',
-    'url': 'contents/blog/'
+    'url': '/contents/blog/'
   },
   EDIT_BLOG: {
     'method': 'patch',
-    'url': 'contents/blog/{pk}/'
+    'url': '/contents/blog/{pk}/'
   },
   DELETE_BLOG: {
     'method': 'delete',
-    'url': 'contents/blog/{pk}/'
+    'url': '/contents/blog/{pk}/'
   },
   BLOG_LIST: {
     'method': 'get',
-    'url': 'contents/blogs/'
+    'url': '/contents/blogs/'
   },
   READ_BLOG: {
     'method': 'get',
-    'url': 'contents/blogs/{pk}/'
+    'url': '/contents/blogs/{pk}/'
   },
   LIKE_BLOG: {
     'method': 'post',
-    'url': 'contents/blogs/{pk}/like/'
+    'url': '/contents/blogs/{pk}/like/'
   },
   BLOG_COMMENTS: {
     'method': 'get',
-    'url': 'contents/blogs/{pk}/comments/'
+    'url': '/contents/blogs/{pk}/comments/'
   },
   BLOG_COMMENT: {
     'method': 'post',
-    'url': 'contents/blogs/{pk}/comment/'
+    'url': '/contents/blogs/{pk}/comment/'
   },
   EDIT_COMMENT: {
     'method': 'patch',
-    'url': 'contents/comment/{pk}/'
+    'url': '/contents/comment/{pk}/'
   },
   DELETE_COMMENT: {
     'method': 'delete',
-    'url': 'contents/comment/{pk}/'
+    'url': '/contents/comment/{pk}/'
   },
 
   FILE_UPLOAD: {
