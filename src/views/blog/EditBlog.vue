@@ -104,6 +104,7 @@
         class="text-right"
       >
         <v-btn
+          variant="flat"
           color="secondary"
           class="px-8"
           @click="save"
