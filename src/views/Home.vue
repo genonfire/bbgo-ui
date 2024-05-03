@@ -4,11 +4,11 @@
 <script>
 export default {
   mounted () {
-    this.$router.replace(
-      {
-        name: 'blogs'
-      }
-    )
+    // this.$router.replace(
+    //   {
+    //     name: 'blogs'
+    //   }
+    // )
   }
 }
 </script>
