@@ -180,8 +180,8 @@ export default {
     return { formatDateOrTime, username }
   },
   components: {
-      Observer
-    },
+    Observer
+  },
   data() {
     return {
       replies: null,
