@@ -26,10 +26,20 @@
         class="text-right"
         v-if="commenting"
       >
+        <v-text-field
+          v-model="newName"
+          variant="outlined"
+          density="compact"
+          class="mb-1"
+          hide-details
+          :placeholder="$t('hint.ENTER_YOUR_NAME')"
+          v-if="!$store.isLoggedIn"
+        ></v-text-field>
         <v-textarea
           v-model="newComment"
           rows="3"
           variant="outlined"
+          :placeholder="$t('hint.ENTER_YOUR_COMMENT')"
         >
         </v-textarea>
         <v-btn
@@ -46,7 +56,7 @@
           density="comfortable"
           color="secondary"
           @click="saveComment(-1, 0)"
-          :disabled="!newComment"
+          :disabled="!newComment || (!$store.isLoggedIn && !newName)"
         >
           {{ $t('action.SAVE') }}
         </v-btn>
@@ -115,10 +125,20 @@
           class="text-right"
           v-if="replying[index]"
         >
+          <v-text-field
+            v-model="names[index]"
+            variant="outlined"
+            density="compact"
+            class="mb-1"
+            hide-details
+            :placeholder="$t('hint.ENTER_YOUR_NAME')"
+            v-if="!$store.isLoggedIn"
+          ></v-text-field>
           <v-textarea
             v-model="textareas[index]"
             rows="3"
             variant="outlined"
+            :placeholder="$t('hint.ENTER_YOUR_COMMENT')"
           >
           </v-textarea>
           <v-btn
@@ -135,7 +155,7 @@
             density="comfortable"
             color="secondary"
             @click="saveComment(index, comment.id)"
-            :disabled="!textareas[index]"
+            :disabled="!textareas[index] || (!$store.isLoggedIn && !names[index])"
           >
             {{ $t('action.SAVE') }}
           </v-btn>
@@ -190,8 +210,10 @@ export default {
       init: false,
       loading: false,
       newComment: null,
+      newName: null,
       commenting: false,
       textareas: [],
+      names: [],
       replying: [],
       scrollTo: null,
     }
@@ -231,8 +253,10 @@ export default {
         vm.comments = response.data['data']
         vm.replying = new Array(vm.comments.length).fill(false)
         vm.textareas = new Array(vm.comments.length).fill(null)
+        vm.names = new Array(vm.comments.length).fill(null)
         vm.commenting = false
         vm.newComment = null
+        vm.newName = null
         vm.init = true
 
         if (vm.scrollTo) {
@@ -250,8 +274,10 @@ export default {
       this.comments = [...this.comments, ...this.dataStored]
       this.replying = new Array(this.comments.length).fill(false)
       this.textareas = new Array(this.comments.length).fill(null)
+      this.names = new Array(this.comments.length).fill(null)
       this.commenting = false
       this.newComment = null
+      this.newName = null
       this.loading = false
     },
     getMoreComments() {
@@ -284,10 +310,12 @@ export default {
       if (index == -1) {
         this.commenting = false
         this.newComment = null
+        this.newName = null
       }
       else {
         this.replying[index] = false
         this.textareas[index] = null
+        this.names[index] = null
       }
     },
     saveComment(index, commentId) {
@@ -295,11 +323,13 @@ export default {
 
       let data = {
         comment_id: commentId,
+        name: this.names[index],
         content: this.textareas[index]
       }
 
       if (index == -1) {
         data = {
+          name: this.newName,
           content: this.newComment
         }
       }

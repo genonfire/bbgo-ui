@@ -204,6 +204,8 @@
         "PAGESIZE_BY": "{pageSize}개씩",
         "DROP_FILES_HERE": "파일을 여기에 떨구세요.",
         "HIT_ENTER_FOR_MULTIPLE": "엔터로 여러개를 입력하세요.",
+        "ENTER_YOUR_NAME": "이름을 입력해 주세요.",
+        "ENTER_YOUR_COMMENT": "댓글 내용을 입력하세요.",
         "DELETE_BLOG_DESCRIPTION": "정말로 이 블로그를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_THREAD_DESCRIPTION": "정말로 이 글을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
         "DELETE_FORUM_DESCRIPTION": "정말로 이 포럼을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",

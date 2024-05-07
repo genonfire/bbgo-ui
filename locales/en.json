@@ -204,6 +204,8 @@
         "PAGESIZE_BY": "by {pageSize}",
         "DROP_FILES_HERE": "Drop files here",
         "HIT_ENTER_FOR_MULTIPLE": "Hit enter for multiple.",
+        "ENTER_YOUR_NAME": "Please enter your name",
+        "ENTER_YOUR_COMMENT": "Please enter comment.",
         "DELETE_BLOG_DESCRIPTION": "Are you sure you want to delete this blog? This action cannot be undone.",
         "DELETE_THREAD_DESCRIPTION": "Are you sure you want to delete this thread? This action cannot be undone.",
         "DELETE_FORUM_DESCRIPTION": "Are you sure you want to delete this forum? This action cannot be undone.",
