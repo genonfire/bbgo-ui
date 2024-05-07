@@ -7,7 +7,7 @@ export default {
     const nextURL = this.$route.query.nextURL
 
     if (this.$store.isApproved && nextURL) {
-      this.$router.replace({
+      this.$router.push({
         path: nextURL,
         params: this.$route.params
       })
