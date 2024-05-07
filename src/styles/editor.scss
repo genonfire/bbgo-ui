@@ -1,5 +1,7 @@
 .tiptap {
   min-height: 298px;
+  max-height: 800px;
+  overflow-y: auto;
   position: relative;
   margin: 0 auto 1rem auto;
   border: 1px solid #CDCDCD;
