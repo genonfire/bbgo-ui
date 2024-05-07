@@ -65,6 +65,9 @@ export const useAppStore = defineStore('app', {
       this.token = null
       this.user = null
     },
+    development() {
+      return process.env.NODE_ENV == 'development'
+    },
     const(key) {
       return Const[key]
     }

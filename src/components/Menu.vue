@@ -45,7 +45,7 @@
 
   <v-list
     class="pt-0"
-    v-if="!$store.isLoggedIn || $store.isStaff"
+    v-if="!$store.isLoggedIn || $store.development"
   >
     <v-list-subheader
     >
