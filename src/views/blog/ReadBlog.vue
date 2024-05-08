@@ -13,7 +13,8 @@
           {{ blog.category }}
         </div>
         <div
-          class="text-h4 font-weight-medium"
+          class="font-weight-medium"
+          :class="smAndUp ? 'text-h4' : 'text-h5'"
         >
           {{ blog.title }}
         </div>
@@ -69,8 +70,7 @@
         />
       </v-col>
     </v-row>
-    <v-row
-    >
+    <v-row>
       <v-col
         class="text-center"
       >
@@ -147,13 +147,15 @@
 
 <script>
 import { useFormatDate } from '@/composables/datetime'
+import { useDisplay } from 'vuetify'
 import Comment from '@/components/Comment'
 import TagChips from '@/components/TagChips'
 
 export default {
   setup() {
     const { formatDate } = useFormatDate()
-    return { formatDate }
+    const { smAndUp } = useDisplay()
+    return { formatDate, smAndUp }
   },
   components: {
     Comment,

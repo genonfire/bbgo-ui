@@ -59,7 +59,7 @@
           <v-card
             v-for="blog in blogs"
             :key="blog.id"
-            class="my-5 pa-0"
+            class="mb-5 pa-0"
             variant="flat"
             hover
           >
