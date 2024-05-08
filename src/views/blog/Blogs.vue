@@ -7,6 +7,8 @@
       </v-col>
       <v-col
         class="text-center text-h4 font-weight-bold py-2"
+        @click="$router.push({ name: 'blogs' })"
+        style="cursor: pointer;"
       >
         {{ blogOption.title }}
       </v-col>
@@ -42,7 +44,7 @@
             :key="item"
             :text="item ? item : $t('blog.CATEGORY_ALL')"
             :value="item"
-            class="px-4"
+            class="mx-0 px-4"
             @click="selectCategory(item)"
           ></v-chip>
         </v-col>

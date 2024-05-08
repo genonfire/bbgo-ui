@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="pa-0"
+    class="px-0"
   >
     <div>
       <v-chip

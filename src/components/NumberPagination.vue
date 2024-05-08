@@ -13,7 +13,7 @@
       <v-pagination
         v-model="pageModel"
         :length="pagination.page_total"
-        :total-visible="6"
+        :total-visible="smAndUp ? 6 : 4"
         variant="flat"
         active-color="secondary"
         density="comfortable"
@@ -40,7 +40,13 @@
 </template>
 
 <script>
+import { useDisplay } from 'vuetify'
+
 export default {
+  setup() {
+    const { smAndUp } = useDisplay()
+    return { smAndUp }
+  },
   props: {
     modelValue: Number,
     pagination: Object,
