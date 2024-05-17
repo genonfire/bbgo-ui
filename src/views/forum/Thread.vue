@@ -96,7 +96,7 @@
                     params: {
                       forum: forum.name,
                       thread: thread.id,
-                      title: thread.title.replace(/ /g, '_')
+                      title: title(thread.title)
                     }
                   }"
                 >
@@ -131,12 +131,14 @@
 import NumberPagination from '@/components/NumberPagination'
 import { useFormatDate } from '@/composables/datetime'
 import { useUser } from '@/composables/user'
+import { useEscape } from '@/composables/escape'
 
 export default {
   setup() {
     const { formatDateOrTime } = useFormatDate()
     const { username } = useUser()
-    return { formatDateOrTime, username }
+    const { title } = useEscape()
+    return { formatDateOrTime, username, title }
   },
   components: {
     NumberPagination,

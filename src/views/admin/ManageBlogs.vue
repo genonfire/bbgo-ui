@@ -106,7 +106,7 @@
                     name: 'blog.read',
                     params: {
                       blog: blog.id,
-                      title: blog.title.replace(/ /g, '_')
+                      title: title(blog.title)
                     }
                   }"
                 >
@@ -293,11 +293,13 @@ import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import TagChips from '@/components/TagChips'
 import { useFormatDate } from '@/composables/datetime'
+import { useEscape } from '@/composables/escape'
 
 export default {
   setup() {
     const { formatDateTime } = useFormatDate()
-    return { formatDateTime }
+    const { title } = useEscape()
+    return { formatDateTime, title }
   },
   components: {
     NumberPagination,

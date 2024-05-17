@@ -82,7 +82,7 @@
                       forum: reply.forum_name,
                       thread: reply.thread.id,
                       reply: reply.id,
-                      title: reply.thread.title.replace(/ /g, '_')
+                      title: title(reply.thread.title)
                     }
                   }"
                 >
@@ -97,7 +97,7 @@
                     params: {
                       forum: reply.forum_name,
                       thread: reply.thread.id,
-                      title: reply.thread.title.replace(/ /g, '_')
+                      title: title(reply.thread.title)
                     }
                   }"
                 >
@@ -144,12 +144,14 @@ import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import { useFormatDate } from '@/composables/datetime'
 import { useUser } from '@/composables/user'
+import { useEscape } from '@/composables/escape'
 
 export default {
   setup() {
     const { formatDateTime } = useFormatDate()
     const { username } = useUser()
-    return { formatDateTime, username }
+    const { title } = useEscape()
+    return { formatDateTime, username, title }
   },
   components: {
     NumberPagination,

@@ -79,7 +79,7 @@
                     params: {
                       blog: comment.blog.id,
                       comment: comment.id,
-                      title: comment.blog.title.replace(/ /g, '_')
+                      title: title(comment.blog.title)
                     }
                   }"
                 >
@@ -92,7 +92,7 @@
                     name: 'blog.read',
                     params: {
                       blog: comment.blog.id,
-                      title: comment.blog.title.replace(/ /g, '_')
+                      title: title(comment.blog.title)
                     }
                   }"
                 >
@@ -139,12 +139,14 @@ import NumberPagination from '@/components/NumberPagination'
 import ActiveSelector from '@/components/ActiveSelector'
 import { useFormatDate } from '@/composables/datetime'
 import { useUser } from '@/composables/user'
+import { useEscape } from '@/composables/escape'
 
 export default {
   setup() {
     const { formatDateTime } = useFormatDate()
     const { username } = useUser()
-    return { formatDateTime, username }
+    const { title } = useEscape()
+    return { formatDateTime, username, title }
   },
   components: {
     NumberPagination,

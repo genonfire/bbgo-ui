@@ -62,7 +62,7 @@
                     params: {
                       forum: forum.name,
                       thread: thread.id,
-                      title: escapeTitle(thread.title)
+                      title: title(thread.title)
                     }
                   }"
                 >
@@ -90,12 +90,14 @@
 import NumberPagination from '@/components/NumberPagination'
 import { useFormatDate } from '@/composables/datetime'
 import { useUser } from '@/composables/user'
+import { useEscape } from '@/composables/escape'
 
 export default {
   setup() {
     const { formatDateOrTime } = useFormatDate()
     const { username } = useUser()
-    return { formatDateOrTime, username }
+    const { title } = useEscape()
+    return { formatDateOrTime, username, title }
   },
   components: {
     NumberPagination,
@@ -128,9 +130,6 @@ export default {
           q: this.$route.query.q
         }
       })
-    },
-    escapeTitle(title) {
-      return title.replace(/ /g, '_')
     },
     getTrash(page=1, search=null) {
       const vm = this

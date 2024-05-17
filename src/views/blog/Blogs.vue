@@ -68,7 +68,7 @@
                 name: 'blog.read',
                 params: {
                   blog: blog.id,
-                  title: blog.title.replace(/ /g, '_')
+                  title: title(blog.title)
                 }
               }"
             >
@@ -152,6 +152,7 @@
 <script>
 import NumberPagination from '@/components/NumberPagination'
 import { useFormatDate } from '@/composables/datetime'
+import { useEscape } from '@/composables/escape'
 import { useDisplay } from 'vuetify'
 import TagChips from '@/components/TagChips'
 
@@ -159,7 +160,8 @@ export default {
   setup() {
     const { formatDate } = useFormatDate()
     const { smAndUp } = useDisplay()
-    return { formatDate, smAndUp }
+    const { title } = useEscape()
+    return { formatDate, smAndUp, title }
   },
   components: {
     NumberPagination,
