@@ -122,7 +122,6 @@
         "PERMISSION_REPLY": "댓글 권한",
         "PERMISSION_VOTE": "추천 권한",
         "SUPPORT_FILES": "파일 첨부",
-        "FORUM_MANAGERS": "포럼 관리자",
         "NEW_FORUM": "포럼 생성",
         "EDIT_FORUM": "포럼 수정",
         "QUIT_EDITING": "글 작성을 그만두시겠습니까?",
