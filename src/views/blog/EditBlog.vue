@@ -50,13 +50,13 @@
             class="mx-4"
           >
           </v-file-input>
-          <img
+          <v-img
             :src="featuredImage.file"
-            class="ml-4 mr-10"
+            class="ml-4 mb-4"
             :width="smAndUp ? 240 : 120"
             :height="smAndUp ? 240 : 120"
             v-if="featuredImage"
-          >
+          ></v-img>
         </v-card>
       </v-col>
     </v-row>
